@@ -1,0 +1,23 @@
+<div class="footer-container">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="show-footer">
+        <p id="space-name"> <%= space.name %></p>
+        <% unless policy(space).edit? %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="pricing-button">
+            <%= link_to new_space_booking_path(space) do%>
+            <button type="submit" class="btn btn-default-footer">Book</button>
+            <% end %>
+            <p id="space-price"> £<%= space.price %> / hour </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
