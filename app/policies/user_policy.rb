@@ -4,4 +4,8 @@ class UserPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def dashboard?
+    @user == user
+  end
 end
