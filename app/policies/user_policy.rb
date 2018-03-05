@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    @user == user
+    record == user
   end
 
   def index?
