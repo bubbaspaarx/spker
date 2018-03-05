@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20180305122413) do
     t.string "title"
     t.string "first_name"
     t.string "last_name"
+
     t.boolean "is_speaker"
     t.text "address"
     t.text "postcode"
