@@ -4,6 +4,7 @@ class Event < ApplicationRecord
   has_many :speaker_bookings, dependent: :destroy
   has_many :categories
   geocoded_by :postcode
+  monetize :cost
 
   validates :name, presence: true
   validates :address, presence: true
