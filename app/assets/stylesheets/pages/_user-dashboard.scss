@@ -1,0 +1,51 @@
+.main-dashboard-container {
+  width: 100vw;
+  height: calc(100vh-70px);
+  border: 1px solid #F2F2F2;
+}
+
+.top-right-container {
+  position: absolute;
+  top: 70px;
+  right: 5vw;
+  border: 1px solid #F2F2F2;
+  float: right;
+  width: 50vw;
+  height: 70vh;
+  margin-bottom: 10px;
+  overflow-wrap: break-word;
+  padding: 0px
+}
+
+.top-left-container {
+  position: absolute;
+  border: 1px solid #F2F2F2;
+  top: 70px;
+  left: 5vw;
+  float: left;
+  width: 40vw;
+  height: calc(100vh-70px);
+  margin-bottom: 0px;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+.bottom-right-container {
+  position: absolute;
+  bottom: 18px;
+  right: 5vw;
+  border: 1px solid #F2F2F2;
+  float: right;
+  width: 50vw;
+  height: 21vh;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
