@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305120040) do
+
+ActiveRecord::Schema.define(version: 20180305122413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "address"
+    t.string "postcode"
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "speaker_bookings", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_speaker_bookings_on_event_id"
+    t.index ["user_id"], name: "index_speaker_bookings_on_user_id"
+  end
+
+  create_table "user_bookings", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_bookings_on_event_id"
+    t.index ["user_id"], name: "index_user_bookings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,4 +75,9 @@ ActiveRecord::Schema.define(version: 20180305120040) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
+  add_foreign_key "speaker_bookings", "events"
+  add_foreign_key "speaker_bookings", "users"
+  add_foreign_key "user_bookings", "events"
+  add_foreign_key "user_bookings", "users"
 end
