@@ -1,0 +1,59 @@
+.footer-container {
+  display: flex;
+  width: 100%;
+  position: sticky;
+  bottom: 0px;
+  right: 0px;
+
+}
+
+.show-footer {
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  height: 10vh;
+  padding-right: 0px;
+  color: #333333;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100vw;
+  justify-content: space-between
+}
+
+.show-footer p {
+  padding-left: 40px;
+  padding-right: 20px;
+  padding-top: 30px;
+  border-right: 1px solid #CFDBDC;
+  height: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px
+}
+
+.btn-default-footer {
+  background-color: #00C688;
+  color: #FFFFFF;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: 30px;
+  float: right
+}
+
+.show-footer ul {
+  padding-right: 0px;
+  border-right: 1px solid #CFDBDC;
+  height: 100%
+}
+
+#space-price {
+float: right;
+padding-right: 20px
+}
+
+.pricing-button {
+  padding-top: 30px
+}
+
+.pricing-button p {
+  padding-top: 10px
+}
