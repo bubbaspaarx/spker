@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :events, only: [:new, :create, :edit, :update]
     resources :user_bookings, only: [:index]
     resources :speaker_bookings, only: [:index]
+    resources :messages, only: [:index, :new, :create]
   end
 
   resources :events, only: [:index, :show, :destroy] do
