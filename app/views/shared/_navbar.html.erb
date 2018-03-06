@@ -12,19 +12,20 @@
     <% if user_signed_in? %>
 
     <!-- Links when logged in -->
-    <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Become a Speaker", user_speaker_create_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" 
     <%= link_to 'Inbox', inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-wagon-item navbar-wagon-link' do %>
               <i class="fa fa-sign-out "></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
+    <% end %>
 
 
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <%# image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-        <%# cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <%= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to dashboard_path(current_user) do %>

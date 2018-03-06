@@ -4,7 +4,7 @@
   position: fixed;
   z-index: 2;
   vertical-align: middle;
-  height: 40vh;
+  height: 361px;
   background-color: #fff;
   margin: auto;
   width: 50vw;
@@ -68,11 +68,12 @@
   width: 10px;
   height: 10px;
   top: 5px;
-  right: 15px;
-  color: #aaa;
+  right: 25px;
+  color: #111;
   float: right;
-  font-size: 28px;
+  font-size: 36px;
   font-weight: bold;
+  opacity: 0.4;
 }
 
 .close:hover,
@@ -80,4 +81,5 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+  opacity: 0.75;
 }

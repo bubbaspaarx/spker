@@ -24,4 +24,20 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def speaker_create?
+    true
+  end
+
+  def speaker_show?
+    true
+  end
+
+  def speaker_index?
+    true
+  end
+
+  def edit_speaker?
+    true
+  end
 end
