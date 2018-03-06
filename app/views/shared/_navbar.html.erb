@@ -1,30 +1,29 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
+
   <%= image_tag "spkr orange.png", height: 50 %>
+
   <% end %>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-  <% if params[:action] == 'show' && (params[:controller] == 'users' || params[:controller] == 'spaces') %>
-    <%= render 'shared/search-bar' %>
-  <% end %>
 
     <% if user_signed_in? %>
 
     <!-- Links when logged in -->
-    <%= link_to "Create a Space", new_user_space_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to "Dashboard", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
 
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-        <%= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <%# image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <%# cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to dashboard_path(current_user) do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
@@ -50,7 +49,7 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to "Create a Space", new_user_space_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+            <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
           </li>
           <li>
             <%= link_to "Dashboard", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
