@@ -1,0 +1,21 @@
+
+<div class="main-container">
+  <div class="body-container">
+    <div class="card-container">
+      <div class="events-title">
+        <h4 id="index-header">Choose the perfect event space in <%= params[:location] %></h4>
+      </div>
+      <div class="row">
+        <% @events.each do |event| %>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+          <%= render 'shared/card', event: event%>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="map-container">
+    <%= render 'shared/map-vertical' %>
+  </div>
+</div>
+
