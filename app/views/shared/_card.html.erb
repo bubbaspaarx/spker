@@ -1,5 +1,6 @@
 <div id="card-display">
   <div class="card-wrap scaled">
+    <%= link_to event_path(event) do %>
     <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d8f17ce21e419f0ef0e90dfcbe19911&auto=format&fit=crop&w=2125&q=80" alt="test 1" style="width:100%; height:60%">
     <div class="card-info">
       <div class="card-description">
@@ -10,5 +11,6 @@
         <p><%= event.date %></p>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
