@@ -5,12 +5,20 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
+  def inbox?
+    record == user
+  end
+
+  def conversation?
+    inbox?
+  end
+
   def dashboard?
     record == user
   end
 
   def index?
-    true
+    record == user
   end
 
   def show?

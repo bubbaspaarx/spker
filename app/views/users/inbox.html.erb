@@ -1,0 +1,3 @@
+<% @correspondents.each do |correspondent| %>
+  <p><%= link_to correspondent.email, inbox_users_path(@user, correspondent) %></p>
+<% end %>
