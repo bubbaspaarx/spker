@@ -1,10 +1,10 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:new, :create]
-  before_action :authorize_event, except: [:index, :new, :create]
+  before_action :authorize_event, except: [:index, :new, :create, :update]
 
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
     authorize @events
   end
 
@@ -14,7 +14,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     authorize_event
-
   end
 
   def create
@@ -41,6 +40,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
+    redirect_to dashboard_path(current_user)
   end
 
   private
@@ -58,6 +58,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :address, :postcode, :date, :start_time, :end_time)
+    params.require(:event).permit(:name, :address, :postcode, :date, :cost, :start_time, :end_time)
   end
 end
