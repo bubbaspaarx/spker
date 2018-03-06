@@ -1,16 +1,14 @@
-<div class="card-wrap scaled">
-  <%= link_to space_path(space) do %>
-  <% image = space.photo.url ? space.photo : "http://res.cloudinary.com/montycat/image/upload/v1520002290/no-image.png" %>
-  <div class="card" style="background-image: url('<%= cl_image_path image %>');">
-  </div>
-  <div class="card-info">
-    <div class="card-description">
-      <h2><%= space.name.upcase %></h2>
+<div id="card-display">
+  <div class="card-wrap scaled">
+    <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3d8f17ce21e419f0ef0e90dfcbe19911&auto=format&fit=crop&w=2125&q=80" alt="test 1" style="width:100%; height:60%">
+    <div class="card-info">
+      <div class="card-description">
+        <h2><%= event.name %></h2>
+        <p><%= event.address %></p>
+        <p><%= event.postcode %></p>
+        <p><%= event.cost %></p>
+        <p><%= event.date %></p>
+      </div>
     </div>
-    <p id="location"><%= space.location %></p>
-    <p id="capacity"><i class="fas fa-users"></i><%= space.capacity %></p>
-    <p id="floor_space"><%= space.floor_space %> sq ft</p>
-    <p id="price">from £<%= space.price %> per hour</p>
   </div>
-  <% end %>
 </div>
