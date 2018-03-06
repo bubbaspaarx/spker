@@ -12,10 +12,10 @@
   border: 1px solid #F2F2F2;
   float: right;
   width: 50vw;
-  height: calc(100vh - 70px);
+  height: 90%;
   margin-bottom: 10px;
-  overflow-wrap: break-word;
   padding: 0px;
+  overflow: auto;
 }
 
 .top-left-container {
@@ -25,17 +25,29 @@
   left: 5vw;
   float: left;
   width: 40vw;
-  height: calc(100vh-70px);
+  height: 90%;
   margin-bottom: 0px;
-  overflow-wrap: break-word;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  overflow: auto;
   padding-left: 20px;
   padding-right: 20px;
 }
 
+.dashboard-media {
+  height: 40%;
+  width: 100%
 
+}
 
+.dashboard-text {
+  overflow: auto;
+  height: 40%;
+  width: 100%;
+  right: 5vw;
+  bottom: 0px;
+}
 
-
-
+.tabs-button {
+  position: sticky;
+  top: 70px;
+  right: 0px
+}
