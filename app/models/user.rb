@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :speaker_bookings, dependent: :destroy
   has_many :categories
   geocoded_by :postcode
-  # monetize :cost_cents
+  monetize :cost_cents
 
   # validates :title, presence: true
   # validates :first_name, presence: true
