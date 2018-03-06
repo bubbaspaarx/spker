@@ -3,7 +3,10 @@ class User < ApplicationRecord
   has_many :user_bookings, dependent: :destroy
   has_many :speaker_bookings, dependent: :destroy
   has_many :categories
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   geocoded_by :postcode
+  monetize :cost_cents
 
   # validates :title, presence: true
   # validates :first_name, presence: true

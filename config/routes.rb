@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show] do
-    resources :events, only: [:new, :create]
+    resources :events, only: [:new, :create, :edit, :update]
     resources :user_bookings, only: [:index]
     resources :speaker_bookings, only: [:index]
   end
 
-  resources :events, only: [:index, :show, :edit, :update, :destroy] do
+  resources :events, only: [:index, :show, :destroy] do
     resources :user_bookings, only: [:new, :create]
     resources :speaker_bookings, only: [:new, :create]
   end
