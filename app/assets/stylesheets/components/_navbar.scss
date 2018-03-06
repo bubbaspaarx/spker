@@ -90,3 +90,21 @@
   padding-right: 0px;
   font-size: 18px
 }
+
+#login-btn {
+  padding: 2px;
+  width: 81px;
+  border-radius: 3px;
+  background-color: $blue;
+  color: #fff;
+  margin-right: 10px;
+}
+
+#signup-btn {
+  padding: 2px;
+  width: 81px;
+  border-radius: 3px;
+  background-color: $green;
+  color: #fff;
+  margin-right: 10px;
+}
