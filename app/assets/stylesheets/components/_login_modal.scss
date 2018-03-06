@@ -1,0 +1,82 @@
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  vertical-align: middle;
+  height: 40vh;
+  background-color: #fff;
+  margin: auto;
+  width: 50vw;
+  border-radius: 20px;
+}
+
+/* Modal Content/Box */
+.background-banner-overlay {
+ content: " ";
+ width: 0%;
+ height: 100%;
+ position: fixed;
+ z-index: 1;
+ top: 0;
+ left: 0;
+ background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content1 {
+  height: 100%;
+  width: 100%;
+  background-color: #fefefe;
+  width: 80%;
+  margin: 0 auto;
+  & h2 {
+    text-align: center;
+    color: rgba(0,0,0,0.6);
+    font-size: 26px;
+  }
+  & .btn.btn-default {
+    width: 100%;
+    background-color: $green;
+    color: #fff;
+  }
+  & .control-label {
+    font-size: 18px;
+  }
+  & #user_email {
+    margin-top: 40px;
+    font-weight: lighter;
+  }
+  & #user_password {
+    margin-top: 20px;
+    font-weight: lighter;
+  }
+  & #forgot_password {
+    color: $blue;
+    font-size: 12px;
+  }
+  & #sign_up-link {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 5px;
+  right: 15px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

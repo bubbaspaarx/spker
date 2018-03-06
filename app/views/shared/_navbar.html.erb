@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "evennt.space copy.png", height: 50 %>
+  <%= image_tag "spkr orange.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -38,8 +38,8 @@
       </div>
       <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login /"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to t(".sign_up", default: "/ Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link btn" %>
+      <%= link_to t(".sign_in", default: "Login /"), new_user_session_path, class: "login navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_up", default: "/ Sign Up"), new_user_registration_path, class: "signup navbar-wagon-item navbar-wagon-link btn" %>
       <% end %>
     </div>
 
