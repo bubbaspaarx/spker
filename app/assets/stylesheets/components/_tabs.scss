@@ -1,7 +1,8 @@
 .tabs {
-  background: #53443F;
+  background: #FFFFFF;
   display: flex;
-  padding: 0px
+  padding: 0px;
+  width: 100%
 }
 .tabs a {
   color: white;
@@ -20,14 +21,19 @@
   opacity: 0.5;
   margin-bottom: 0;
 }
-.tab {
-  background: #756A66;
-  flex: 0 0 25%;
+.tabs-button {
+  background: #FFFFFF;
+  flex: 0 0 33%;
   text-align: center;
   padding: 20px 0;
+  position: sticky;
+  top: 0px;
+  right: 5vw;
+  text-decoration: none
 }
 
-.tab.active {
+.tabs.active {
   background: white;
   color: black;
 }
+
