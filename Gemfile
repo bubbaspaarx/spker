@@ -17,7 +17,8 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 3.3.7'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

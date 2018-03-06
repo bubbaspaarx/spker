@@ -20,14 +20,14 @@
   opacity: 0.5;
   margin-bottom: 0;
 }
-.tab {
+.tabs {
   background: #756A66;
-  flex: 0 0 25%;
+  flex: 0 0 33%;
   text-align: center;
   padding: 20px 0;
 }
 
-.tab.active {
+.tabs.active {
   background: white;
   color: black;
 }
