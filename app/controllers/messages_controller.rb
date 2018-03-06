@@ -1,11 +1,7 @@
 class MessagesController < ApplicationController
-  def index
-    @user = params[:user_id]
-    authorize @user
-    @messages = policy_scope(Message)
-  end
 
   def new
+    @user = User.find(params[:user_id])
     @message = Message.new
     authorize @message
   end
@@ -16,7 +12,7 @@ class MessagesController < ApplicationController
     @message.sender = current_user
     @message.receiver = User.find(params[:user_id])
     if @message.save
-      redirect_to user_messages_path(current_user)
+      redirect_to inbox_path(current_user)
     else
       render :new
     end

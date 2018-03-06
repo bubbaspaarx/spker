@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   get 'users/:id/dashboard',to: 'users#dashboard', as: 'dashboard'
+  get 'users/:id/inbox',to: 'users#inbox', as: 'inbox'
+  get 'users/:user_id/inbox/:id', to: 'users#conversation', as: 'inbox_users'
 
 
   devise_for :users

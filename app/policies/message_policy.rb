@@ -5,10 +5,6 @@ class MessagePolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    record == user
-  end
-
   def create?
     true
   end
