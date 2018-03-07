@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :edit, :update] do
     get 'speaker/create', to: 'speakers#speaker_create'
     get 'speaker', to: 'speakers#speaker_show'
     get 'speaker/edit', to: 'speakers#speaker_edit'
