@@ -1,0 +1,10 @@
+function renderMessageForm() {
+  const button = document.getElementById('message-btn')
+  const box = document.getElementById('new-message')
+
+  box.innerHTML = '<%= j render "shared/message_form", { user: @user, message: Message.new }  %>'
+  const form = document.getElementById('new_message')
+  form.setAttribute('data-remote', 'true')
+}
+
+renderMessageForm()

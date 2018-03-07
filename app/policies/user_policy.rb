@@ -25,6 +25,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def ajax?
+    true
+  end
+
   def speaker_create?
     true
   end

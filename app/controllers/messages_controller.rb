@@ -18,6 +18,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def ajax
+    @user = User.find(params[:id])
+    authorize @user
+    respond_to do |format|
+      format.html { redirect_to new_user_message_path(@user) }
+      format.js
+    end
+  end
+
   private
 
   def message_params
