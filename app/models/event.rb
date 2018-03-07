@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :speaker_bookings, dependent: :destroy
   has_many :event_tags
   has_many :categories, through: :event_tags
+  has_many :photos
   geocoded_by :postcode
   monetize :cost_cents
 
