@@ -1,0 +1,41 @@
+.inbox-container{
+  width: 70vw;
+  height: calc(100vh - 70px);
+  position: absolute;
+  top: 100px;
+  left: 15vw;
+  display: block;
+  border: 1px solid #F2F2F2;
+  background-color: #FFFFFF;
+  border-radius: 20px
+}
+
+.sender {
+  display: block;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  border: 1px solid #F2F2F2;
+  width: 110vh;
+  height: 10vh;
+  margin-left: 0px;
+  margin-right: 0px
+}
+
+.sender-image {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  margin-left: 10px;
+  padding-left: 20px
+}
+
+.sender-info {
+  position: absolute;
+  left: 100px;
+  top: 30px;
+  padding-left: 20px
+}
+
+
