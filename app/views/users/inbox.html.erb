@@ -1,3 +1,17 @@
-<% @correspondents.each do |correspondent| %>
-  <p><%= link_to correspondent.email, inbox_users_path(@user, correspondent) %></p>
-<% end %>
+
+<div class="inbox-container">
+  <% @correspondents.each do |correspondent| %>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+      <div class="sender">
+        <div class="sender-image">
+          <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan" style="width:70px;height:70px;border-radius: 50px">
+        </div>
+        <div class="sender-info">
+          <p><%= link_to correspondent.email, inbox_users_path(@user, correspondent) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
