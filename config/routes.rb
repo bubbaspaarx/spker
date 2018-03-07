@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     resources :user_bookings, only: [:index]
     resources :speaker_bookings, only: [:index]
     resources :messages, only: [:index, :new, :create]
+    member do
+      get 'messages/ajax'
+    end
   end
 
   resources :events, only: [:index, :show, :destroy] do
