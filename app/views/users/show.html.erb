@@ -8,9 +8,11 @@
       <p>Category 2</p>
       <p>Category 3</p>
       <p>Category 4</p>
-
     </div>
-    <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
+    <div class="edit-options">
+      <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
+      <%= render 'shared/photo-loader' %>
+    </div>
     <div class="profile-recent-events">
       <h4>Recent Events</h4>
       <ul>

@@ -40,7 +40,10 @@
   }
 }
 
-
+.edit-options {
+  display: flex;
+  justify-content: space-between
+}
 
 .image-container {
   padding-top: 70px;
