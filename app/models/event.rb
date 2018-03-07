@@ -3,7 +3,8 @@ class Event < ApplicationRecord
   belongs_to :user
   has_many :user_bookings, dependent: :destroy
   has_many :speaker_bookings, dependent: :destroy
-  has_many :categories
+  has_many :event_tags
+  has_many :categories, through: :event_tags
   geocoded_by :postcode
   monetize :cost_cents
 
