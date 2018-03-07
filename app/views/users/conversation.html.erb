@@ -10,4 +10,12 @@
   </div>
 </div>
 
-
+<script>
+  const sendRequest = () => {
+    const xhttp = new XMLHttpRequest()
+    xhttp.open('GET', '/users/<%= @user.id %>/inbox/<%= @correspondent.id %>', true)
+    xhttp.setRequestHeader('Accept', 'text/javascript')
+    xhttp.send()
+  }
+  setInterval(sendRequest, 5000)
+</script>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  protect_from_forgery except: :conversation
   before_action :set_user, only: [:dashboard, :show, :inbox]
   before_action :authorize_user, only: [:dashboard, :show, :inbox]
+
 
   def dashboard
   end
@@ -22,6 +24,10 @@ class UsersController < ApplicationController
     @correspondent = User.find(params[:id])
     @messages = policy_scope(Message)
     @messages = @messages.where('sender_id = ? OR receiver_id = ?', params[:id], params[:id]).order(:created_at).reverse_order
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
