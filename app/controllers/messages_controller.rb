@@ -10,11 +10,18 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     authorize @message
     @message.sender = current_user
-    @message.receiver = User.find(params[:user_id])
+    @user = User.find(params[:user_id])
+    @message.receiver = @user
     if @message.save
-      redirect_to inbox_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to inbox_users_path(current_user, @user) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
     end
   end
 

@@ -1,12 +1,6 @@
-
-<div class="message-container">
-  <div id="new-message">
-    <%= link_to 'Send a message', messages_ajax_user_path(user), class: 'btn btn-primary', id:'message-btn', remote: true %>
-  </div>
-  <% @messages.each do |message| %>
   <div class="row">
     <div class="message">
-      <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan" style="width:70px;height:70px;border-radius: 50px">
+      <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/bubbaspaarx" style="width:70px;height:70px;border-radius: 50px">
       <div class="message-name">
         <h3><%= message.sender.email %></h3>
         <p><%= message.created_at %></p>
@@ -20,10 +14,3 @@
       </div>
     </div>
   </div>
-  <% end %>
-</div>
-
-
-
-
-
