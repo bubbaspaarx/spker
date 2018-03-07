@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard, :show, :inbox]
-  before_action :authorize_user, only: [:dashboard, :show, :inbox]
+  before_action :set_user, only: [:dashboard, :show, :inbox, :conversation]
+  before_action :authorize_user, only: [:dashboard, :show, :inbox, :conversation]
 
   def dashboard
   end
@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   end
 
   def conversation
-    @user = User.find(params[:user_id])
-    authorize @user
     @messages = policy_scope(Message)
     @messages = @messages.where('sender_id = ? OR receiver_id = ?', params[:id], params[:id]).order(:created_at).reverse_order
   end
