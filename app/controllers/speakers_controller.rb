@@ -2,6 +2,7 @@ class SpeakersController < ApplicationController
   before_action :set_user, only: [:speaker_show, :speaker_create, :edit_speaker]
 
   def speaker_show
+    @message = Message.new
   end
 
   def speaker_index

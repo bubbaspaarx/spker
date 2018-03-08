@@ -1,0 +1,14 @@
+<h1>Speakers#show</h1>
+<p>Find me in app/views/speakers/show.html.erb</p>
+
+<%= simple_form_for([@user, @message], url: messages_invite_path(params[:user_id])) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :content, collection: current_user.events, required: true, autofocus: true %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Request Booking" %>
+  </div>
+<% end %>
