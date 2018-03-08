@@ -1,8 +1,10 @@
+console.log('hello')
+
 function refreshMessages() {
   const messages = document.getElementById('message-list')
   messages.innerHTML = ""
   <% @messages.each do |message| %>
-    newMessage = '<%= render 'shared/message', {message: message} %>'
+    newMessage = '<%= j render 'shared/message', {message: message} %>'
     messages.insertAdjacentHTML('afterbegin', newMessage)
   <% end %>
 }

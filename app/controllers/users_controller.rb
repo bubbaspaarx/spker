@@ -23,11 +23,11 @@ class UsersController < ApplicationController
     authorize @user
     @correspondent = User.find(params[:id])
     @messages = policy_scope(Message)
-    @messages = @messages.where('sender_id = ? OR receiver_id = ?', params[:id], params[:id]).order(:created_at).reverse_order
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @messages = @messages.where('sender_id = ? OR receiver_id = ?', params[:id], params[:id]).order(:created_at)
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def index
