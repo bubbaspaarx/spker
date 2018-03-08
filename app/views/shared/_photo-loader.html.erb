@@ -1,6 +1,6 @@
 <%= simple_form_for(@user, html: { method: :put }) do |f| %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
-    <%= f.button :submit, "Load image" %>
+    <%= f.input :photo, class: 'upload-button' %>
+    <%= f.input :photo_cache, as: :hidden, class: 'file-name' %>
+    <%= f.button :submit, "Load image", class: 'load-image' %>
 <% end %>
 
