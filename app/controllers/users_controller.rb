@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:dashboard, :show, :inbox, :edit, :update]
-  before_action :authorize_user, only: [:dashboard, :show, :inbox, :edit, :update]
+  before_action :set_user, only: [:dashboard, :show, :inbox, :edit, :update, :index]
+  before_action :authorize_user, only: [:dashboard, :show, :inbox, :edit, :update, :index]
 
   def dashboard
   end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    authorize @users
+    authorize @user
   end
 
   def show
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo)
+    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo, :location)
   end
 
   def authorize_user

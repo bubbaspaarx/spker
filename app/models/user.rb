@@ -23,4 +23,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  scope :first_name, -> (first_name) { where("first_name = ?", first_name) }
+  scope :last_name, -> (last_name) { where("last_name = ?", last_name) }
+  scope :cost, -> (cost) { where("cost <= ?", cost) }
 end
