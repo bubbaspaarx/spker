@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:dashboard, :show, :inbox, :edit, :update]
   before_action :authorize_user, only: [:dashboard, :show, :inbox, :edit, :update]
+
 
   def dashboard
   end
@@ -21,12 +23,16 @@ class UsersController < ApplicationController
     authorize @user
     @correspondent = User.find(params[:id])
     @messages = policy_scope(Message)
-    @messages = @messages.where('sender_id = ? OR receiver_id = ?', params[:id], params[:id]).order(:created_at).reverse_order
+    @messages = @messages.where('sender_id = ? OR receiver_id = ?', params[:id], params[:id]).order(:created_at)
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def index
     @users = User.all
-    authorize @users
+    authorize @user
   end
 
   def show
@@ -52,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo)
+    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo, :location)
   end
 
   def authorize_user
