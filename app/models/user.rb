@@ -11,9 +11,9 @@ class User < ApplicationRecord
   geocoded_by :postcode
   monetize :cost_cents
 
-  # validates :title, presence: true
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
+  validates :title, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   # validates :address, presence: true
   # validates :postcode, presence: true, format: { with: /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/ }
 
