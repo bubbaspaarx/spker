@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    authorize @users
+    authorize @user
   end
 
   def show
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo)
+    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo, :location)
   end
 
   def authorize_user

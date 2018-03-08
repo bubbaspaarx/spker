@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'users/:id/dashboard',to: 'users#dashboard', as: 'dashboard'
   get 'users/:id/inbox',to: 'users#inbox', as: 'inbox'
   get 'users/:user_id/inbox/:id', to: 'users#conversation', as: 'inbox_users'
+  get 'speakers', to: 'speakers#speaker_index'
 
 
   devise_for :users
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
     get 'speaker/create', to: 'speakers#speaker_create'
     get 'speaker', to: 'speakers#speaker_show'
     get 'speaker/edit', to: 'speakers#speaker_edit'
-    get 'speakers', to: 'speakers#speaker_index'
     resources :events, only: [:new, :create, :edit, :update]
     resources :user_bookings, only: [:index]
     resources :speaker_bookings, only: [:index]
