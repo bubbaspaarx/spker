@@ -12,7 +12,7 @@
     <% if user_signed_in? %>
 
     <!-- Links when logged in -->
-    <%= link_to "Become a speaker", user_speaker_create_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to 'Inbox', inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>

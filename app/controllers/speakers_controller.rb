@@ -1,5 +1,5 @@
 class SpeakersController < ApplicationController
-  before_action :set_user, only: [:speaker_show, :speaker_create, :edit_speaker]
+  before_action :set_user, only: [:speaker_show, :speaker_create, :edit_speaker, :speaker_new]
   skip_before_action :authenticate_user!, only: :speaker_index
 
   def speaker_show
@@ -31,7 +31,17 @@ class SpeakersController < ApplicationController
     end
   end
 
+  def speaker_new
+  end
+
   def speaker_create
+    @user.is_speaker = true
+    if @user.update(speaker_params)
+      redirect_to dashboard_path(@user)
+    else
+      @user.is_speaker = false
+      render :speaker_new
+    end
   end
 
   def edit_speaker
@@ -42,6 +52,10 @@ class SpeakersController < ApplicationController
   def set_user
     @user = User.find(params[:user_id])
     authorize @user
+  end
+
+  def speaker_params
+    params.require(:user).permit(:postcode, :travel_distance, :address, :cost)
   end
 
   def filtering_params(params)

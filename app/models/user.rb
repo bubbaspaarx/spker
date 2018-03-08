@@ -14,8 +14,10 @@ class User < ApplicationRecord
   validates :title, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
-  # validates :address, presence: true
-  # validates :postcode, presence: true, format: { with: /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/ }
+  validates :address, presence: true, if: :is_speaker?
+  validates :postcode, presence: true, format: { with: /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/ }, if: :is_speaker?
+  validates :travel_distance, presence: true, if: :is_speaker?
+  validates :cost, presence: true, if: :is_speaker?
 
   after_validation :geocode, if: :will_save_change_to_postcode?
 
@@ -27,4 +29,8 @@ class User < ApplicationRecord
   scope :first_name, -> (first_name) { where("first_name = ?", first_name) }
   scope :last_name, -> (last_name) { where("last_name = ?", last_name) }
   scope :cost, -> (cost) { where("cost <= ?", cost) }
+
+  def is_speaker?
+    self.is_speaker
+  end
 end
