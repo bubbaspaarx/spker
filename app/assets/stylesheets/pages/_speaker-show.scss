@@ -1,3 +1,6 @@
+
+// Main container
+
 .speaker-profile-wrapper {
   background-color: #fff;
   height: calc(100vh - 70px);
@@ -6,39 +9,61 @@
   border: 1px solid #CFDBDC;
 }
 
+
+// Left side of the wrapper
+
+
 .left-side-wrapper{
   color: black;
   width: 400px;
-  // border: 1px solid #CFDBDC;
   padding-left: 30px;
   padding-top: 100px;
   .speaker-avatar-profile {
     padding-left: 30px;
     padding-bottom: 50px;
   }
+}
+
+.speaker-profile-info {
+  padding-left: 50px;
+  padding-top: 20px;
   ul {
     list-style-type: none;
   }
 }
 
+
+// Picture area of the left wrapper
+
+
 .speaker-avatar-profile {
-  display: flex;
+  display: block;
   .message-avatar {
     height: 150px;
     width: 150px;
   }
-  input {
-    float: right
+  .add-photo {
+    float: right;
+    margin-right: 120px;
+    background-color: red;
+    color: white;
+    margin-bottom: 40px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
   }
   .speaker-avatar{
     padding-left: 50px
   }
 }
 
+
+// right side of the wrapper
+
+
 .right-side-wrapper{
   color: black;
   width: 400px;
-  // border: 1px solid #CFDBDC;
   padding: 20px;
 }
 
@@ -63,6 +88,9 @@
     display: inline;
   }
 }
+
+
+// central container
 
 .speaker-profile-container {
   height: calc(100vh - 70px);
@@ -104,27 +132,3 @@
   }
 }
 
-
-.upload-button {
-  background-color: red;
-  color: red;
-
-}
-
-.file-name {
-  background-color: red;
-  color: red
-}
-
-.load-image {
-  background-color: red;
-  color: white;
-  margin-bottom: 10px;
-  border-radius: 100%;
-  width: 40px;
-  height: 40px
-}
-
-#user_photo {
-  color: white;
-}
