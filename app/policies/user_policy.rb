@@ -45,6 +45,18 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def speaker_new?
+    true
+  end
+
+  def speaker_edit?
+    true
+  end
+
+  def speaker_update?
+    true
+  end
+
   def speaker_index?
     true
   end
