@@ -1,16 +1,13 @@
   <div class="row">
     <div class="message">
-      <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/bubbaspaarx" style="width:70px;height:70px;border-radius: 50px">
+      <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+      <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       <div class="message-name">
-        <h3><%= message.sender.email %></h3>
-        <p><%= message.created_at %></p>
+        <h3><%= message.sender.first_name %></h3>
+        <p><%= message.created_at.strftime('%d/%m/%Y at %H:%M') %></p>
       </div>
       <div class="message-body">
         <p><strong><%= message.content %></strong></p>
-      </div>
-      <div class="message-status">
-        <p class="status pending">Pending</p>
-        <p class="price">€345</p>
       </div>
     </div>
   </div>

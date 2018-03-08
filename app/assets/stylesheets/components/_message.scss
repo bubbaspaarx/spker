@@ -11,6 +11,12 @@
   border-radius: 3px
 }
 
+.message-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
 .message {
   display: flex;
   align-items: center;
