@@ -11,7 +11,8 @@ class SpeakersController < ApplicationController
 
       redirect_to root_path
     else
-      @users = policy_scope(User).near(params[:location], 10)
+      @users = policy_scope(User).near(params[:location], 100000)
+      @users = @users.reject { |user| user.travel_distance < user.distance }
       filtering_params(params).each do |key, value|
         @users = @users.public_send(key, value) if value.present?
 
