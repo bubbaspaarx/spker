@@ -21,6 +21,20 @@
   }
 }
 
+.speaker-avatar-profile {
+  display: flex;
+  .message-avatar {
+    height: 150px;
+    width: 150px;
+  }
+  input {
+    float: right
+  }
+  .speaker-avatar{
+    padding-left: 50px
+  }
+}
+
 .right-side-wrapper{
   color: black;
   width: 400px;
@@ -103,9 +117,12 @@
 }
 
 .load-image {
-  background-color: #F2F2F2;
-  color: red;
+  background-color: red;
+  color: white;
   margin-bottom: 10px;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px
 }
 
 #user_photo {
