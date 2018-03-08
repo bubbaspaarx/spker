@@ -9,7 +9,10 @@
     <div class="form-actions">
     <p id="id-price">Price: £<%=user.cost %></p>
     <%= f.button :submit, "Request Booking" %>
-      
+    <% end %>
+  </div>
+</div>
+
 <div class="speaker-profile-wrapper">
   <div class="left-side-wrapper">
     <div class="speaker-avatar-profile">
@@ -48,7 +51,7 @@
       <ul class="list-inline">
       <% 4.times do %>
         <% event = Event.all.sample %>
-        <li><%= render 'shared/card', event: event %></li>
+        <li><%= render 'shared/event_card', event: event %></li>
       <% end %>
       </ul>
     </div>
