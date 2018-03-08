@@ -34,6 +34,18 @@ class MessagesController < ApplicationController
     end
   end
 
+  def invite
+    @event = Event.find(params[:message][:content].to_i)
+    @message = Message.new
+    @message.content = @event.name
+    @user = User.find(params[:user_id])
+    @message.sender = current_user
+    @message.receiver = @user
+    authorize @message
+    @message.save
+    redirect_to inbox_users_path(current_user, @user)
+  end
+
   private
 
   def message_params

@@ -3,6 +3,7 @@ class SpeakersController < ApplicationController
   skip_before_action :authenticate_user!, only: :speaker_index
 
   def speaker_show
+    @message = Message.new
   end
 
   def speaker_index
