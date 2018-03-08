@@ -10,9 +10,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update] do
-    get 'speaker/create', to: 'speakers#speaker_create'
+
+    patch 'speaker/create', to: 'speakers#speaker_create'
+    get 'speaker/new', to: 'speakers#speaker_new'
     get 'speaker', to: 'speakers#speaker_show'
     get 'speaker/edit', to: 'speakers#speaker_edit'
+    patch 'speaker/update', to: 'speakers#speaker_update'
     resources :events, only: [:new, :create, :edit, :update]
     resources :user_bookings, only: [:index]
     resources :speaker_bookings, only: [:index]
