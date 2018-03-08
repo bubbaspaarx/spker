@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  protect_from_forgery except: :conversation
-  before_action :set_user, only: [:dashboard, :show, :inbox]
-  before_action :authorize_user, only: [:dashboard, :show, :inbox]
+
+  before_action :set_user, only: [:dashboard, :show, :inbox, :edit, :update]
+  before_action :authorize_user, only: [:dashboard, :show, :inbox, :edit, :update]
 
 
   def dashboard
@@ -39,8 +39,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    authorize @user
   end
 
   def update

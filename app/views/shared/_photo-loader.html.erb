@@ -1,0 +1,6 @@
+<%= simple_form_for(@user, html: { method: :put }) do |f| %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit, "Load image" %>
+<% end %>
+

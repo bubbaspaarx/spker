@@ -1,3 +1,30 @@
-<h1><%= @user.email %></h1>
 
-<%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
+<div class="main-profile-container">
+  <div class="profile-container">
+    <div class="profile-info">
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <h4><%= @user.email %></h4>
+      <p>Category 1</p>
+      <p>Category 2</p>
+      <p>Category 3</p>
+      <p>Category 4</p>
+    </div>
+    <div class="edit-options">
+      <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
+      <%= render 'shared/photo-loader' %>
+    </div>
+    <div class="profile-recent-events">
+      <h4>Recent Events</h4>
+      <ul>
+        <li>Event 1</li>
+        <li>Event 2</li>
+        <li>Event 3</li>
+        <li>Event 4</li>
+        <li>Event 5</li>
+      </ul>
+    </div>
+  </div>
+  <div class="image-container">
+    <%= render 'shared/user-carousel' %>
+  </div>
+</div>
