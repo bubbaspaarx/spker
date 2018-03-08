@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180307180925) do
+ActiveRecord::Schema.define(version: 20180308105415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20180307180925) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "event_photos", force: :cascade do |t|
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_photos_on_event_id"
   end
 
   create_table "event_tags", force: :cascade do |t|
@@ -44,6 +51,7 @@ ActiveRecord::Schema.define(version: 20180307180925) do
     t.datetime "updated_at", null: false
     t.integer "cost_cents", default: 0, null: false
     t.string "photo"
+    t.string "location"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -118,6 +126,7 @@ ActiveRecord::Schema.define(version: 20180307180925) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "event_photos", "events"
   add_foreign_key "event_tags", "categories"
   add_foreign_key "event_tags", "events"
   add_foreign_key "events", "users"
