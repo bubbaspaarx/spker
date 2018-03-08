@@ -1,5 +1,5 @@
 class SpeakersController < ApplicationController
-  before_action :set_user, only: [:speaker_show, :speaker_create, :edit_speaker, :speaker_new]
+  before_action :set_user, only: [:speaker_show, :speaker_create, :speaker_edit, :speaker_new, :speaker_update]
   skip_before_action :authenticate_user!, only: :speaker_index
 
   def speaker_show
@@ -44,7 +44,15 @@ class SpeakersController < ApplicationController
     end
   end
 
-  def edit_speaker
+  def speaker_edit
+  end
+
+  def speaker_update
+    if @user.update(speaker_params)
+      redirect_to dashboard_path(@user)
+    else
+      render :speaker_edit
+    end
   end
 
   private
