@@ -45,6 +45,7 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_edit
+    @tag = UserTag.new
   end
 
   def speaker_update
