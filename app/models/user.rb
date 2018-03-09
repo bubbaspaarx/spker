@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include PgSearch
+
   mount_uploader :photo, PhotoUploader
   has_many :events, dependent: :destroy
   has_many :user_bookings, dependent: :destroy
@@ -26,9 +28,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :first_name, -> (first_name) { where("first_name = ?", first_name) }
-  scope :last_name, -> (last_name) { where("last_name = ?", last_name) }
-  scope :cost, -> (cost) { where("cost <= ?", cost) }
+  # scope :cost, -> (cost) { where("cost_cents <= ?", cost.to_i * 100) }
+
+
+
 
   def is_speaker?
     self.is_speaker
