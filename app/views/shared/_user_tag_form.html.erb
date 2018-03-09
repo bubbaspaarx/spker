@@ -1,0 +1,5 @@
+<%= simple_form_for([user, tag]) do |f| %>
+  <%= f.input :category, collection: Category.all.reject { |category| user.categories.include?(category) }, required: false %>
+  <%= f.button :submit, 'Add Tag', class: 'btn-success' %>
+<% end %>
+
