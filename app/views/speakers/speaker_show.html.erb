@@ -14,8 +14,8 @@
         </div>
       </div>
     </div>
-    <div class="speaker-profile-info">
-      <ul>
+    <div class="speaker-profile-info text-center">
+      <ul class="text-center">
         <li>
           <p><%= @user.first_name %>  <%= @user.last_name %></p>
         </li>
@@ -23,7 +23,7 @@
           <p>job description</p>
         </li>
         <li>
-          <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
+          <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary btn-speaker' %>
         </li>
       </ul>
     </div>
