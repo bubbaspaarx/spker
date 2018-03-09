@@ -34,11 +34,11 @@
     </div>
     <div class="speaker-skills">
       <h1 class="text-center">Speakers skills</h1>
-      <p>skill 1</p>
-      <p>skill 2</p>
-      <p>skill 3</p>
-      <p>skill 4</p>
-      <p>skill 5</p>
+      <ul>
+        <% @user.categories.each do |category| %>
+        <li> <%= category.name %></li>
+        <% end %>
+      </ul>
     </div>
     <div class="speaker-previous-events">
       <h1 class="text-center">Previous Events</h1>
