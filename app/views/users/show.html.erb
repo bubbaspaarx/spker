@@ -1,34 +1,21 @@
-<%= simple_form_for([@user, @message], url: messages_invite_path(params[:user_id])) do |f| %>
-  <%= f.error_notification %>
-  <% user = User.find(params[:user_id]) %>
-  <div class="form-inputs">
-    <%= f.input :content, collection: current_user.events, required: false, placeholder: "Event", autofocus: true %>
-    <%= f.input :start_time, as: :time, minute_step: 15 %>
-    <%= f.input :end_time, as: :time, minute_step: 15 %>
-    <script>const price = <%= user.cost %></script>
-    <div class="form-actions">
-    <p id="id-price">Price: £<%=user.cost %></p>
-    <%= f.button :submit, "Request Booking" %>
-    <% end %>
-  </div>
-</div>
 
-<div class="speaker-profile-wrapper">
-  <div class="left-side-wrapper">
-    <div class="speaker-avatar-profile">
-      <div class="speaker-avatar">
+
+<div class="user-profile-wrapper">
+  <div class="user-profile-container">
+    <div class="user-avatar-profile text-center">
+      <div class="user-avatar">
         <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
         <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       </div>
-      <div class="load-photo">
         <button type="button" class="btn add-photo" data-toggle="collapse" data-target="#demo">+</button>
-        <div id="demo" class="collapse">
-          <%= render 'shared/speaker-photo-loader' %>
+      <div class="load-photo">
+        <div id="demo" class="collapse text-left">
+          <%= render 'shared/user-photo-loader' %>
         </div>
       </div>
     </div>
-    <div class="speaker-profile-info">
-      <ul>
+    <div class="user-profile-info text-center">
+      <ul class="text-center">
         <li>
           <p><%= @user.first_name %>  <%= @user.last_name %></p>
         </li>
@@ -40,36 +27,11 @@
         </li>
       </ul>
     </div>
-  </div>
-  <div class="speaker-profile-container">
-    <div class="speaker-carousel">
-      <%= render 'shared/speaker-carousel' %>
-    </div>
-    <div class="speaker-skills">
-      <h1 class="text-center">Speakers skills</h1>
-      <p>skill 1</p>
-      <p>skill 2</p>
-      <p>skill 3</p>
-      <p>skill 4</p>
-      <p>skill 5</p>
-    </div>
-    <div class="speaker-previous-events">
-      <h1 class="text-center">Previous Events</h1>
-      <ul class="list-inline">
-      <% 4.times do %>
-        <% event = Event.all.sample %>
-        <li><%= render 'shared/event_card', event: event %></li>
-      <% end %>
-      </ul>
-    </div>
-
-  </div>
-  <div class="right-side-wrapper">
-    <div class="speaker-bio-profile">
-      <h1 class="text-center">Biography</h1>
+    <div class="user-bio-profile">
+      <h1 class="text-center">Description</h1>
       <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fugit laudantium dicta modi aliquid harum quidem nostrum atque corporis dolorum. Aspernatur doloremque dolores exercitationem, vel suscipit omnis non officiis enim.</p>
     </div>
-    <div class="speaker-profile-social-media">
+    <div class="user-profile-social-media">
       <ul>
         <li><i class="fab fa-facebook-square"></i></li>
         <li><i class="fab fa-twitter-square"></i></li>
