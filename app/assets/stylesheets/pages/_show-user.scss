@@ -23,42 +23,51 @@
 }
 
 .user-profile-info {
-  padding-left: 50px;
   padding-top: 20px;
-  border: 1px solid black;
+  border: 1px solid #F2F2F2;
+  background-color: #F2F2F2;
+  margin: 20px;
   ul {
     list-style-type: none;
-    padding-top: 60px
+    padding-top: 0px;
+    padding-bottom: 20px
   }
 }
 
-
 .user-avatar-profile {
   display: block;
-
+  margin: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border: 1px solid #F2F2F2;
+  background-color: #F2F2F2;
   .message-avatar {
     height: 200px;
     width: 200px;
+    margin-left: 310px;
   }
   .add-photo {
-    margin-right: 350px;
-    float: right;
+    margin-right: 270px;
+    float: bottom-right;
     background-color: red;;
     color: white;
     margin-bottom: 40px;
     border-radius: 100%;
     width: 40px;
     height: 40px;
+    padding-bottom: 20px;
   }
   .user-avatar{
     padding-left: 0px;
-    border: 1px solid black;
   }
 }
 
 
 .user-bio-profile {
-  border: 1px solid black;
+  border: 1px solid #F2F2F2;
+  background-color: #F2F2F2;
+  padding: 20px;
+  margin: 20px
 }
 
 
