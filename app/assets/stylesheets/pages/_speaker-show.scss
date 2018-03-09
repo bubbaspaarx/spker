@@ -16,7 +16,7 @@
 .left-side-wrapper{
   color: black;
   width: 400px;
-  padding-left: 30px;
+  padding-left: 0px;
   padding-top: 100px;
   .speaker-avatar-profile {
     padding-left: 30px;
@@ -24,10 +24,14 @@
   }
 }
 
-.speaker-profile-info {
-  padding-left: 50px;
+.speaker-profile-info ul{
+  padding-left: 0px;
   padding-top: 20px;
-  ul {
+  .btn-speaker {
+    float: right;
+    margin-right: 20px
+  }
+  li {
     list-style-type: none;
   }
 }
@@ -41,6 +45,7 @@
   .message-avatar {
     height: 150px;
     width: 150px;
+    margin-left: 50px
   }
   .add-photo {
     float: right;
@@ -81,8 +86,7 @@
   padding-right: 20px;
   ul {
     display: flex;
-    justify-content: space-between
-
+    justify-content: space-between;
   }
   li {
     display: inline;
@@ -111,8 +115,9 @@
   background-color: #F2F2F2;
   margin-bottom: 30px;
   padding-bottom: 10px;
-    p {
-    margin-left: 30px
+  li {
+    margin-left: 30px;
+    list-style-type: none;
   }
 }
 
