@@ -1,1 +1,16 @@
-<%= render 'shared/speaker_form', user: @user, url: user_speaker_update_path(@user)  %>
+<div class="speaker-edit-container">
+  <div class="detail-form">
+    <%= render 'shared/speaker_form', user: @user, url: user_speaker_update_path(@user)  %>
+  </div>
+  <div class="tag-container">
+    <% @user.user_tags.each do |tag| %>
+      <p><%= tag.category.name %>
+      <%= link_to user_tag_path(tag), method: 'delete' do %>
+          <i class="far fa-trash-alt"></i>
+      <% end %></p>
+    <% end %>
+    <div class="tag-form">
+      <%= render 'shared/user_tag_form', user: @user, tag: @tag %>
+    </div>
+  </div>
+</div>

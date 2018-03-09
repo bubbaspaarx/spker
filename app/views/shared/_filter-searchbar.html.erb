@@ -1,0 +1,10 @@
+
+<form class="filter-searchform">
+  <div class="filters input-group">
+    <input type="search" class="filter-searchbar" name="price" placeholder="Price" value="<%= params[:price] %>">
+    <input type="search" class="filter-searchbar" name="capacity" placeholder="Capacity" value="<%= params[:capacity] %>">
+    <input type="search" class="filter-searchbar" name="floor_space" placeholder="Floor space" value="<%= params[:floor_space] %>">
+    <input type="search" id="filter-location" class="filter-searchbar" name="location" placeholder="Location" value="<%= params[:location] %>">
+    <button type="submit" class="btn btn-filter" placeholder="Search">Search</button>
+  </div>
+</form>

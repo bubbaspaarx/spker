@@ -1,42 +1,36 @@
-<%= simple_form_for([@user, @message], url: messages_invite_path(params[:user_id])) do |f| %>
-  <%= f.error_notification %>
-  <% user = User.find(params[:user_id]) %>
-  <div class="form-inputs">
-    <%= f.input :content, collection: current_user.events, required: false, placeholder: "Event", autofocus: true %>
-    <%= f.input :start_time, as: :time, minute_step: 15 %>
-    <%= f.input :end_time, as: :time, minute_step: 15 %>
-    <script>const price = <%= user.cost %></script>
-    <div class="form-actions">
-    <p id="id-price">Price: £<%=user.cost %></p>
-    <%= f.button :submit, "Request Booking" %>
-    <% end %>
-  </div>
-</div>
+
 
 <div class="speaker-profile-wrapper">
   <div class="left-side-wrapper">
     <div class="speaker-avatar-profile">
-      <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-      <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      <div class="speaker-avatar">
+        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+      </div>
+      <div class="load-photo">
+        <button type="button" class="btn add-photo" data-toggle="collapse" data-target="#demo">+</button>
+        <div id="demo" class="collapse">
+          <%= render 'shared/speaker-photo-loader' %>
+        </div>
+      </div>
     </div>
-    <ul>
-      <li>
-        <p><%= @user.first_name %>  <%= @user.last_name %></p>
-      </li>
-      <li>
-        <p>job description</p>
-      </li>
-      <li>
-        <%= render 'shared/photo-loader' %>
-      </li>
-      <li>
-        <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
-      </li>
-    </ul>
+    <div class="speaker-profile-info">
+      <ul>
+        <li>
+          <p><%= @user.first_name %>  <%= @user.last_name %></p>
+        </li>
+        <li>
+          <p>job description</p>
+        </li>
+        <li>
+          <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary' %>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="speaker-profile-container">
     <div class="speaker-carousel">
-      <%= render 'shared/user-carousel' %>
+      <%= render 'shared/speaker-carousel' %>
     </div>
     <div class="speaker-skills">
       <h1 class="text-center">Speakers skills</h1>

@@ -45,11 +45,12 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_edit
+    @tag = UserTag.new
   end
 
   def speaker_update
     if @user.update(speaker_params)
-      redirect_to dashboard_path(@user)
+      redirect_to user_speaker_path(@user)
     else
       render :speaker_edit
     end
