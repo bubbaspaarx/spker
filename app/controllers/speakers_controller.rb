@@ -12,11 +12,13 @@ class SpeakersController < ApplicationController
 
       redirect_to root_path
     else
-      @users = policy_scope(User).near(params[:location], 100000)
-      filtering_params(params).each do |key, value|
-        @users = @users.public_send(key, value) if value.present?
-      end
+      @users = User.search_by_full_name(params[:name]) if params[:name].present?
+      @users ||= policy_scope(User).near(params[:location], 100000)
+      @users = policy_scope(@users).near(params[:location], 100000)
       @users = @users.reject { |user| user.travel_distance < user.distance || user.latitude.nil? || user.longitude.nil? }
+      # filtering_params(params).each do |key, value|
+      #   @users = @users.public_send(key, value) if value.present?
+      # end
 
       @markers = @users.map do |user|
         {
@@ -66,7 +68,7 @@ class SpeakersController < ApplicationController
   end
 
   def filtering_params(params)
-    params.slice(:cost)
+    params.slice(:cost, :name)
   end
 
 end

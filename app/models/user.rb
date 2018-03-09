@@ -28,7 +28,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # scope :cost, -> (cost) { where("cost_cents <= ?", cost.to_i * 100) }
+  scope :cost, -> (cost) { where("cost_cents <= ?", cost.to_i * 100) }
+
+  pg_search_scope :search_by_full_name,
+    against: [ :first_name, :last_name ],
+    using: {
+      tsearch: { prefix: true }
+    }
 
 
 
