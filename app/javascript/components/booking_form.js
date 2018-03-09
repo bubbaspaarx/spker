@@ -16,13 +16,11 @@ const getTimeFromInputs = (form) => {
   inputs[0].querySelectorAll('.form-control').forEach((input) => {
     startArray.push(input.value)
   })
-  console.log(startArray)
   inputs[1].querySelectorAll('.form-control').forEach((input) => {
     endArray.push(input.value)
   })
-  console.log(endArray)
-  const startTime = Date.parse('01 Jan 1970 ' + arrayToDatetime(startArray) + ' GMT')
-  const endTime = Date.parse('01 Jan 1970 ' + arrayToDatetime(endArray) + ' GMT')
+  const startTime = Date.parse('01 Jan 2020 ' + arrayToDatetime(startArray) + ' GMT')
+  const endTime = Date.parse('01 Jan 2020 ' + arrayToDatetime(endArray) + ' GMT')
   return [startTime, endTime]
 
 }
@@ -30,7 +28,6 @@ const getTimeFromInputs = (form) => {
 const dynamicPrice = (price) => {
   const form = document.getElementById('invite_message')
   const inputs = form.querySelectorAll('.time')
-  console.log(inputs)
   const cost = document.getElementById('id-price')
   inputs.forEach((input) => {
     input.addEventListener('change', (event) => {
@@ -45,8 +42,9 @@ const dynamicPrice = (price) => {
 
 const formAlerts = () => {
   const form = document.getElementById('invite_message')
+  const content = form.querySelectorAll('#message_content')
   if (form) {
-    const btn = form.querySelector('.btn-primary')
+    const btn = form.querySelector('#invite_message_button')
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const timeArray = getTimeFromInputs(form)
@@ -57,7 +55,7 @@ const formAlerts = () => {
         swal({title: "Error!", text: "The event must start before it ends", icon:"error"})
           .then((value) => { btn.removeAttribute('disabled') })
       } else {
-        swal({ title: "Booking confirmed", icon: "success"})
+        swal({ title: "Booking Request Sent", icon: "success"})
           .then((value) => { form.submit() })
       }
 

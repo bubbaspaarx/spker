@@ -5,12 +5,15 @@
         <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
         <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
       </div>
+      <% if current_user.id != params[:user_id] %>
+      <% else %>
       <div class="load-photo">
         <button type="button" class="btn add-photo" data-toggle="collapse" data-target="#demo">+</button>
         <div id="demo" class="collapse">
           <%= render 'shared/speaker-photo-loader' %>
         </div>
       </div>
+      <% end %>
     </div>
     <div class="speaker-profile-info text-center">
       <ul class="text-center">
@@ -24,7 +27,8 @@
           <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary btn-speaker' %>
         </li>
       </ul>
-      <%= render 'shared/invite_form' %>
+      <button id='login-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
+      <%= render 'shared/invite-message-modal' %>
     </div>
   </div>
   <div class="speaker-profile-container">
@@ -42,10 +46,10 @@
     <div class="speaker-previous-events">
       <h1 class="text-center">Previous Events</h1>
       <ul class="list-inline">
-      <% 4.times do %>
+        <% 4.times do %>
         <% event = Event.all.sample %>
         <li><%= render 'shared/event_card', event: event %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
 
