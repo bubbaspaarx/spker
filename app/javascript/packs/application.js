@@ -1,3 +1,4 @@
+import swal from 'sweetalert';
 import '../plugins/flatpickr'
 import 'bootstrap'
 import { formAlerts, dynamicPrice } from "../components/booking_form.js";

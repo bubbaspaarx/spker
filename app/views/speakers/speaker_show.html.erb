@@ -1,5 +1,3 @@
-
-
 <div class="speaker-profile-wrapper">
   <div class="left-side-wrapper">
     <div class="speaker-avatar-profile">
@@ -26,6 +24,7 @@
           <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary btn-speaker' %>
         </li>
       </ul>
+      <%= render 'shared/invite_form' %>
     </div>
   </div>
   <div class="speaker-profile-container">

@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    raise
     @message = Message.new(message_params)
     authorize @message
     @message.sender = current_user

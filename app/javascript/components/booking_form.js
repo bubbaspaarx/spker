@@ -28,7 +28,7 @@ const getTimeFromInputs = (form) => {
 }
 
 const dynamicPrice = (price) => {
-  const form = document.getElementById('new_message')
+  const form = document.getElementById('invite_message')
   const inputs = form.querySelectorAll('.time')
   console.log(inputs)
   const cost = document.getElementById('id-price')
@@ -44,7 +44,7 @@ const dynamicPrice = (price) => {
 }
 
 const formAlerts = () => {
-  const form = document.getElementById('new_message')
+  const form = document.getElementById('invite_message')
   if (form) {
     const btn = form.querySelector('.btn-primary')
     form.addEventListener('submit', (event) => {
