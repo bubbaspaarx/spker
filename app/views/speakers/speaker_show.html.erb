@@ -1,17 +1,4 @@
-<%= simple_form_for([@user, @message], url: messages_invite_path(params[:user_id])) do |f| %>
-  <%= f.error_notification %>
-  <% user = User.find(params[:user_id]) %>
-  <div class="form-inputs">
-    <%= f.input :content, collection: current_user.events, required: false, placeholder: "Event", autofocus: true %>
-    <%= f.input :start_time, as: :time, minute_step: 15 %>
-    <%= f.input :end_time, as: :time, minute_step: 15 %>
-    <script>const price = <%= user.cost %></script>
-    <div class="form-actions">
-    <p id="id-price">Price: £<%=user.cost %></p>
-    <%= f.button :submit, "Request Booking" %>
-    <% end %>
-  </div>
-</div>
+
 
 <div class="speaker-profile-wrapper">
   <div class="left-side-wrapper">
