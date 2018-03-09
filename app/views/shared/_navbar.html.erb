@@ -16,10 +16,9 @@
     <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
     <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to 'Inbox', inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+
+    <% if current_user.is_speaker == true %>
     <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
-    <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-wagon-item navbar-wagon-link' do %>
-    <i class="fa fa-sign-out-alt "></i>  <%= t(".sign_out", default: "Log out") %>
     <% end %>
 
 
@@ -35,8 +34,13 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+            <%= link_to inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="far fa-envelope"></i> <%= t(".inbox", default: "Inbox") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-wagon-item navbar-wagon-link' do %>
+            <i class="fa fa-sign-out-alt "></i>  <%= t(".sign_out", default: "Log out") %>
             <% end %>
           </li>
         </ul>
@@ -60,9 +64,11 @@
         <li>
           <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
+        <% if current_user.is_speaker == true %>
         <li>
           <%= link_to "Dashboard", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
+        <% end %>
         <li>
           <%= link_to user_path(current_user) do %>
           <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
