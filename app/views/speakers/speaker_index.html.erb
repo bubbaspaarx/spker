@@ -1,7 +1,7 @@
-
-<Div class="container">
-    <%= render 'shared/filter-searchbar' %>
+<%= render 'shared/filter-searchbar' %>
+<Div class="container well">
   <h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
+  <hr>
     <div class="container col-xs-10">
       <div class="row">
         <% @users.each do |user| %>
