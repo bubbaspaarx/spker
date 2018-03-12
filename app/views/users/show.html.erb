@@ -2,10 +2,12 @@
 <div class="user-profile-wrapper">
   <div class="user-profile-container">
     <div class="user-avatar-profile text-center">
-      <div class="user-avatar text-center">
-        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-        <%= cl_image_tag image, class: "message-avatar text-center", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <button type="button" class="btn add-photo" data-toggle="collapse" data-target="#demo">+</button>
+      <div class="row">
+        <div class="user-avatar text-center col-xs-4 col-xs-offset-4">
+          <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+          <%= cl_image_tag image, class: "message-avatar text-center", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <button type="button" class="btn add-photo" data-toggle="collapse" data-target="#demo">+</button>
+        </div>
       </div>
       <div class="load-photo">
         <div id="demo" class="collapse text-left">
