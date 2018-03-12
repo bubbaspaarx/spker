@@ -1,0 +1,28 @@
+// function refreshForm(innerHTML) {
+//   const newBioForm = document.getElementById('formTarget');
+//     newBioForm.innerHTML = innerHTML;
+// };
+function updateUser() {
+  const name = document.getElementById('users-name');
+  const newFirstName = document.getElementById('user_first_name').value
+  const newLastName = document.getElementById('user_last_name').value
+  name.innerText = newFirstName + ' ' + newLastName;
+
+
+  const city = document.getElementById('users-city')
+  const newCity = document.getElementById('user_city').value
+  city.innerText = newCity
+
+
+  const about = document.getElementById('users-about')
+  const newAbout = document.getElementById('user_about').value
+  about.innerText = newAbout
+  // bio.insertAdjacentHTML('afterend', bioHTML);
+  // const bioBox = document.querySelector('.box-profile-content p');
+  // bioBox.remove();
+};
+
+updateUser();
+// addBio("<%#= j render 'users/bio', user: @user %>");
+// refreshForm("<%#= j render 'users/form', user: @user  %>");
+console.log("hello user updated")

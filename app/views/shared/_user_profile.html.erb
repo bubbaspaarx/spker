@@ -1,0 +1,89 @@
+<div name="profile" class="container">
+  <div class="row">
+    <div class="profile-content">
+      <div class="row">
+        <div class="image-and-content">
+          <span id="edit-button-profile" class="edit-button-profile">
+            <i class="profile-edit-button far fa-edit"></i>
+          </span>
+          <div class="pp-image-container col-xs-3 col-xs-offset-1">
+            <div class="pp-image" style="background-image: url('<%= cl_image_path "http://res.cloudinary.com/montycat/image/upload/v1520095810/n3gwu0jxr9fsrpebkgg1.png" %>')">
+            </div>
+          </div>
+          <div class="description col-xs-7">
+            <div class="title">
+              <h3 class="user-details" id="users-name"><%= @user.first_name %> <%= @user.last_name %></h3>
+              <p class="user-details" id="users-city"><%= @user.city %></p>
+            </div>
+            <div id="simple-form">
+              <%= simple_form_for @user, remote: true do |f| %>
+              <div class="row user-name">
+                <div id="formTarget" class="hidden form-name col-xs-4">
+                  <%= f.input :first_name, input_html: { value: @user.first_name }, label: false, placeholder: 'First Name' %>
+                </div>
+                <div id="formTarget" class="hidden form-name col-xs-4">
+                  <%= f.input :last_name, input_html: { value: @user.last_name }, label: false, placeholder: 'Last Name' %>
+                </div>
+              </div>
+              <div id="formTarget" class="hidden form-address">
+                <%= f.input :city, input_html: { value: @user.city }, label: false, placeholder: 'City' %>
+              </div>
+            </div>
+            <div class="user-reviews">
+            </div>
+            <p>Member Since <%= @user.created_at %></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="about-you-container col-xs-10 col-xs-offset-1">
+          <div class="about-you">
+            <h4>About you</h4>
+            <p class="user-details" id="users-about"><%= @user.about %></p>
+          </div>
+          <div id="formTarget" class="hidden form-about">
+            <%= f.input :about, input_html: { value: @user.about}, label: false, placeholder: 'Tell us about yourself' %>
+          </div>
+        </div>
+      </div>
+      <div id="formTarget" class="hidden form-submit">
+        <%= f.button :submit, class: 'submit-button btn btn-primary' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  <% if @user == current_user %>
+  const userDetails = document.querySelectorAll(".user-details")
+  const inputFields = document.querySelectorAll("#formTarget")
+  console.log(inputFields)
+  const editButton = document.getElementById("edit-button-profile")
+
+  editButton.addEventListener("click", (event) => {
+    console.log(event);
+    userDetails.forEach(function(e) {
+      console.log(e)
+      e.classList.toggle('hidden');
+    });
+    inputFields.forEach(function(e) {
+      e.classList.toggle('hidden')
+    });
+
+  });
+
+  const form = document.getElementById("simple-form");
+
+  form.addEventListener("submit", () => {
+    userDetails.forEach(function(e) {
+      e.classList.toggle('hidden');
+    });
+    inputFields.forEach(function(e) {
+      e.classList.toggle('hidden')
+    });
+    console.log("Just Submitted!!")
+  });
+  <% end %>
+</script>

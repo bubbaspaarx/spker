@@ -31,14 +31,26 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    authorize @user
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html { redirect_to dashboard_path(@user) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'shared/user_profile' }
+        format.js
+      end
     end
   end
+
+
+  #   if @user.update(user_params)
+  #     redirect_to user_path(@user)
+  #   else
+  #     render :new
+  #   end
+  # end
 
   private
 
@@ -75,7 +87,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo, :location)
+    params.require(:user).permit(:first_name, :last_name, :job_title, :description, :twitter, :photo, :location, :about, :city)
   end
 
   def authorize_user
