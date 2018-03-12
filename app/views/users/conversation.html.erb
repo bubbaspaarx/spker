@@ -8,7 +8,21 @@
   </div>
   <div id="message-list">
     <% @messages.reverse_order.each do |message| %>
-      <%= render 'shared/message', {message: message} %>
+      <% if message.sender == @user %>
+        <%= render 'shared/sent_message', {message: message} %>
+      <% else %>
+        <%= render 'shared/received_message', {message: message} %>
+      <% end %>
     <% end %>
   </div>
 </div>
+<% content_for :after_js do %>
+  <script>
+    App['conversation_<%= @user.id %>_<%= @correspondent.id %>'] = App.cable.subscriptions.create(
+      { channel: 'ConversationChannel', sender_id: <%= @user.id %>, receiver_id: <%= @correspondent.id %> },
+      { received: (data) => {
+        const list = document.getElementById('message-list')
+        list.insertAdjacentHTML('afterbegin', data.message_partial)
+      }})
+  </script>
+<% end %>

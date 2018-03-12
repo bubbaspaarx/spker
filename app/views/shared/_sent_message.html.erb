@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="message">
+    <% image = message.sender.photo.url ? message.sender.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+    <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+    <div class="message-name">
+      <h3><%= message.sender.first_name %></h3>
+      <p><%= message.created_at.strftime('%d/%m/%Y at %H:%M') %></p>
+    </div>
+    <div class="message-body">
+      <p><strong><%= message.content  %></strong></p>
+    </div>
+  </div>
+</div>
