@@ -1,0 +1,24 @@
+.left-container {
+  width: 20vw;
+  height: 50vh;
+  ul{
+    list-style-type: none;
+  }
+  li{
+    padding: 5px
+  }
+}
+
+.right-container {
+  width: 70vw;
+  overflow: auto;
+  position: absolute;
+  right: 0px
+}
+
+
+.container.speaker-index{
+  position: absolute;
+  height: calc(100vh - 140px);
+  top: 140px
+}
