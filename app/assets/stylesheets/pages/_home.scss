@@ -7,9 +7,21 @@
   column-count: 3;
 }
 
-.gallery img{
-  width: 100%;
-  padding: 7px 0;
+.category {
+  height: 400px;
+  width: 300px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  padding: 10px;
+  justify-content: center;
+  h3 {
+  position: absolute;
+  top: -10px;
+  left: 20px
+  }
 }
 
 
