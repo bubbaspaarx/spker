@@ -16,9 +16,7 @@ class SpeakersController < ApplicationController
       @users ||= policy_scope(User).near(params[:location], 100000)
       @users = policy_scope(@users).near(params[:location], 100000)
       @users = @users.reject { |user| user.travel_distance < user.distance || user.latitude.nil? || user.longitude.nil? }
-      # filtering_params(params).each do |key, value|
-      #   @users = @users.public_send(key, value) if value.present?
-      # end
+      @users = @users & category_search if params[:category].present?
 
       @markers = @users.map do |user|
         {
@@ -58,6 +56,11 @@ class SpeakersController < ApplicationController
 
   private
 
+  def category_search
+    tags = UserTag.tag_search(params[:category])
+    tags.map { |tag| tag.user  }
+  end
+
   def set_user
     @user = User.find(params[:user_id])
     authorize @user
@@ -68,7 +71,7 @@ class SpeakersController < ApplicationController
   end
 
   def filtering_params(params)
-    params.slice(:cost, :name)
+    params.slice(:cost, :name, :category)
   end
 
 end

@@ -2,9 +2,10 @@
 <form class="filter-searchform">
   <div class="filters input-group">
     <input type="search" class="filter-searchbar" name="cost" placeholder="Fee per hour" value="<%= params[:cost] %>">
-    <select name="category" class ="filter-searchbar" placeholder="Category" value="<%= params[:category] %>">
+    <select name="category" class ="filter-searchbar" placeholder="Category">
+      <option value="" selected></option>
       <% Category.all.each do |category| %>
-        <option value="<%= category.name %>"><%= category.name %></option>
+        <option value="<%= category.name %>" <%= "#{'selected' if category.name == params[:category]}" %> ><%= category.name %></option>
       <% end %>
     </select>
     <input type="search" class="filter-searchbar" name="name" placeholder="Name" value="<%= params[:name] %>">
