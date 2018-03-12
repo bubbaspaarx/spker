@@ -6,23 +6,36 @@
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Events</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Security</a></li>
-        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        <li role="presentation" class="<%= (params[:active_tab] == nil) || (params[:active_tab] == 'home') ? 'active' : '' %>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation" class="<%= params[:active_tab] == 'profile' ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation" class="<%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation" class="<%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
+        <li role="presentation" class="<%= params[:active_tab] == 'security' ? 'active' : '' %>"><a href="#security" aria-controls="security" role="tab" data-toggle="tab">Security</a></li>
+        <li role="presentation" class="<%= params[:active_tab] == 'settings' ? 'active' : '' %>"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        <li role="presentation" class="<%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab">Speaker Profile</a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content-container">
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="home">
+          <div role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'home') ? 'active' : '' %>" id="home">
             <p>This is your dashboard home. You can make changes to your profile here, create events and build your speaker profile</p>
           </div>
-          <div role="tabpanel" class="tab-pane" id="profile">Pretty pictures and some infor about who you are in here.</div>
-          <div role="tabpanel" class="tab-pane" id="messages">...</div>
+          <div name="profile" role="tabpanel" class="tab-pane <%= params[:active_tab] == 'profile' ? 'active' : '' %>" id="profile">
+            <%= render "shared/user_profile" %></div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="events">...</div>
+          <div role="tabpanel" class="tab-pane" id="security">...</div>
           <div role="tabpanel" class="tab-pane" id="settings">...</div>
+          <div role="tabpanel" class="tab-pane" id="speaker-profile">  <div class="user-categories">
+          <% @user.user_tags.each do |tag|%>
+          <button class="tag-button">
+            <%= tag %>
+          </button>
+          <% end %>
+        </div></div>
+
+
         </div>
       </div>
 
@@ -31,3 +44,4 @@
 </div>
 
 <%= link_to 'Edit speaker profile', user_speaker_edit_path(current_user), class: 'btn btn-warning' %>
+
