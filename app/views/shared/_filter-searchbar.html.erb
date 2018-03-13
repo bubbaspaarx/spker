@@ -1,7 +1,6 @@
-
-<form class="filter-searchform" action="speakers/">
+<form class="filter-searchform" action="/speakers">
   <div class="filters input-group">
-    <input type="search" class="filter-searchbar" name="cost" placeholder="Fee per hour" value="<%= params[:cost] %>">
+    <input type="search" class="filter-searchbar" name="cost" placeholder="Fee from" value="<%= params[:cost] %>">
     <select name="category" class ="filter-searchbar" placeholder="Category">
       <option selected disabled>Category</option>
       <% Category.all.each do |category| %>
