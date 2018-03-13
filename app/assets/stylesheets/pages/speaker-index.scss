@@ -1,27 +1,30 @@
 .container.speaker-index{
   position: absolute;
   height: calc(100vh - 140px);
+  width: 100vw;
   top: 140px;
-  display: flex
+  // display: flex;
 }
 
-.left-container .well {
-  width: 20%;
-  height: 50vh;
-  ul{
-    list-style-type: none;
-  }
-  li{
-    padding: 5px
-  }
-}
-
-.right-container .well{
-  width: 70%;
-  height: 100vh;
-  overflow: auto;
-  position: absolute;
-  right: 0px
+.container {
+  top: 0px;
+  left: 0px;
+  overflow: auto
 }
 
 
+
+// .left-container {
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   width: 20vw;
+//   height: 30vh;
+//   ul{
+//     list-style-type: none;
+//   }
+//   li{
+//     padding: 5px;
+//     list-style-type: none;
+//   }
+// }
