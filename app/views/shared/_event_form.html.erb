@@ -1,10 +1,15 @@
 <%= simple_form_for([user, event]) do |f| %>
-  <%= f.input :name%>
-  <%= f.input :address%>
-  <%= f.input :postcode%>
-  <%= f.input :cost %>
-  <%= f.input :date, as: :string, input_html: { class: 'datepicker' } %>
-  <%= f.input :start_time, as: :string, input_html: { class: 'timepicker' } %>
-  <%= f.input :end_time, as: :string, input_html: { class: 'timepicker' } %>
+  <%= f.input :name, required: false %>
+  <%= f.input :address, required: false %>
+  <%= f.input :description, required: false %>
+  <%= f.input :postcode, required: false %>
+  <%= f.input :cost, required: false %>
+  <%= f.input :talk_type, collection: ['Seminar', 'Workshop', 'Keynote Address', 'Training', 'Industry Talk' 'Entertainer', 'Motivational Talk', 'Educational Talk', 'Panel'] %>
+  <%= f.association :categories, as: :check_boxes, required: false %>
+  <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
+  <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
+  <%= f.input :expenses_flights %>
+  <%= f.input :expenses_hotels %>
+  <%= f.input :expenses_per_diems %>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>

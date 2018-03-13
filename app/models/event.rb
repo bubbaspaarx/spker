@@ -7,7 +7,6 @@ class Event < ApplicationRecord
   has_many :categories, through: :event_tags
   has_many :photos
   geocoded_by :postcode
-  monetize :cost_cents
 
   validates :name, presence: true
   validates :address, presence: true
