@@ -11,9 +11,9 @@ class Event < ApplicationRecord
   validates :name, presence: true
   validates :address, presence: true
   validates :postcode, presence: true, format: { with: /([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9]?[A-Za-z]))))\s?[0-9][A-Za-z]{2})/ }
-  validates :date, presence: true
-  validates :start_time, presence: true
-  validates :end_time, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
+  validates :talk_type, presence: true
 
   after_validation :geocode, if: :will_save_change_to_postcode?
 end

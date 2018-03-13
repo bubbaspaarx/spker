@@ -1,15 +1,55 @@
 <%= simple_form_for([user, event]) do |f| %>
-  <%= f.input :name, required: false %>
-  <%= f.input :address, required: false %>
+  <h2>What is you event called?</h2>
+  <%= f.input :name, required: false, label: false %>
+  <h2>Where is your event taking place?</h2>
+  <div class="row">
+      <div class="col-xs-6">
+        <%= f.input :address, required: false %>
+      </div>
+      <div class="col-xs-6">
+        <%= f.input :postcode, required: false %>
+      </div>
+  </div>
+  <h2>When is your event taking place?</h2>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
+    </div>
+  </div>
+  <h2>Describe your event</h2>
   <%= f.input :description, required: false %>
-  <%= f.input :postcode, required: false %>
-  <%= f.input :cost, required: false %>
-  <%= f.input :talk_type, collection: ['Seminar', 'Workshop', 'Keynote Address', 'Training', 'Industry Talk' 'Entertainer', 'Motivational Talk', 'Educational Talk', 'Panel'] %>
-  <%= f.association :categories, as: :check_boxes, required: false %>
-  <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
-  <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
-  <%= f.input :expenses_flights %>
-  <%= f.input :expenses_hotels %>
-  <%= f.input :expenses_per_diems %>
+  <div class="row">
+    <div class="col-xs-2">
+      <h5>Is it a paid event?</h5>
+    </div>
+    <div class="col-xs-6">
+      <h5>
+        Which categories of speaker are you looking for?
+      </h5>
+    </div>
+    <div class="col-xs-4">
+      <h5>What type of talk is it?</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2">
+      <%= f.input :is_paid, as: :radio_buttons, required: false, label: false %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.association :categories, as: :check_boxes, required: false , label: false%>
+    </div>
+    <div class="col-xs-4">
+      <%= f.input :talk_type, collection: ['Seminar', 'Workshop', 'Keynote Address', 'Training', 'Industry Talk', 'Entertainer', 'Motivational Talk', 'Educational Talk', 'Panel'], label: false %>
+    </div>
+  </div>
+  <h5>What expenses are you willing to pay?</h5>
+  <div class="expenses">
+    <%= f.input :expenses_flights, label: 'Flights' %>
+    <%= f.input :expenses_hotels, label: 'Hotels' %>
+    <%= f.input :expenses_per_diems, label: 'Per Diems' %>
+  </div>
   <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
