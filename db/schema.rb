@@ -151,6 +151,9 @@ ActiveRecord::Schema.define(version: 20180313103622) do
     t.string "twitter"
     t.string "linkedin"
     t.string "city"
+    t.text "speaker_blurb"
+    t.text "accolades"
+    t.string "job_title"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
