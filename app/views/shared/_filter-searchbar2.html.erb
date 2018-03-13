@@ -1,0 +1,59 @@
+<p>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Find Speakers
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body2 col-xs-6 col-xs-offset-3">
+    <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
+    <%= f.input :category, collection: Category.all, prompt: 'Specialty', label: false, value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "filter-searchbar", placeholder: "Category" } %>
+    <%= f.input :location, input_html: { id: 'filter-location', class: "filter-searchbar2", name: "location" }, placeholder: "Location", label: false %>
+    <%= f.button :submit, "Search", id: 'the-submit-button'%>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  const category = document.getElementById('category-dropdown')
+  const buttonSubmit = document.getElementById('the-submit-button')
+  const dropdown = document.getElementById('speaker_category')
+  console.log(category.options.selectedIndex)
+  console.log(buttonSubmit)
+
+  buttonSubmit.addEventListener('submit', (event) => {
+    console.log(category.options.selectedIndex)
+     if (category.options.selectedIndex === 0) {
+      event.preventDefault()
+    }
+  })
+</script>
+
+<!--
+  const userDetails = document.querySelectorAll(".user-details")
+  const inputFields = document.querySelectorAll("#formTarget")
+  console.log(inputFields)
+  const editButton = document.getElementById("edit-button-profile")
+
+  editButton.addEventListener("click", (event) => {
+    console.log(event);
+    userDetails.forEach(function(e) {
+      console.log(e)
+      e.classList.toggle('hidden');
+    });
+    inputFields.forEach(function(e) {
+      e.classList.toggle('hidden')
+    });
+
+  });
+
+  const form = document.getElementById("simple-form");
+
+  form.addEventListener("submit", () => {
+    userDetails.forEach(function(e) {
+      e.classList.toggle('hidden');
+    });
+    inputFields.forEach(function(e) {
+      e.classList.toggle('hidden')
+    });
+    console.log("Just Submitted!!")
+  }); -->

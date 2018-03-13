@@ -1,0 +1,30 @@
+.filter-searchform2 {
+  background: white;
+  border-radius: 4px;
+  height: auto;
+  padding: 16px;
+  & input {
+  }
+  select {
+    &[disabled] {
+      color: #747474;
+    }
+  }
+}
+
+.filter-searchbar2 {
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-filter2 {
+  height: 40px;
+  background-color: $green;
+  border: 1px solid #CFDBDC;
+  color: black;
+}
+
+.filters2 {
+
+}

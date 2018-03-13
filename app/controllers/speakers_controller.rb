@@ -9,8 +9,7 @@ class SpeakersController < ApplicationController
   def speaker_index
     @tags = Category.all
     @users = policy_scope(User)
-    if params[:category].nil?
-      redirect_to root_path
+    if params[:category] == "" || params[:category].nil?
     else
     @users = @users.search_by_full_name(params[:name]) if params[:name].present?
     if params[:location].present?
