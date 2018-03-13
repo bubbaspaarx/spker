@@ -17,6 +17,7 @@
     font-weight: lighter;
     margin-right: 10px;
   }
+  border-bottom: 1px solid #F3F3F3;
 }
 
 .event-list {
@@ -37,7 +38,7 @@
 .event-description {
   padding-bottom: 15px;
   border-bottom: 1px solid #F3F3F3;
-  max-height: 400px;
+  max-height: 300px;
   overflow: auto;
 }
 
@@ -54,7 +55,6 @@
 .map-event {
   height: auto;
   margin: 10px;
-  border: 1px solid black;
 }
 
 .event-icon {
@@ -64,5 +64,6 @@
 
 .location-details {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  border-bottom: 1px solid #F3F3F3;
 }
