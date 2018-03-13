@@ -1,9 +1,9 @@
 
-<form class="filter-searchform">
+<form class="filter-searchform" action="speakers/">
   <div class="filters input-group">
     <input type="search" class="filter-searchbar" name="cost" placeholder="Fee per hour" value="<%= params[:cost] %>">
     <select name="category" class ="filter-searchbar" placeholder="Category">
-      <option value="" selected></option>
+      <option selected disabled>Category</option>
       <% Category.all.each do |category| %>
         <option value="<%= category.name %>" <%= "#{'selected' if category.name == params[:category]}" %> ><%= category.name %></option>
       <% end %>

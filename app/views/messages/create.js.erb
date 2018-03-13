@@ -11,7 +11,7 @@ function newRender(button) {
 
 function addMessage() {
   const list = document.getElementById('message-list')
-  const message = '<%= j render 'shared/message', {message: @message} %>'
+  const message = '<%= j render 'shared/sent_message', {message: @message} %>'
   list.insertAdjacentHTML('afterbegin', message)
 }
 

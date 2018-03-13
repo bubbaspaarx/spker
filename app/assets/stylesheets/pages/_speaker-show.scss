@@ -78,16 +78,17 @@
 
 .extra-info {
   background-color: #fff;
-  position: absolute;
-  z-index: 300;
-  left: 100px;
+  width: 50%;
+  margin: 0 auto;
+  z-index: 1000;
 }
+
 
 .speaker-part-2 {
   height: 800px;
   width: 100%;
   background-color: #B8C6D1;
-      padding-top: 40px;
+  padding-top: 40px;
 }
 
 

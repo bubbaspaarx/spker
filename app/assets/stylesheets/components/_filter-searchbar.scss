@@ -10,10 +10,21 @@
   border: 1px solid #CFDBDC;
   border-left: none;
   border-right: none;
+  height: 65px;
   & input {
     width: 20%;
+    height: 100%;
+  }
+  select {
+    background-color: white;
+    color: black;
+    height: 100%;
+    &[disabled] {
+      color: #747474;
+    }
   }
 }
+
 .filter-searchbar {
   padding: 10px;
   height: 40px;
@@ -27,8 +38,9 @@
 
 .btn-filter {
   height: 40px;
-  background-color: white;
+  background-color: $green;
   border: 1px solid #CFDBDC;
+  color: black;
 }
 
 .filters {
@@ -37,8 +49,4 @@
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-}
-
-#filter-location {
-  color: rgb(255, 74, 247);
 }

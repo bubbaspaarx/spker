@@ -3,12 +3,23 @@
   <div id="new-message">
     <%= link_to 'Send a message', messages_ajax_user_path(@correspondent), class: 'btn btn-primary', id:'message-btn', remote: true %>
   </div>
-  <div id="refresh">
-    <%= link_to 'Refresh', inbox_users_path(@user, @correspondent), class: 'btn btn-success', remote: true  %>
-  </div>
   <div id="message-list">
     <% @messages.reverse_order.each do |message| %>
-      <%= render 'shared/message', {message: message} %>
+      <% if message.sender == @user %>
+        <%= render 'shared/sent_message', {message: message} %>
+      <% else %>
+        <%= render 'shared/received_message', {message: message} %>
+      <% end %>
     <% end %>
   </div>
 </div>
+<% content_for :after_js do %>
+  <script>
+    App['conversation_<%= @user.id %>_<%= @correspondent.id %>'] = App.cable.subscriptions.create(
+      { channel: 'ConversationChannel', sender_id: <%= @user.id %>, receiver_id: <%= @correspondent.id %> },
+      { received: (data) => {
+        const list = document.getElementById('message-list')
+        list.insertAdjacentHTML('afterbegin', data.message_partial)
+      }})
+  </script>
+<% end %>
