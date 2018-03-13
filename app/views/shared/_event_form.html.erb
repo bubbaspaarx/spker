@@ -1,16 +1,16 @@
 <%= simple_form_for([user, event]) do |f| %>
-  <h2>What is you event called?</h2>
+  <h3>What is you event called?</h3>
   <%= f.input :name, required: false, label: false %>
-  <h2>Where is your event taking place?</h2>
+  <h3>Where is your event taking place?</h3>
   <div class="row">
       <div class="col-xs-6">
-        <%= f.input :address, required: false %>
+        <%= f.input :address, required: false, label: false, placeholder: "Address" %>
       </div>
       <div class="col-xs-6">
-        <%= f.input :postcode, required: false %>
+        <%= f.input :postcode, required: false, label: false, placeholder: "Postcode"  %>
       </div>
   </div>
-  <h2>When is your event taking place?</h2>
+  <h3>When is your event taking place?</h3>
   <div class="row">
     <div class="col-xs-6">
       <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
@@ -19,8 +19,8 @@
       <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' }, required: false %>
     </div>
   </div>
-  <h2>Describe your event</h2>
-  <%= f.input :description, required: false %>
+  <h3>Describe your event</h3>
+  <%= f.input :description, required: false, label: false, placeholder: "Description"  %>
   <div class="row">
     <div class="col-xs-2">
       <h5>Is it a paid event?</h5>

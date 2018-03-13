@@ -1,10 +1,10 @@
 .event_form_container {
   display: flex;
   justify-content: center;
+  height: auto;
 }
 
 .form-box {
-  margin-top: 90px;
   padding: 40px;
   border-radius: 3px;
   width: 70%;
@@ -39,5 +39,5 @@
 .expenses {
   display: flex;
   justify-content: space-around;
- }
+}
 
