@@ -12,3 +12,4 @@ Category.create(name:'Technology')
 Category.create(name:'Economics')
 Category.create(name:'Education')
 Category.create(name:'Celebrity')
+
