@@ -1,29 +1,62 @@
 <%= render 'shared/filter-searchbar' %>
-<div class="container well">
-  <h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
-  <hr>
-    <div class="container col-xs-10">
-      <div class="row">
-        <% @users.each do |user| %>
-          <div class="col-xs-12 col-sm- 6 col-md-3">
-            <%= render 'shared/speaker_card', user: user%>
-          </div>
-        <% end %>
-    </div>
+<div class="container speaker-index">
+  <div class="container">
+  <div class="left-container well">
+    <ul>
+      <li>
+        <a href="/speakers/">
+          Politics
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          Marketing
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          Technology
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          Design
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          Business
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>        </a>
+      </li>
+      <li>
+        <a href="">
+          Educational
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>
+        </a>
+      </li>
+      <li>
+        <a href="">
+          Ecology
+          <i class="material-icons booking-mapp-template-font-color">check_box</i>
+        </a>
+      </li>
+    </ul>
   </div>
+
+  <div class="right-container well">
+    <h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
+    <hr>
+      <div class="row">
+          <% @users.each do |user| %>
+            <div class="col-xs-12 col-sm- 6 col-md-3">
+              <%= render 'shared/speaker_card', user: user%>
+            </div>
+          <% end %>
+      </div>
+  </div>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
