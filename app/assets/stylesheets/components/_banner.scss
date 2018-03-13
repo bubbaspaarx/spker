@@ -1,7 +1,25 @@
+.second-banner {
+  position: relative;
+}
+
+ .navbar-wagon1 {
+  position: absolute;
+  transition: all 0.3s ease;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0; /* required */
+  width: 100vw;
+  z-index: 100;
+}
+
 .banner {
   color: white;
   text-align: center;
-  height: 100vh;
+  height: 90vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -22,4 +40,25 @@
   color: rgb(255, 255, 255);
   opacity: 0.8;
   margin-bottom: 30px;
+}
+
+
+#login-btn1 {
+  padding: 2px;
+  width: 81px;
+  border-radius: 3px;
+  border: 1px solid;
+  background-color: rgba(0,0,0,0);
+  color: $brand-primary;
+  margin-right: 10px;
+}
+
+#signup-btn1 {
+  padding: 2px;
+  width: 81px;
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0);
+  color: $brand-primary;
+  margin-right: 10px;
 }
