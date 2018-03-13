@@ -12,7 +12,9 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+  <% unless controller_name == "pages" %>
   <%= render 'shared/navbar' %>
+  <% end %>
   <%= render 'shared/flashes' %>
   <%= yield %>
   <%= javascript_include_tag 'application' %>
