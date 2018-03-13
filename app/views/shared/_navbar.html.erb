@@ -90,12 +90,12 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to new_user_registration_path do %>
+          <%= link_to "", data: { button: "signup-form", toggle: "modal", target: "#signup_modal" } do %>
           <%= t(".sign_up", default: "Sign Up") %>
           <% end %>
         </li>
         <li>
-          <%= link_to new_user_session_path do %>
+          <%= link_to "", data: { button: "login-form", toggle: "modal", target: "#login_modal" } do %>
           <%= t(".sign_in", default: "Log In") %>
           <% end %>
         </li>
