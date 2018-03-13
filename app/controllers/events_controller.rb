@@ -34,6 +34,7 @@ class EventsController < ApplicationController
     authorize_event
     @event.user = @user
     if @event.save!
+      generate_tags(params[:event][:category_ids], @event)
       redirect_to event_path(@event)
     else
       render :new
@@ -58,6 +59,17 @@ class EventsController < ApplicationController
 
   private
 
+  def generate_tags(ids, event)
+    ids
+    ids.each do |id|
+      unless id.blank?
+        tag = EventTag.new
+        tag.category = Category.find(id)
+        tag.event = event
+      end
+    end
+  end
+
   def set_event
     @event = Event.find(params[:id])
   end
@@ -71,11 +83,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :address, :postcode, :date, :cost, :start_time, :end_time, :photo)
+    params.require(:event).permit(:name, :address, :postcode, :start_date, :end_date, :expenses_hotels, :expenses_flights, :expenses_per_diems, :is_paid, :talk_type, :photo, :categories)
   end
 
   def filtering_params(params)
-    params.slice(:address, :postcode, :date)
+    params.slice(:address, :postcode)
   end
 
 end
