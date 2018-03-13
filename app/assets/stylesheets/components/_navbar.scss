@@ -8,9 +8,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
   width: 100vw;
-  z-index: 5
+  z-index: 100;
 }
 
 /* Logo */

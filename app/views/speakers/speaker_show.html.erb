@@ -1,72 +1,42 @@
-<div class="speaker-profile-wrapper">
-  <div class="left-side-wrapper">
-    <div class="speaker-avatar-profile">
-      <div class="speaker-avatar">
-        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-        <%= cl_image_tag image, class: "message-avatar", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+<!-- #banner-image-static
+#name
+#categories they specialise in
+#description
+#call-to-action
+#about the speaker - avec photo
+#accolades?
+#videos -->
+<%= render 'shared/invite-message-modal' %>
+<% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520877581/placeholder_image.jpg" %>
+<div class="speaker-wrapper">
+  <div class="row speaker-show-image">
+    <div class="speaker-banner-wrapper col-xs-12 col-lg-8 col-lg-offset-4">
+      <div class="speaker-banner" style="background-image: url('<%= cl_image_path image %>')">
       </div>
-      <% if current_user.id != params[:user_id] %>
-      <% else %>
-      <div class="load-photo">
-        <button type="button" class="btn add-photo" data-toggle="collapse" data-target="#demo">+</button>
-        <div id="demo" class="collapse">
-          <%= render 'shared/speaker-photo-loader' %>
-        </div>
+      <div class="invite-button">
+        <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
       </div>
-      <% end %>
-    </div>
-    <div class="speaker-profile-info text-center">
-      <ul class="text-center">
-        <li>
-          <p><%= @user.first_name %>  <%= @user.last_name %></p>
-        </li>
-        <li>
-          <p>job description</p>
-        </li>
-        <li>
-          <%= link_to 'Send message', new_user_message_path(@user), class: 'btn btn-primary btn-speaker' %>
-        </li>
-      </ul>
-      <button id='login-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
-      <%= render 'shared/invite-message-modal' %>
     </div>
   </div>
-  <div class="speaker-profile-container">
-    <div class="speaker-carousel">
-      <%= render 'shared/speaker-carousel' %>
-    </div>
-    <div class="speaker-skills">
-      <h1 class="text-center">Speakers skills</h1>
-      <ul class="list-inline text-center">
-        <% @user.categories.each do |category| %>
-        <li> <%= category.name %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="speaker-previous-events">
-      <h1 class="text-center">Previous Events</h1>
-      <ul class="list-inline">
-        <% 4.times do %>
-        <% event = Event.all.sample %>
-        <li><%= render 'shared/event_card', event: event %></li>
-        <% end %>
-      </ul>
-    </div>
-
-  </div>
-  <div class="right-side-wrapper">
-    <div class="speaker-bio-profile">
-      <h1 class="text-center">Biography</h1>
-      <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam fugit laudantium dicta modi aliquid harum quidem nostrum atque corporis dolorum. Aspernatur doloremque dolores exercitationem, vel suscipit omnis non officiis enim.</p>
-    </div>
-    <div class="speaker-profile-social-media">
-      <ul>
-        <li><i class="fab fa-facebook-square"></i></li>
-        <li><i class="fab fa-twitter-square"></i></li>
-        <li><i class="fab fa-instagram"></i></li>
-        <li><i class="fab fa-pinterest-square"></i></li>
-      </ul>
+  <div class="row speaker-about">
+    <div class="speaker-info-content">
+      <div class="speaker-personal-info col-xs-4">
+        <h3><%= @user.first_name %></h3>
+        <h3><%= @user.last_name %></h3>
+        <p><%= @user.job_title %></p>
+      </div>
+      <div class="speaker-blurb col-xs-7">
+        <p><%= @user.speaker_blurb %></p>
+      </div>
     </div>
   </div>
 </div>
-
+<div class="speaker-part-2">
+  <h3 class="speaker-about text-center">Who is <%= @user.first_name %></h3>
+  <div class="more-info-carousel">
+    <%= render 'shared/speaker-carousel' %>
+    <div class="extra-info">
+      <p>- <%= @user.accolades %></p>
+    </div>
+  </div>
+</div>
