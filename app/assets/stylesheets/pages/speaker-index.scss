@@ -1,5 +1,12 @@
-.left-container {
-  width: 20vw;
+.container.speaker-index{
+  position: absolute;
+  height: calc(100vh - 140px);
+  top: 140px;
+  display: flex
+}
+
+.left-container .well {
+  width: 20%;
   height: 50vh;
   ul{
     list-style-type: none;
@@ -9,16 +16,12 @@
   }
 }
 
-.right-container {
-  width: 70vw;
+.right-container .well{
+  width: 70%;
+  height: 100vh;
   overflow: auto;
   position: absolute;
   right: 0px
 }
 
 
-.container.speaker-index{
-  position: absolute;
-  height: calc(100vh - 140px);
-  top: 140px
-}

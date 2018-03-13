@@ -7,6 +7,7 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_index
+    @tags = Category.all
     @users = policy_scope(User)
     if params[:category].nil?
       redirect_to root_path
