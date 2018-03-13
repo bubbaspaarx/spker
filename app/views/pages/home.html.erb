@@ -3,49 +3,43 @@
 <div class="container">
   <div class="col-xs-12">
     <div class="row">
+    <hr>
     <h1 class="text-center">Browse by categories</h1>
     <hr>
       <div class="gallery">
         <%= link_to speakers_path(category: "Business") do%>
-        <div>
-          <img class="category well"  src="https://images.unsplash.com/photo-1491336477066-31156b5e4f35?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b7e9246619019d54ead8fe9ea7c821a9&auto=format&fit=crop&w=800&q=60" alt="" textarea="Business">
-          <!-- <h4 class="text-center well">Business</h4> -->
+        <div class="category" style="background-image: url('https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iLZ.fSzVvwvs/v0/600x-1.jpg')">
+        <h3 class="text-center">Business</h3>
         </div>
         <% end %>
         <%= link_to speakers_path(category: "Economics") do%>
-        <div>
-        <img class="category well" src="https://images.unsplash.com/photo-1520328925293-b3f5fa2076ec?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=19cb5eccccec8b38ecde9a50f85d129b&auto=format&fit=crop&w=800&q=60" alt="">
-        <!-- <h4 class="text-center well">Economics</h4> -->
-        </div>
-        <% end %>
-        <%= link_to speakers_path(category: "Celebrity") do%>
-        <div>
-        <img class="category well" src="https://images.unsplash.com/photo-1518702332295-44d02723c212?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3eeadbe2495a4e7efcb203f0f2fb5b36&auto=format&fit=crop&w=800&q=60" alt="">
-        <!-- <h4 class="text-center well">Celebrity</h4> -->
+        <div class="category" style="background-image: url('http://static3.uk.businessinsider.com/image/5a0f17d2ec1ade11a02b4adc/amazon-ceo-and-worlds-richest-man-jeff-bezos-avoids-a-common-time-wasting-daily-habit.jpg')">
+        <h3 class="text-center">Economics</h3>
         </div>
         <% end %>
         <%= link_to speakers_path(category: "Politics") do%>
-        <div>
-        <img class="category well" src="https://images.unsplash.com/photo-1496071488503-ce9f04b42be0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1297f1e8595a5e375f676ef1e757c840&auto=format&fit=crop&w=800&q=60')">
-        <!-- <h4 class="text-center well">Politics</h4> -->
-        </div>
-        <% end %>
-        <%= link_to speakers_path(category: "Motivational") do%>
-        <div>
-        <img class="category well" src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2d8091fa5f63ab00decd568cd0c484f8&auto=format&fit=crop&w=800&q=60" alt="">
-        <!-- <h4 class="text-center well">Motivational</h4> -->
+        <div class="category" style="background-image: url('https://timedotcom.files.wordpress.com/2017/12/barack-obama.jpeg')">
+        <h3 class="text-center">Politics</h3>
         </div>
         <% end %>
         <%= link_to speakers_path(category: "Education") do%>
-        <div>
-        <img class="category well" src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3aef6d10744dd7cbc836b631f46c1e5e&auto=format&fit=crop&w=800&q=60" alt="">
-        <!-- <h4 class="text-center well">Education</h4> -->
+        <div class="category" style="background-image: url('http://factsanddetails.com/media/2/20090818-NobelPrizeorgnambu_medal_photo.jpg')">
+        <h3 class="text-center">Education</h3>
+        </div>
+        <% end %>
+        <%= link_to speakers_path(category: "Celebrity") do%>
+        <div class="category" style="background-image: url('https://ngscrypto.com/storage/media/2016/10/3/10783/ac502d19a89289495ec30021b45d52dcbf99fbfc.jpg')">
+        <h3 class="text-center">Celebrity</h3>
         </div>
         <% end %>
         <%= link_to speakers_path(category: "Technology") do%>
-        <div>
-        <img class="category well" src="https://images.unsplash.com/photo-1495627009230-9e30e647c7cc?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=49b619699c6bd04f27cbb51f67e450b5&auto=format&fit=crop&w=800&q=60" alt="">
-        <!-- <h4 class="text-center well">Technology</h4> -->
+        <div class="category" style="background-image: url('https://s3.amazonaws.com/talkstar-photos/uploads/e0bcf2a3-9f82-42b7-aeaf-054d83e84d51/ElonMusk_2017-embed.jpg')">
+        <h3 class="text-center">Technology</h3>
+        </div>
+        <% end %>
+        <%= link_to speakers_path(category: "Motivational") do%>
+        <div class="category" style="background-image: url('https://timedotcom.files.wordpress.com/2014/05/457508111.jpg')">
+        <h3 class="text-center">Motivational</h3>
         </div>
         <% end %>
       </div>
