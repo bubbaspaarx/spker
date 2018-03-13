@@ -1,0 +1,21 @@
+.signup-wrapper {
+
+}
+
+.signup-container {
+
+
+}
+
+.signup-form-box {
+  margin-top: 40px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(236, 140, 59,0.2), 0 6px 20px 0 rgba(236, 140, 59, 0.19);
+  & h2 {
+    color: rgb(236, 140, 59);
+  }
+  & .alert.alert-danger {
+    margin-bottom: 10px;
+  }
+}
