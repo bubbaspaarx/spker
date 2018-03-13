@@ -5,8 +5,9 @@
 
 .gallery {
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  flex-direction: row-reverse;
+  justify-content: center;
   overflow: auto;
   padding: 0;
   margin: 0;
