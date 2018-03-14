@@ -20,7 +20,6 @@
   }
 }
 
-$body-bg: #c1bdba;
 $form-bg: #13232f;
 $white: #ffffff;
 
@@ -42,11 +41,6 @@ $br: 4px;
 
 html {
   overflow-y: scroll;
-}
-
-body {
-  background:$body-bg;
-  font-family: 'Titillium Web', sans-serif;
 }
 
 a {
