@@ -1,4 +1,4 @@
-<%= simple_form_for(user, url: url) do |f| %>
+<%= simple_form_for(@user, url: url) do |f| %>
   <div class="speaker-bio">
     <h3>Tell us a bit about yourself</h3>
     <%= f.input :speaker_blurb, label:false, placeholder: 'Your bio goes here...' %>
@@ -59,6 +59,11 @@
       </div>
     </div>
   </div>
+
+  <%= f.fields_for :photos do |p| %>
+    <%= p.file_field :photo, multiple: true, name:"photos[photo][]" %>
+  <% end %>
+
 
   <%= f.button :submit, class: 'btn btn-primary', value: 'Save' %>
 <% end %>
