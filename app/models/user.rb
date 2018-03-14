@@ -13,7 +13,7 @@ class User < ApplicationRecord
   geocoded_by :postcode
   monetize :cost_cents
 
-  validates :title, presence: true
+  # validates :title, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true, if: :is_speaker?
@@ -35,8 +35,6 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-
 
 
   def is_speaker?
