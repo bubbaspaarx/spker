@@ -1,6 +1,4 @@
 <% unless user_signed_in? %>
-<%= render 'shared/login_modal' %>
-<%= render 'shared/signup_modal' %>
 <% end %>
 <div class="navbar-wagon">
   <!-- Logo -->
@@ -19,7 +17,7 @@
     <% unless current_user.is_speaker %>
     <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-    <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% if current_user == true %>
     <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
@@ -52,8 +50,12 @@
     </div>
     <% else %>
     <!-- Login link (when logged out) -->
-    <button id='login-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#login_modal">Log in</button>
-    <button id='signup-btn' type="button" data-button="signup-form" data-toggle="modal" data-target="#signup_modal">Sign up</button>
+    <%= link_to new_user_session_path(active_tab: 'login') do %>
+    <button id='login-btn1' type="button" action="/users/sign_in">Log in</button>
+    <% end %>
+    <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+    <button id='signup-btn1' type="button" action="/users/sign_up">Sign up</button>
+    <% end %>
     <% end %>
   </div>
 
@@ -64,7 +66,7 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
         <% if current_user.is_speaker == true %>
         <li>
@@ -90,12 +92,12 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to "", data: { button: "signup-form", toggle: "modal", target: "#signup_modal" } do %>
+          <%= link_to new_user_registration_path(active_tab: 'signup') do %>
           <%= t(".sign_up", default: "Sign Up") %>
           <% end %>
         </li>
         <li>
-          <%= link_to "", data: { button: "login-form", toggle: "modal", target: "#login_modal" } do %>
+          <%= link_to new_user_session_path(active_tab: 'login') do %>
           <%= t(".sign_in", default: "Log In") %>
           <% end %>
         </li>

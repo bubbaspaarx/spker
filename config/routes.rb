@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     get 'speaker', to: 'speakers#speaker_show'
     get 'speaker/edit', to: 'speakers#speaker_edit'
     patch 'speaker/update', to: 'speakers#speaker_update'
-    resources :events, only: [:new, :create, :edit, :update]
     resources :user_bookings, only: [:index]
     resources :speaker_bookings, only: [:index]
     resources :messages, only: [:index, :new, :create]
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_tags, only: [:destroy]
-  resources :events, only: [:index, :show, :destroy] do
+  resources :events do
     resources :user_bookings, only: [:new, :create]
     resources :speaker_bookings, only: [:new, :create]
   end
@@ -33,4 +32,6 @@ Rails.application.routes.draw do
   resources :user_bookings, only: [:destroy]
 
   resources :speaker_bookings, only: [:destroy]
+
+  mount ActionCable.server => "/cable"
 end

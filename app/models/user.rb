@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :user_bookings, dependent: :destroy
   has_many :speaker_bookings, dependent: :destroy
-  has_many :user_tags
+  has_many :user_tags, dependent: :destroy
   has_many :categories, through: :user_tags
   has_many :photos
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   geocoded_by :postcode
   monetize :cost_cents
 
-  validates :title, presence: true
+  # validates :title, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true, if: :is_speaker?
@@ -35,8 +35,6 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
-
 
 
   def is_speaker?

@@ -34,6 +34,7 @@ class SpeakersController < ApplicationController
   def speaker_create
     @user.is_speaker = true
     if @user.update(speaker_params)
+      generate_tags
       redirect_to dashboard_path(@user)
     else
       @user.is_speaker = false
@@ -42,11 +43,11 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_edit
-    @tag = UserTag.new
   end
 
   def speaker_update
     if @user.update(speaker_params)
+      generate_tags
       redirect_to user_speaker_path(@user)
     else
       render :speaker_edit
@@ -54,6 +55,19 @@ class SpeakersController < ApplicationController
   end
 
   private
+
+  def generate_tags
+    params[:user][:category_ids].each do |id|
+      tag = UserTag.new
+      tag.category = Category.find(id) unless id.blank?
+      tag.user = current_user
+      tag.save
+    end
+  end
+
+  def destroy_tags
+    @user.user_tags.each { |tag| tag.destroy }
+  end
 
   def category_search
     tags = UserTag.tag_search(params[:category])
@@ -66,7 +80,7 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_params
-    params.require(:user).permit(:postcode, :travel_distance, :address, :cost)
+    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city)
   end
 
   def filtering_params(params)

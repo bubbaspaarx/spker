@@ -1,0 +1,32 @@
+.detail-form {
+  background-color: white;
+  width: 70%;
+  padding: 20px 30px;
+  margin-top: 10px;
+  height: calc(95vh - 70px);
+  overflow: auto;
+  h5 {
+    font-weight: bold;
+  }
+}
+
+#user_speaker_blurb {
+  height: 130px;
+}
+
+#user_address {
+  height: 94px;
+}
+
+.speaker-info {
+  .user_categories {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 150px;
+    span {
+      margin: 5px 0;
+    }
+  }
+}
+

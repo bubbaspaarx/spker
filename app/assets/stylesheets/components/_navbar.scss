@@ -42,7 +42,7 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: $brand-primary;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
@@ -114,4 +114,8 @@
   background-color: rgba(0,0,0,0);
   color: $brand-primary;
   margin-right: 10px;
+}
+
+.navbar-wagon-item.hidden-md.hidden-lg {
+  color: $brand-primary;
 }

@@ -1,120 +1,83 @@
-
-  <div class="main-dashboard-container">
-    <div class="left-container">
-      <div class="top-left-container">
-
-        <%= link_to 'Edit', edit_user_event_path([@event.user, @event]), class: 'btn btn-success' %>
-        <%= link_to 'Delete', event_path(@event), class: 'btn btn-danger', method: 'delete' %>
-        <%= link_to 'Book',  event_user_bookings_path(@event), class: 'btn btn-success', method: 'post' %>
-        <div class="event-description-left text-center">
-          <h2><%=@event.name%></h2>
-          <p>The pub dates back to the early 18th century but took its current name from the cannon which was fired to celebrate the opening of the West India Import Docks in 1802.
-
-          In the late 18th century, Lord Horatio Nelson acquired a property just up the road (still known as Nelson’s House) and he regularly visited the docks to inspect the guns up until his glorious death at the battle of Trafalgar in 1805.
-
-          Lord Nelson would frequent The Gun and regularly meet Lady Emma Hamilton in an upstairs room (now called The River Room) for their secret assignations.
-
-          The Gun also has a long association with smugglers landing contraband on the site and distributing it via a hidden tunnel. To this day there is still a spy-hole in the secret circular staircase to watch out for “The Revenue Men”</p>
+<div class="event-container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="info-container">
+        <div class="basic-info">
+          <div class="event-title">
+            <h2><%= @event.name %></h2>
+            <div class="organiser">
+              <p>Organised by <%= @event.user.first_name %>  <%= @event.user.last_name %></p>
+              <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+              <%= cl_image_tag image, class: 'organiser-avatar' %>
+            </div>
+          </div>
+          <div class="location-details">
+            <div class="location">
+              <h5>Event location:</h5>
+              <p><%= @event.address %></p>
+              <p><%= @event.postcode %></p>
+            </div>
+            <div class="date">
+              <h5>Event Date</h5>
+               <% if @event.start_date == @event.end_date %>
+                <p>This event takes place on <%= @event.start_date.strftime('%d/%m/%Y') %></p>
+               <% else %>
+                <p>This event takes place between <%= @event.start_date.strftime('%d/%m/%Y') %> and <%= @event.end_date.strftime('%d/%m/%Y') %></p></p>
+               <% end %>
+            </div>
+          </div>
+          <p class='event-description'><%= @event.description %></p>
         </div>
-        <div class= "text-center">
-          <h2>OPENING TIMES</h2>
+        <div class="event-details">
+          <div class="event-category">
+            <h5>This event is looking for speakers tagged with:</h5>
+            <ul>
+              <% @event.categories.each do |category| %>
+                <li><%= category.name %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="event-type">
+            <h5>This event is <%= ['A', 'E', 'I', 'O', 'U' ].include?(@event.talk_type[0]) ? 'an' : 'a'  %> <%= @event.talk_type.downcase %></h5>
+          </div>
+        </div>
+        <div class="event-list">
           <ul>
-            <li>MONDAY  11:30 - 00:00</li>
-            <li>TUESDAY 11:30 - 00:00</li>
-            <li>WEDNESDAY 11:30 - 00:00</li>
-            <li>THURSDAY  11:30 - 00:00</li>
-            <li>FRIDAY  11:30 - 00:00</li>
-            <li>SATURDAY  11:30 - 00:00</li>
-            <li>SUNDAY  11:30 - 23:00</li>
-          </ul>
-
-          <h2>FOOD TIMES</h2>
-          <ul>
-            <li>MONDAY  12:00 - 15:00 / 18:00 - 22:00</li>
-            <li>TUESDAY 12:00 - 15:00 / 18:00 - 22:00</li>
-            <li>WEDNESDAY 12:00 - 15:00 / 18:00 - 22:00</li>
-            <li>THURSDAY  12:00 - 15:00 / 18:00 - 22:00</li>
-            <li>FRIDAY  12:00 - 15:00 / 18:00 - 22:00</li>
-            <li>SATURDAY  12:00 - 16:00 / 18:00 - 22:00</li>
-            <li>SUNDAY  12:00 - 19:00</li>
+            <li>
+              <div class="event-icon">
+                <i class="fas fa-pound-sign fa-fw"></i>
+            </div>
+            This event is <%= @event.is_paid ? 'a for-profit event' : 'free' %>
+          </li>
+            <li>
+              <div class="event-icon">
+                <i class="fas fa-bed fa-fw"></i>
+              </div>
+              This event's organiser <%= @event.expenses_hotels ? 'will' : 'won\'t' %> pay for a hotel
+            </li>
+            <li>
+              <div class="event-icon">
+                <i class="fas fa-plane fa-fw"></i>
+              </div>
+              This event's organiser <%= @event.expenses_flights ? 'will' : 'won\'t' %> pay for transport
+            </li>
+            <li>
+              <div class="event-icon">
+                <i class="fas fa-utensils fa-fw"></i>
+              </div>
+              This event's organiser <%= @event.expenses_per_diems ? 'will' : 'won\'t' %> pay for per diems
+            </li>
           </ul>
         </div>
       </div>
-
-
-
-    <div class="right-container">
-      <div class="top-right-container">
-<!--         <div class="tabs">
-          <button class="tabs-button" onclick="openTabs('Photo')">Photo</button>
-          <button class="tabs-button" onclick="openTabs('Video')">Video</button>
-          <button class="tabs-button" onclick="openTabs('Links')">Links</button>
-        </div> -->
-
-        <div id="Photo" class="tab" style="display:block">
-              <div class="dashboard-media">
-                <%= render 'shared/event-carousel' %>
-              </div>
-              <div class="dashboard-text text-center">
-                <h2>Photo Info</h2>
-                <ul>
-                  <li>
-                    Address: 27 Coldharbour, Poplar, London E14 9NS
-                  </li>
-                  <li>
-                    Hours: Closed now
-                  </li>
-                  <li>
-                    Menu: thegundocklands.com
-                  </li>
-                  <li>
-                    Reservations: thegundocklands.com
-                  </li>
-                  <li>
-                    Phone: 020 7515 5222
-                  </li>
-                </ul>
-              </div>
-        </div>
-        <div id="Video" class="tab" style="display:none">
-            <div class="dashboard-media">
-              <%= render 'shared/event-carousel' %>
-            </div>
-            <div class="dashboard-text">
-              <h2>Video Info</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-            </div>
-        </div>
-        <div id="Links" class="tab" style="display:none">
-            <div class="dashboard-media">
-              <%= render 'shared/event-carousel' %>
-            </div>
-            <div class="dashboard-text">
-              <h2>Links Info</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio hic esse, sed dolor, repudiandae sunt aliquid molestiae nesciunt minima neque error consequuntur, eum impedit et, quia. Est adipisci modi itaque.</p>
-            </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="location-container">
+        <div class="map-event">
+          <%= render 'shared/map-event' %>
         </div>
       </div>
     </div>
   </div>
-
-
-<script>
-function openTabs(tab) {
-    var i;
-    var x = document.getElementsByClassName("tab");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
-    }
-    document.getElementById(tab).style.display = "block";
-}
-</script>
-
-
+</div>
 
