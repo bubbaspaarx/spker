@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :speaker_bookings, dependent: :destroy
   has_many :user_tags, dependent: :destroy
   has_many :categories, through: :user_tags
-  has_many :photos
+  has_many :user_photos, dependent: :delete_all
+    accepts_nested_attributes_for :user_photos
+
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   geocoded_by :postcode

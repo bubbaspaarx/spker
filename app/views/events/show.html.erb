@@ -42,32 +42,14 @@
           </div>
         </div>
         <div class="event-list">
-          <ul>
-            <li>
-              <div class="event-icon">
-                <i class="fas fa-pound-sign fa-fw"></i>
-            </div>
-            This event is <%= @event.is_paid ? 'a for-profit event' : 'free' %>
-          </li>
-            <li>
-              <div class="event-icon">
-                <i class="fas fa-bed fa-fw"></i>
-              </div>
-              This event's organiser <%= @event.expenses_hotels ? 'will' : 'won\'t' %> pay for a hotel
-            </li>
-            <li>
-              <div class="event-icon">
-                <i class="fas fa-plane fa-fw"></i>
-              </div>
-              This event's organiser <%= @event.expenses_flights ? 'will' : 'won\'t' %> pay for transport
-            </li>
-            <li>
-              <div class="event-icon">
-                <i class="fas fa-utensils fa-fw"></i>
-              </div>
-              This event's organiser <%= @event.expenses_per_diems ? 'will' : 'won\'t' %> pay for per diems
-            </li>
-          </ul>
+          <div class="event-item">
+            <p><i class="fas fa-pound-sign fa-fw"></i>This event is <%= @event.is_paid ? 'a for-profit event' : 'free' %></p>
+            <p><i class="fas fa-bed fa-fw"></i>This event's organiser <%= @event.expenses_hotels ? 'will' : 'won\'t' %> pay for a hotel</p>
+          </div>
+          <div class="event-item">
+            <p><i class="fas fa-plane fa-fw"></i>This event's organiser <%= @event.expenses_flights ? 'will' : 'won\'t' %> pay for transport</p>
+            <p><i class="fas fa-utensils fa-fw"></i>This event's organiser <%= @event.expenses_per_diems ? 'will' : 'won\'t' %> pay for per diems</p>
+          </div>
         </div>
       </div>
     </div>
