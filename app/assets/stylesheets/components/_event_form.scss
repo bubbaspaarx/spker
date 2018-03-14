@@ -1,20 +1,22 @@
 .event_form_container {
   display: flex;
   justify-content: center;
+  height: auto;
 }
 
 .form-box {
-  margin-top: 10px;
-  padding: 40px;
+  padding: 16px;
   border-radius: 3px;
-  width: 70%;
-  height: calc(100vh - 85px);
+  width: 100%;
+  height: calc(100vh - 95px);
   background-color: white;
   overflow: auto;
   h5 {
     font-weight: bold;
   }
-
+  h3 {
+    margin-top: 0px;
+  }
 }
 
 .event_categories {
@@ -32,12 +34,19 @@
   display: flex;
   justify-content: space-around;
   .radio {
-    margin: 10px 0;
+    margin: 10px 5px;
   }
 }
 
 .expenses {
   display: flex;
   justify-content: space-around;
- }
+}
 
+.radio+.radio, .checkbox+.checkbox {
+    margin-top: 10px !important;
+}
+
+.modal-backdrop {
+  z-index: 500;
+}

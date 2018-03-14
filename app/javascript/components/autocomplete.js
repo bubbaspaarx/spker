@@ -1,6 +1,6 @@
 function autocomplete() {
   document.addEventListener("DOMContentLoaded", function(){
-    var speakerAddress = document.querySelectorAll("#banner-searchbar, #searchbar, #filter-location");
+    var speakerAddress = document.querySelectorAll("#banner-searchbar, #searchbar, #filter-location, #event_address");
     for (var i = 0, len = speakerAddress.length; i < len; i++) {
       if(speakerAddress[i]) {
         var autocomplete = new google.maps.places.Autocomplete(speakerAddress[i], {

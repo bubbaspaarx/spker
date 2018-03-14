@@ -7,7 +7,16 @@
             <i class="profile-edit-button far fa-edit"></i>
           </span>
           <div class="pp-image-container col-xs-3 col-xs-offset-1">
-            <div class="pp-image" style="background-image: url('<%= cl_image_path "http://res.cloudinary.com/montycat/image/upload/v1520095810/n3gwu0jxr9fsrpebkgg1.png" %>')">
+            <% if current_user.id == params[:id].to_i %>
+            <div class="load-photo">
+              <button type="button" class="btn add-photo hidden" data-toggle="collapse" data-target="#demo" id='photo_upload' >+</button>
+              <div id="demo" class="collapse">
+                <%= render 'shared/user-photo-loader' %>
+              </div>
+            </div>
+            <% end %>
+            <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+            <div class="pp-image" style="background-image: url('<%= cl_image_path image %>')">
             </div>
           </div>
           <div class="description col-xs-7">
@@ -61,6 +70,7 @@
   const inputFields = document.querySelectorAll("#formTarget")
   console.log(inputFields)
   const editButton = document.getElementById("edit-button-profile")
+  const photoButton = document.getElementById("photo_upload")
 
   editButton.addEventListener("click", (event) => {
     console.log(event);
@@ -71,7 +81,7 @@
     inputFields.forEach(function(e) {
       e.classList.toggle('hidden')
     });
-
+    photoButton.classList.toggle('hidden')
   });
 
   const form = document.getElementById("simple-form");
@@ -83,6 +93,7 @@
     inputFields.forEach(function(e) {
       e.classList.toggle('hidden')
     });
+    photoButton.classList.toggle('hidden')
     console.log("Just Submitted!!")
   });
   <% end %>

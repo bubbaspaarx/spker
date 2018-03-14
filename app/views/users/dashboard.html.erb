@@ -1,3 +1,6 @@
+
+<%= render 'shared/event-create-modal' %>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <div class="dashboard container">
@@ -23,9 +26,9 @@
           </div>
           <div name="profile" role="tabpanel" class="tab-pane <%= params[:active_tab] == 'profile' ? 'active' : '' %>" id="profile">
             <%= render "shared/user_profile" %></div>
-          <div role="tabpanel" class="tab-pane" id="messages">
-            <div class="inbox-container">
-              <% @correspondents.each do |correspondent| %>
+            <div role="tabpanel" class="tab-pane" id="messages">
+              <div class="inbox-container">
+                <% @correspondents.each do |correspondent| %>
                 <div class="row">
                   <div class="col-xs-12">
                     <div class="sender">
@@ -36,9 +39,9 @@
                       <div class="sender-info">
                         <p><%= link_to "#{correspondent[0].first_name} #{correspondent[0].last_name}", inbox_users_path(@user, correspondent[0]) %></p>
                         <% if correspondent[1].sender == @user %>
-                          <p><%= "Last message sent at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
+                        <p><%= "Last message sent at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
                         <% else %>
-                          <p><%= "Last message received at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
+                        <p><%= "Last message received at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
                         <% end %>
                       </div>
                       <div class="last-message">
@@ -47,28 +50,35 @@
                     </div>
                   </div>
                 </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
+            <div role="tabpanel" class="tab-pane" id="messages">........................</div>
+            <div role="tabpanel" class="tab-pane" id="events">
+              <button id='event-create-btn' type="button" data-button="event-form" data-toggle="modal" data-target="#event_modal">Create Event</button>
+
+
+
+
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="security">...........................</div>
+            <div role="tabpanel" class="tab-pane" id="settings">.............................</div>
+            <div role="tabpanel" class="tab-pane" id="speaker-profile">  <div class="user-categories">
+              <% @user.user_tags.each do |tag|%>
+              <button class="tag-button">
+                <%= tag %>
+              </button>
+              <% end %>
+            </div></div>
+
+
           </div>
-          <div role="tabpanel" class="tab-pane" id="messages">...</div>
-          <div role="tabpanel" class="tab-pane" id="events">...</div>
-          <div role="tabpanel" class="tab-pane" id="security">...</div>
-          <div role="tabpanel" class="tab-pane" id="settings">...</div>
-          <div role="tabpanel" class="tab-pane" id="speaker-profile">  <div class="user-categories">
-          <% @user.user_tags.each do |tag|%>
-          <button class="tag-button">
-            <%= tag %>
-          </button>
-          <% end %>
-        </div></div>
-
-
         </div>
-      </div>
 
+      </div>
     </div>
   </div>
-</div>
 
-<%= link_to 'Edit speaker profile', user_speaker_edit_path(current_user), class: 'btn btn-warning' %>
+  <%= link_to 'Edit speaker profile', user_speaker_edit_path(current_user), class: 'btn btn-warning' %>
 

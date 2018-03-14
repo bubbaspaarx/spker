@@ -15,9 +15,9 @@
 
     <!-- Links when logged in -->
     <% unless current_user.is_speaker %>
-    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" %>
     <% end %>
-    <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" %>
 
     <% if current_user == true %>
     <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
@@ -36,12 +36,12 @@
             <% end %>
           </li>
           <li>
-            <%= link_to inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <%= link_to inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" do %>
             <i class="far fa-envelope"></i> <%= t(".inbox", default: "Inbox") %>
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-wagon-item navbar-wagon-link' do %>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-wagon-item navbar-wagon-link linky' do %>
             <i class="fa fa-sign-out-alt "></i>  <%= t(".sign_out", default: "Log out") %>
             <% end %>
           </li>
@@ -61,16 +61,18 @@
 
   <!-- Dropdown list appearing on mobile only -->
   <% if user_signed_in? %>
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="navbar-wagon-item1 hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" do %>
+            <i class="fas fa-plus"></i> <%= t(".create", default: "Create an event") %>
+            <% end %>
         </li>
         <% if current_user.is_speaker == true %>
         <li>
-          <%= link_to "Dashboard", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Dashboard", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" %>
         </li>
         <% end %>
         <li>
@@ -87,7 +89,7 @@
     </div>
   </div>
   <% else %>
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="navbar-wagon-item1 hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
