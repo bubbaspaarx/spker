@@ -29,11 +29,15 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_new
+    @photo = @user.user_photos.build
   end
 
   def speaker_create
     @user.is_speaker = true
     if @user.update(speaker_params)
+      params[:photos]['photo'].each do |a|
+        @photo = @user.photos.update(photo: a, user_id: @user.id)
+      end
       generate_tags
       redirect_to dashboard_path(@user)
     else

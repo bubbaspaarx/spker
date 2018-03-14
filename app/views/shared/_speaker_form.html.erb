@@ -60,5 +60,10 @@
     </div>
   </div>
 
+  <%= f.fields_for :photos do |p| %>
+    <%= p.file_field :photo, multiple: true, name:"photos[photo][]" %>
+  <% end %>
+
+
   <%= f.button :submit, class: 'btn btn-primary', value: 'Save' %>
 <% end %>
