@@ -2,7 +2,7 @@
   position: relative;
 }
 
- .navbar-wagon1 {
+.navbar-wagon1 {
   position: absolute;
   transition: all 0.3s ease;
   height: 70px;
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-    input{
+  input{
     color: black;
   }
 }
@@ -75,4 +75,11 @@
 
 .navbar-wagon-link {
   color: $brand-primary !important;
+}
+
+.the-submit-button {
+  width: 100%;
+  background-color: #418adf;
+  border: 1px solid #418adf;
+  color: #fff !important;
 }

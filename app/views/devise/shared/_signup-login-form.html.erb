@@ -4,7 +4,7 @@
     <li class="tab <%= params[:active_tab] == 'login' ? 'active' : '' %>"><a href="#login">Log In</a></li>
   </ul>
 
-  <div class="tab-content">
+  <div class="main-login tab-content">
     <div id="signup" style="<%= params[:active_tab] == 'login' ? 'display: none' : '' %>">
       <h1>Sign Up for Free</h1>
 
@@ -38,6 +38,13 @@
           Set A Password<span class="req">*</span>
         </label>
         <input required="required" aria-required="true" aria-invalid="true" type="password" name="user[password]" id="user_password">
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Confirm Password<span class="req">*</span>
+        </label>
+        <input required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation">
       </div>
       <input type="submit" name="commit" value="Sign up" class="button button-block" data-disable-with="Sign up"/>Get Started</input>
       <% end %>
