@@ -10,9 +10,9 @@
 }
 
 .card-index {
-  height: 420px;
-  width: 420px;
-  margin: 10px;
+  height: 320px;
+  width: 320px;
+  margin: 27px 20px;
   border-radius: 4px;
   background-size: cover !important;
   background-position: center;
@@ -28,4 +28,9 @@
   .description p {
     line-height: 7px
   }
+}
+
+
+.index-filter {
+  display: flex;
 }

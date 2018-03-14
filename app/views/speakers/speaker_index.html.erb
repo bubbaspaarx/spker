@@ -1,20 +1,28 @@
-<%= render 'shared/filter-searchbar' %>
 <h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
-<div class="container-index">
-  <% @users.each do |user| %>
-    <%= link_to user_speaker_path(user) do %>
-      <div class="card-index" style="background-image: url('https://avatars2.githubusercontent.com/u/34913884?v=4')">
-        <div class="description text-center">
-          <p><%= user.first_name %> <%= user.last_name %></p>
-          <p><%= user.job_title%></p>
-          <p><%= user.city %></p>
-          <p><%= user.cost %></p>
-        </div>
-      </div>
+<div class="index-filter">
+  <div class="filter-form-index">
+    <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
+    <%= f.input :location, input_html: { id: 'filter-location', class: "filter-searchbar2", name: "location" }, placeholder: "Location", label: false %>
+    <%= f.input :category, collection: Category.all, as: :check_boxes, label: "Categories", value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "check_boxes_cat", placeholder: "Category" } %>
+    <%= f.input :cost, placeholder: 'Budget' %>
+    <%= f.input :name, placeholder: 'Speaker Name' %>
+    <%= f.button :submit, "Search", id: 'the-submit-button', class: 'the-submit-button'%>
     <% end %>
-  <% end %>
+  </div>
+  <div class="container-index">
+    <% @users.each do |user| %>
+    <%= link_to user_speaker_path(user) do %>
+    <div class="card-index" style="background-image: url('https://avatars2.githubusercontent.com/u/34913884?v=4')">
+      <div class="description text-center">
+        <p><%= user.first_name %> <%= user.last_name %></p>
+        <p><%= user.job_title%></p>
+        <p><%= user.city %></p>
+        <p><%= user.cost %></p>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
 </div>
-
-
 
 

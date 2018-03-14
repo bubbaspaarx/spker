@@ -1,82 +1,57 @@
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
+<div class="row">
+  <div class="dashboard-title col-xs-8 col-xs-offset-2">
+    <h1>Welcome <%= current_user.first_name %></h1>
+    <h4>This is your Spker dashboard. Create events, speaker profile, add images and receive messages</h4>
+  </div>
+</div>
 <div class="dashboard container">
   <div class="row">
     <div>
-
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="<%= (params[:active_tab] == nil) || (params[:active_tab] == 'home') ? 'active' : '' %>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-        <li role="presentation" class="<%= params[:active_tab] == 'profile' ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation" class="<%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation" class="<%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
-        <li role="presentation" class="<%= params[:active_tab] == 'security' ? 'active' : '' %>"><a href="#security" aria-controls="security" role="tab" data-toggle="tab">Security</a></li>
-        <li role="presentation" class="<%= params[:active_tab] == 'settings' ? 'active' : '' %>"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-        <li role="presentation" class="<%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab">Speaker Profile</a></li>
+        <li role="presentation" class="dash-tab <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'security' ? 'active' : '' %>"><a href="#security" aria-controls="security" role="tab" data-toggle="tab">Security</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab">Speaker Profile</a></li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content-container">
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'home') ? 'active' : '' %>" id="home">
-            <p>This is your dashboard home. You can make changes to your profile here, create events and build your speaker profile</p>
+          <div name="profile" role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
+            <%= render "shared/user_profile" %>
           </div>
-          <div name="profile" role="tabpanel" class="tab-pane <%= params[:active_tab] == 'profile' ? 'active' : '' %>" id="profile">
-            <%= render "shared/user_profile" %></div>
-            <div role="tabpanel" class="tab-pane" id="messages">
-              <div class="inbox-container">
-                <% @correspondents.each do |correspondent| %>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="sender">
-                      <div class="sender-image">
-                        <% image = correspondent[0].photo.url ? correspondent[0].photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-                        <%= cl_image_tag image, class: "inbox-avatar" %>
-                      </div>
-                      <div class="sender-info">
-                        <p><%= link_to "#{correspondent[0].first_name} #{correspondent[0].last_name}", inbox_users_path(@user, correspondent[0]) %></p>
-                        <% if correspondent[1].sender == @user %>
-                        <p><%= "Last message sent at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
-                        <% else %>
-                        <p><%= "Last message received at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
-                        <% end %>
-                      </div>
-                      <div class="last-message">
-                        <p><%= correspondent[1].content[0..150] %></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <% end %>
-              </div>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="messages">........................</div>
-            <div role="tabpanel" class="tab-pane" id="events">
-              <button id='event-create-btn' type="button" data-button="event-form" data-toggle="modal" data-target="#event_modal">Create Event</button>
-
-
-
-
-
-            </div>
-            <div role="tabpanel" class="tab-pane" id="security">...........................</div>
-            <div role="tabpanel" class="tab-pane" id="settings">.............................</div>
-            <div role="tabpanel" class="tab-pane" id="speaker-profile">  <div class="user-categories">
-              <% @user.user_tags.each do |tag|%>
-              <button class="tag-button">
-                <%= tag %>
-              </button>
-              <% end %>
-            </div></div>
-
-
+          <div role="tabpanel" class="tab-pane" id="messages">
+            <% if current_user.received_messages.length == 0 %>
+            <p>You have no messages</p>
+            <p>Messages you send and receive will appear here</p>
+            <% end %>
+            <%= render 'shared/inbox-container' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="events">
+            <%= link_to new_event_path do %>
+            <button type="button" action="/events/new" class="event-create-button" ><i class="fas fa-plus"></i> Create Event</button>
+            <% end %>
+            <%= render 'shared/user-events-list' %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="security">
+            <p>Change your password or email address</p>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="speaker-profile">
+            <%= render 'shared/speaker-details' %>
+            <% if current_user.is_speaker == false %>
+            <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
+            <% else %>
+            <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
+            <% end %>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+</div>
 
-  <%= link_to 'Edit speaker profile', user_speaker_edit_path(current_user), class: 'btn btn-warning' %>
+
 
