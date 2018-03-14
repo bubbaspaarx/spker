@@ -4,11 +4,13 @@
   </button>
 </p>
 <div class="collapse" id="collapseExample">
-  <div class="card card-body2 col-xs-6 col-xs-offset-3">
-    <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
-    <%= f.input :category, collection: Category.all, prompt: 'Specialty', label: false, value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "filter-searchbar", placeholder: "Category" } %>
-    <%= f.input :location, input_html: { id: 'filter-location', class: "filter-searchbar2", name: "location" }, placeholder: "Location", label: false %>
-    <%= f.button :submit, "Search", id: 'the-submit-button'%>
-    <% end %>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
+      <%= f.input :category, collection: Category.all, prompt: 'Specialty', label: false, value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "filter-searchbar", placeholder: "Category" } %>
+      <%= f.input :location, input_html: { id: 'filter-location', class: "filter-searchbar2", name: "location" }, placeholder: "Location", label: false %>
+      <%= f.button :submit, "Search", id: 'the-submit-button'%>
+      <% end %>
+    </div>
   </div>
 </div>
