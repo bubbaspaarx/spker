@@ -35,10 +35,13 @@ class SpeakersController < ApplicationController
   def speaker_create
     @user.is_speaker = true
     if @user.update(speaker_params)
-      params[:photos]['photo'].each do |a|
-        @photo = @user.photos.update(photo: a, user_id: @user.id)
+      if params[:photo]
+        params[:photo]['photo'].each do |a|
+          @photo = @user.photos.update(photo: a, user_id: @user.id)
+        end
+        generate_tags(params[:user])
+        redirect_to dashboard_path(@user)
       end
-      generate_tags
       redirect_to dashboard_path(@user)
     else
       @user.is_speaker = false
@@ -69,6 +72,9 @@ class SpeakersController < ApplicationController
     end
   end
 
+
+
+
   def destroy_tags
     @user.user_tags.each { |tag| tag.destroy }
   end
@@ -84,7 +90,7 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_params
-    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city)
+    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id)
   end
 
   def filtering_params(params)
