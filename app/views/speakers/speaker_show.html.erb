@@ -7,8 +7,23 @@
 #accolades?
 #videos -->
 <%= render 'shared/invite-message-modal' %>
-<% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520877581/placeholder_image.jpg" %>
-<div class="speaker-wrapper">
+<div class="profile-container">
+  <div class="profile">
+    <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
+    <div class="infoHolder">
+    <h2><%= @user.job_title %> FullStack Dev</h2>
+    <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente commodi ut cum, maiores quis saepe illum soluta quaerat incidunt ducimus minus, eligendi voluptatum consequuntur aliquam! Ab modi, perspiciatis molestias culpa.</p>
+    </div>
+    <div class="imageHolder"><img class="profilePic" src="https://avatars1.githubusercontent.com/u/30607026?v=4"></div>
+    <ul class="reviews list-inline">
+      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor architecto quibusdam, dicta voluptates aperiam in debitis fuga repudiandae modi nam dolores eaque at itaque molestias, quos sunt, soluta hic.</li>
+      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus numquam quia, quaerat accusantium maxime amet assumenda iusto alias totam. Inventore exercitationem pariatur eius saepe voluptatum, aperiam omnis optio delectus nam!</li>
+      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam culpa ipsam suscipit vel, perspiciatis ullam debitis assumenda nobis, alias atque deleniti repellat nam non vero, consequuntur qui reiciendis voluptate labore?</li>
+    </ul>
+  </div>
+</div>
+
+<!-- <div class="speaker-wrapper">
   <div class="row speaker-show-image">
       <div class="speaker-personal-info col-xs-12 col-lg-4">
         <h3><%= @user.first_name %></h3>
@@ -25,16 +40,7 @@
     </div>
   </div>
 </div>
-<hr>
-<div class="profile">
-  <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
-  <div class="infoHolder">
-  <h2><%= @user.job_title %> FullStack Dev</h2>
-  <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente commodi ut cum, maiores quis saepe illum soluta quaerat incidunt ducimus minus, eligendi voluptatum consequuntur aliquam! Ab modi, perspiciatis molestias culpa.</p>
-  </div>
-
-  <div class="imageHolder"><img class="profilePic" src="https://avatars1.githubusercontent.com/u/30607026?v=4"></div>
-</div>
+<hr> -->
 
 
 
