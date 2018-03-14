@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:new, :create]
   before_action :authorize_event, except: [:index, :new, :create, :update]
 
   def index
@@ -33,7 +32,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     authorize_event
-    @event.user = @user
+    @event.user = current_user
     if @event.save
       generate_tags(params[:event][:category_ids], @event)
       redirect_to event_path(@event)
@@ -75,10 +74,6 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
-  end
-
-  def set_user
-    @user = User.find(params[:user_id])
   end
 
   def authorize_event
