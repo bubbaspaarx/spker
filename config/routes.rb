@@ -33,4 +33,6 @@ Rails.application.routes.draw do
   resources :user_bookings, only: [:destroy]
 
   resources :speaker_bookings, only: [:destroy]
+
+  mount ActionCable.server => "/cable"
 end

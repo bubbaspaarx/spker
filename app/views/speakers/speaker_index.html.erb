@@ -1,40 +1,20 @@
 <%= render 'shared/filter-searchbar' %>
-<div class="container fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="container well">
-        <h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
-        <hr>
-          <div class="row">
-              <% @users.each do |user| %>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <%= render 'shared/speaker_card', user: user%>
-                </div>
-              <% end %>
-          </div>
+<h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
+<div class="container-index">
+  <% @users.each do |user| %>
+    <%= link_to user_speaker_path(user) do %>
+      <div class="card-index" style="background-image: url('https://avatars2.githubusercontent.com/u/34913884?v=4')">
+        <div class="description text-center">
+          <p><%= user.first_name %> <%= user.last_name %></p>
+          <p><%= user.job_title%></p>
+          <p><%= user.city %></p>
+          <p><%= user.cost %></p>
+        </div>
       </div>
-    </div>
-  </div>
+    <% end %>
+  <% end %>
 </div>
 
-
-
-
-
-
-
-
-<!--     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="left-container well">
-        <ul>
-          <% @tags.each do |tag|%>
-          <li>
-            <%= tag.name %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-    </div> -->
 
 
 
