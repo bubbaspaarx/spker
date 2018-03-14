@@ -43,8 +43,9 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Mount Action Cable outside main process or domain
-  config.action_cable.url = "wss://spker.pro/cable"
-  config.action_cable.allowed_request_origins = [ "http://spker.pro", "https://spker.pro" ]
+  config.action_cable.url = "wss://spker.herokuapp.com/cable"
+  config.web_socket_server_url = "wss://spker.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ["http://spker.herokuapp.com", "https://spker.herokuapp.com", 'http://spker.pro', 'https://spker.pro']
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]

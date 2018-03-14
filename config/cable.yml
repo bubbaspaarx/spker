@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV['REDISCLOUD_URL'] %>
+  url: redis://redistogo:1f00f1c4f13d462e35599f97296a60d9@porgy.redistogo.com:10502/
   channel_prefix: spker_production
