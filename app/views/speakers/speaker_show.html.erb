@@ -10,33 +10,32 @@
 <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520877581/placeholder_image.jpg" %>
 <div class="speaker-wrapper">
   <div class="row speaker-show-image">
-    <div class="speaker-banner-wrapper col-xs-12 col-lg-8 col-lg-offset-4">
-      <div class="speaker-banner" style="background-image: url('<%= cl_image_path image %>')">
+      <div class="speaker-personal-info col-xs-12 col-lg-4">
+        <h3><%= @user.first_name %></h3>
+        <h3><%= @user.last_name %></h3>
+        <p><%= @user.job_title %> FullStack Developper</p>
+        <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laudantium quas laborum odit atque deleniti. Vero excepturi accusamus, aspernatur in, provident, accusantium inventore dolores assumenda architecto tenetur culpa nostrum libero.</p>
+      </div>
+    <div class="speaker-banner-wrapper col-xs-12 col-lg-8">
+      <div class="speaker-banner" style="background-image: url('https://avatars1.githubusercontent.com/u/30607026?v=4')">
       </div>
       <div class="invite-button">
         <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
       </div>
     </div>
   </div>
-  <div class="row speaker-about">
-    <div class="speaker-info-content">
-      <div class="speaker-personal-info col-xs-4">
-        <h3><%= @user.first_name %></h3>
-        <h3><%= @user.last_name %></h3>
-        <p><%= @user.job_title %></p>
-      </div>
-      <div class="speaker-blurb col-xs-7">
-        <p><%= @user.speaker_blurb %></p>
-      </div>
-    </div>
-  </div>
 </div>
-<div class="speaker-part-2">
-  <h3 class="speaker-about text-center">Who is <%= @user.first_name %></h3>
-  <div class="more-info-carousel">
-    <%= render 'shared/speaker-carousel' %>
-    <div class="extra-info">
-      <p>- <%= @user.accolades %></p>
-    </div>
+<hr>
+<div class="profile">
+  <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
+  <div class="infoHolder">
+  <h2><%= @user.job_title %> FullStack Dev</h2>
+  <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente commodi ut cum, maiores quis saepe illum soluta quaerat incidunt ducimus minus, eligendi voluptatum consequuntur aliquam! Ab modi, perspiciatis molestias culpa.</p>
   </div>
+
+  <div class="imageHolder"><img class="profilePic" src="https://avatars1.githubusercontent.com/u/30607026?v=4"></div>
 </div>
+
+
+
+
