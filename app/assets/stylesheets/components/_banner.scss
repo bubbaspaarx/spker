@@ -19,7 +19,7 @@
 .banner {
   color: white;
   text-align: center;
-  height: 90vh;
+  height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
@@ -75,4 +75,29 @@
 
 .navbar-wagon-link {
   color: $brand-primary !important;
+}
+
+.arrow-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.down-arrow {
+  font-size: 40px;
+  width: 57px;
+  position: absolute;
+  top: 20vh;
+  background-color: rgba(white, 0.2);
+  border-radius: 50%;
+  transition: ease 0.2s;
+  animation: bounce 1s linear infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0px) }
+  25% { transform: translateY(5px) }
+  50% { transform: translateY(0px) }
+  75% { transform: translateY(-5px) }
+  100% { transform: translateY(0px) }
 }
