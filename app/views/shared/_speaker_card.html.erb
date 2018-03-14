@@ -1,11 +1,14 @@
 <div id="card-display">
     <div class="card-wrap scaled">
       <%= link_to user_speaker_path(user) do %>
-      <img src="http://res.cloudinary.com/montycat/image/upload/q_64/v1520614987/Backer_image.jpg" alt="test 1" style="width:100%; height:60%">
-      <h2 class="text-center"><%= user.first_name %> <%= user.last_name %></h2>
-      <p class="text-center"><%= humanized_money_with_symbol(user.cost)%> per hour</p>
+      <div class="card" style="background-image: url('http://res.cloudinary.com/montycat/image/upload/q_64/v1520614987/Backer_image.jpg') width:300, height:400">
+      </div>
+        <div class="card-description">
+          <h2><%= user.first_name %> <%= user.last_name %></h2>
+          <p><%= humanized_money_with_symbol(user.cost)%> per hour</p>
+          <p><%= user.city %></p>
+          <p><%= user.cost %></p>
+        </div>
       <% end %>
     </div>
 </div>
-
-
