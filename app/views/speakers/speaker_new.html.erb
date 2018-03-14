@@ -1,1 +1,5 @@
-<%= render 'shared/speaker_form', user: @user, url: user_speaker_create_path(@user)  %>
+<div class="speaker-edit-container">
+  <div class="detail-form">
+    <%= render 'shared/speaker_form', user: @user, url: user_speaker_update_path(@user)  %>
+  </div>
+</div>
