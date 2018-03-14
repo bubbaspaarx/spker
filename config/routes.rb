@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'users/:user_id/messages/new', to: 'messages#invite', as: 'messages_invite'
   get 'speakers', to: 'speakers#speaker_index'
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update] do
