@@ -14,19 +14,24 @@
       <div class="infoHolder col-xs-10-offset-2">
       <h2><%= @user.job_title %></h2>
       <p><%= @user.speaker_blurb %></p>
-      <hr>
+      <p><%= @user.city %></p>
       <p>Categories</p>
       <ul>
         <% @user.user_tags.each do |tag| %>
         <li><%= tag.category.name %></li>
         <% end %>
       </ul>
-
+      <ul class="list-inline">
+        <li><a href="<%= @user.facebook %>"><h5>Facebook <i class="fab fa-facebook-square"></i></h5></a></li>
+        <li><a href="<%= @user.twitter %>"><h5>Twitter <i class="fab fa-twitter-square"></i></h5></a></li>
+        <li><a href="<%= @user.linkedin %>"><h5>LinkedIn <i class="fab fa-linkedin"></i></h5></a></li>
+      </ul>
       </div>
       <div class="imageHolder col-xs-10-offset-2">
-        <div class="profilePic" style="width:400, height:500">
-          <% image = @user.photo.url ? @user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-          <%= image_tag(image)%>
+
+        <% image = @user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="profilePic" style="background-image: url('<%= cl_image_path image %>')">
+
         </div>
       </div>
     </div>
@@ -40,9 +45,6 @@
           <div id="message-btn">
             <%= link_to 'Send message', new_user_message_path(@user)%>
           </div>
-        </div>
-        <div class=" speaker-profile-carousel">
-          <%= render 'shared/speaker-carousel' %>
         </div>
         <div class="invite-button">
           <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
