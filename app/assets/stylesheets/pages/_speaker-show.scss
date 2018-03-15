@@ -101,7 +101,7 @@
 
 .speaker-wrapper {
   width: 100%;
-  height: 40vh;
+  height: 20vh;
 }
 
 .row.speaker-about {
@@ -128,10 +128,6 @@
 
 
 
-
-
-
-
 html,body{
   width:100%;
   height:100%;
@@ -140,7 +136,7 @@ html,body{
 }
 
 .profile-container {
-  height: calc(100vh - 70px);
+  height: calc(80vh);
   border: 1px solid #F2F2F2;
 
 }
@@ -148,26 +144,16 @@ html,body{
 
 .profile{
   width:80vw;
-  height: calc(100vh - 70px);
+  height: calc(30vh);
   left:35%;
   float:left;
   position:relative;
-  margin:50px 0px 50px 0px;
+  margin:20px 0px 50px 0px;
   margin-left:-440px;
   cursor:pointer;
-  margin-top: 150px;
+  margin-top: 50px;
   background-color: white;
   padding: 15px;
-
-  .reviews {
-    position: absolute;
-    bottom: 0px;
-    border-top: 1px solid #F2F2F2;
-    padding: 15px;
-    li {
-      margin: 15px;
-    }
-  }
 
   .imageHolder{
     float:left;
@@ -234,7 +220,15 @@ html,body{
       margin-top:0px;
       width:100%;
       transform: translateX(102%);
-       transition:all .62s ease;
+      transition:all .62s ease;
+    }
+    ul{
+      float:left;
+      margin-top:0px;
+      width:100%;
+      transform: translateX(102%);
+      transition:all .62s ease;
+      padding-left: 20px
     }
     #invite-btn-2{
       float:left;
@@ -245,7 +239,7 @@ html,body{
     }
   }
 
-    &:hover .infoHolder h2, &:hover .infoHolder p, &:hover #invite-btn-2{
+    &:hover .infoHolder h2, &:hover .infoHolder p, &:hover .infoHolder ul{
       transform: translateX(0%);
     }
 }
