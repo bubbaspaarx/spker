@@ -38,8 +38,8 @@
   border: 1px solid #F2F2F2;
   background-color: #F2F2F2;
   .message-avatar {
-    height: 200px;
-    width: 200px;
+    background-size: cover;
+    background-position: 50% 50%;
   }
   .add-photo {
     margin-right: 270px;
