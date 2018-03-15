@@ -6,9 +6,9 @@
 .tab-content-container {
   height: auto;
   min-height: 200px;
-  border-left: 1px solid rgb(236, 140, 59);
-  border-right: 1px solid rgb(236, 140, 59);
-  border-bottom: 1px solid rgb(236, 140, 59);
+  // border-left: 1px solid rgb(236, 140, 59);
+  // border-right: 1px solid rgb(236, 140, 59);
+  // border-bottom: 1px solid rgb(236, 140, 59);
   .nav-tabs {
     border: rgb(236, 140, 59);
   }
@@ -27,7 +27,7 @@
 
 .profile-content {
   position: relative;
-  max-width: 750px;
+  // max-width: 750px;
   margin: 40px auto;
   height: auto;
   border-radius: 3px;
@@ -37,14 +37,14 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  color: #3274B8;
+  color: $brand-primary;
 
 
 }
 
 .edit-button-profile {
  & :hover {
-  color: rgba(50, 116, 184, 0.6);
+  color: #d27222;
   cursor: pointer;
 }
 }
@@ -84,8 +84,22 @@
 }
 
 .nav-tabs > li.active > a {
-  border: 1px solid rgb(236, 140, 59) !important;
-  border-bottom-color: transparent !important;
+  border: none;
+
+}
+.nav-tabs > li > a:hover {
+    border-color: transparent;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  color: #333;
+  background-color: transparent;
+  border: none;
 }
 
 .events-list {
@@ -108,11 +122,18 @@
 }
 
 .dash-tab {
-  background-color: rgba(236, 140, 59, 0.8);
-  border-radius: 3px 3px 0 0;
+  background-color: transparent;
+  opacity: .6;
+  border-bottom: 4px solid transparent;
+  margin: 0 10px;
   a {
-    color: #fff;
+    color: #333;
   }
+}
+
+.dash-tab.active {
+  opacity: 1;
+  border-bottom: 4px solid $brand-primary;
 }
 
 .dashboard-title {
@@ -123,5 +144,5 @@
 }
 
 .nav-tabs {
-  border-bottom-color: rgb(236, 140, 59);
+  border: none;
 }

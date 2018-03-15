@@ -9,11 +9,11 @@
     <div>
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="dash-tab <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'security' ? 'active' : '' %>"><a href="#security" aria-controls="security" role="tab" data-toggle="tab">Security</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab">Speaker Profile</a></li>
+        <li role="presentation" class="dash-tab <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'security' ? 'active' : '' %>"><a href="#security" aria-controls="security" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Security</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Profile</a></li>
       </ul>
 
 
