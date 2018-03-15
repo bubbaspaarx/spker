@@ -35,7 +35,7 @@ postcodes.each do |postcode|
     address: Faker::Address.street_address,
     postcode: postcode,
     city: Faker::Address.city,
-    cost_cents: rand(5..10000) * 1000,
+    cost_cents: rand(15..100) * 1000,
     travel_distance: rand(2..100) * 100,
     speaker_blurb: bio
 
