@@ -12,7 +12,7 @@
         <li role="presentation" class="dash-tab <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-user"></i> Profile</a></li>
         <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
         <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'security' ? 'active' : '' %>"><a href="#security" aria-controls="security" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Security</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'account' ? 'active' : '' %>"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Account</a></li>
         <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Profile</a></li>
       </ul>
 
@@ -23,20 +23,20 @@
           <div name="profile" role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
             <%= render "shared/user_profile" %>
           </div>
-          <div role="tabpanel" class="tab-pane" id="messages">
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'messages' ? 'active' : '' %>" id="messages">
             <% if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
             <p>You have no messages</p>
             <p>Messages you send and receive will appear here</p>
             <% end %>
             <%= render 'shared/inbox-container' %>
           </div>
-          <div role="tabpanel" class="tab-pane" id="events">
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'events' ? 'active' : '' %>" id="events">
             <%= render 'shared/user-events-list' %>
           </div>
-          <div role="tabpanel" class="tab-pane" id="security">
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'account' ? 'active' : '' %>" id="account">
             <p>Change your password or email address</p>
           </div>
-          <div role="tabpanel" class="tab-pane" id="speaker-profile">
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
             <%= render 'shared/speaker-details', user: @user %>
             <% if current_user.is_speaker == false %>
             <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
