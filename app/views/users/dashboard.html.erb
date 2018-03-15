@@ -38,7 +38,7 @@
           </div>
           <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
             <%= render 'shared/speaker-details', user: @user %>
-            <% if current_user.is_speaker == false %>
+            <% if current_user.is_speaker.nil? || current_user.is_speaker == false %>
             <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
             <% else %>
             <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
