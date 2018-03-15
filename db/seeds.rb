@@ -37,8 +37,8 @@ postcodes.each do |postcode|
     city: Faker::Address.city,
     cost_cents: rand(15..100) * 1000,
     travel_distance: rand(2..100) * 100,
-    speaker_blurb: bio
-
+    speaker_blurb: bio,
+    job_title: Faker::Company.profession.capitalize
   })
   user.save!
 end
