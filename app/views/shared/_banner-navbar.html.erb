@@ -27,8 +27,9 @@
     <!-- Avatar with dropdown menu -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-        <%= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% image = current_user.photo.url ? message.sender.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="message-avatar", class="avatar dropdown-toggle", id="navbar-wagon-menu", data-toggle="dropdown", style="background-image: url('<%= cl_image_path image %>')">
+        </div>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to dashboard_path(current_user) do %>
@@ -67,8 +68,8 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
           <%= link_to new_event_path, class: "navbar-wagon-item navbar-wagon-link linky" do %>
-            <i class="fas fa-plus"></i> <%= t(".create", default: "Create an event") %>
-            <% end %>
+          <i class="fas fa-plus"></i> <%= t(".create", default: "Create an event") %>
+          <% end %>
         </li>
         <% if current_user.is_speaker == true %>
         <li>
