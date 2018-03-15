@@ -22,7 +22,8 @@
   <div class="container-index">
     <% @users.each do |user| %>
     <%= link_to user_speaker_path(user) do %>
-    <div class="card-index" style="background-image: url('https://avatars2.githubusercontent.com/u/34913884?v=4')">
+    <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+    <div class="card-index" style="background-image: url(<%= cl_image_path(image) %>)">
       <div class="description">
         <p class="speaker-title"><%= user.first_name %> <%= user.last_name %></p>
         <p class="speaker-job"><%= user.job_title%></p>
