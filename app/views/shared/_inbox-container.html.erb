@@ -3,9 +3,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="sender">
-        <div class="sender-image">
-          <% image = correspondent[0].photo.url ? correspondent[0].photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-          <%= cl_image_tag image, class: "inbox-avatar" %>
+        <% image = correspondent[0].photo.url ? correspondent[0].photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="sender-image inbox-avatar" style="background-image: url('<%= cl_image_path image %>')">
         </div>
         <div class="sender-info">
           <p><%= link_to "#{correspondent[0].first_name} #{correspondent[0].last_name}", inbox_users_path(@user, correspondent[0]) %></p>
