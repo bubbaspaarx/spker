@@ -31,13 +31,28 @@
         <%= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to dashboard_path(current_user) do %>
+            <%= link_to dashboard_path(current_user, active_tab: 'profile') do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
           <li>
-            <%= link_to inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <%= link_to dashboard_path(current_user, active_tab: 'messages'), class: "navbar-wagon-item navbar-wagon-link" do %>
             <i class="far fa-envelope"></i> <%= t(".inbox", default: "Inbox") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'events'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="far fa-calendar"></i> <%= t(".events", default: "Events") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'account'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-wrench"></i> <%= t(".account", default: "Account") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'speaker-profile'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-microphone"></i> <%= t(".speaker-profile", default: "Speaker Profile") %>
             <% end %>
           </li>
           <li>
