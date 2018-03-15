@@ -88,12 +88,12 @@
 
 }
 .nav-tabs > li > a:hover {
-    border-color: transparent;
+  border-color: transparent;
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: none;
-    background-color: transparent;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -138,7 +138,7 @@
 
 .dashboard-title {
   h1, h4 {
-  color: rgba(0,0,0,0.7);
+    color: rgba(0,0,0,0.7);
   }
 
 }
@@ -153,5 +153,6 @@
 }
 
 .speaker-det-container {
-
+  height: auto;
+  min-height: 200px;
 }

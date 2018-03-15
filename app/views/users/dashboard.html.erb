@@ -42,6 +42,7 @@
             <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
             <% else %>
             <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
+            <%= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
             <% end %>
           </div>
         </div>
