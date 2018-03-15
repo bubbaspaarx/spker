@@ -16,6 +16,8 @@
   width: 70px;
   height: 70px;
   border-radius: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .message {
@@ -33,7 +35,7 @@
   .received {
    background-color: rgba(56, 157, 216, 0.1);
    border-left: 3px solid $blue;
-  }
+ }
 }
 
 .message-info {

@@ -21,18 +21,19 @@
   </div>
   <div class="container-index">
     <% @users.each do |user| %>
-    <%= link_to user_speaker_path(user) do %>
+
     <% image = user.photo.url ? user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
     <div class="card-index" style="background-image: url(<%= cl_image_path(image) %>)">
+      <%= link_to "", user_speaker_path(user), class: "card-link" %>
       <div class="description">
         <p class="speaker-title"><%= user.first_name %> <%= user.last_name %></p>
         <p class="speaker-job"><%= user.job_title%></p>
         <p class="speaker-city"><%= user.city %></p>
-        <p class="speaker-cost">from £ <%= user.cost.to_i %></p>
+        <p class="speaker-cost">from <span>£<%= user.cost.to_i %></span></p>
       </div>
     </div>
     <% end %>
-    <% end %>
+
   </div>
 </div>
 

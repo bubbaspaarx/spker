@@ -6,7 +6,7 @@
           <span id="edit-button-profile" class="edit-button-profile">
             <i class="profile-edit-button far fa-edit"></i>
           </span>
-          <div class="pp-image-container col-xs-3 col-xs-offset-1">
+          <div class="pp-image-container col-xs-3">
             <% if current_user.id == params[:id].to_i %>
             <div class="load-photo">
               <button type="button" class="btn add-photo hidden" data-toggle="collapse" data-target="#demo" id='photo_upload' >+</button>
@@ -40,12 +40,12 @@
             </div>
             <div class="user-reviews">
             </div>
-            <p>Member Since <%= @user.created_at %></p>
+            <p>Member Since <%= @user.created_at.strftime('%B %Y') %></p>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="about-you-container col-xs-10 col-xs-offset-1">
+        <div class="about-you-container col-xs-10">
           <div class="about-you">
             <h4>About you</h4>
             <p class="user-details" id="users-about"><%= @user.about %></p>
