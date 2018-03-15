@@ -1,18 +1,18 @@
-<h4 id="index-header" class="text-center">Choose the perfect speaker for your event in <%= params[:location] %></h4>
+<h4 id="index-header" class="text-center">Choose the perfect speaker for your event <%= params[:location] %></h4>
 <div class="index-filter">
   <div class="filter-form-index">
     <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
     <div class="filter-speaker-wrap">
-      <%= f.input :location, input_html: { id: 'filter-location', class: "filter-speaker-input", name: "location" }, placeholder: "Location", label: false %>
+      <%= f.input :location, input_html: { id: 'filter-location', class: "filter-speaker-input", name: "location", value: params[:location] }, placeholder: "Location", label: false %>
     </div>
     <div class="filter-speaker-wrap">
       <%= f.input :category, collection: Category.all, as: :check_boxes, label: "Area of Expertise", required: false, value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "check_boxes_cat", placeholder: "Category" } %>
     </div>
     <div class="filter-speaker-wrap">
-      <%= f.input :cost, placeholder: 'Budget', label: false, required: false, input_html: { class: "filter-speaker-input" } %>
+      <%= f.input :cost, placeholder: 'Budget', label: false, required: false, input_html: { class: "filter-speaker-input", name: "cost", value: params[:cost] } %>
     </div>
     <div class="filter-speaker-wrap">
-      <%= f.input :name, placeholder: 'Speaker Name', label: false, required: false, input_html: { class: "filter-speaker-input" } %>
+      <%= f.input :name, placeholder: 'Speaker Name', label: false, required: false, input_html: { class: "filter-speaker-input", name: 'name', value: params[:name] } %>
     </div>
     <div class="filter-speaker-wrap">
       <%= f.button :submit, "Search", id: 'the-submit-button', class: 'the-submit-button'%>

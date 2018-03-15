@@ -9,24 +9,13 @@ class SpeakersController < ApplicationController
   def speaker_index
     @tags = Category.all
     @users = policy_scope(User)
-    if params[:category] == "" || params[:category].nil?
-    else
     @users = @users.search_by_full_name(params[:name]) if params[:name].present?
+    @users = @users.cost(params[:cost]) if params[:cost].present?
     if params[:location].present?
       @users = @users.near(params[:location], 100000) if params[:location].present?
       @users = @users.reject { |user| user.travel_distance < user.distance || user.latitude.nil? || user.longitude.nil? }
     end
-    @users.cost(params[:cost]) if params[:cost].present?
-    @users = @users & category_search
-    @markers = @users.map do |user|
-      {
-        lat: user.latitude,
-        lng: user.longitude,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-
-      }
-      end
-    end
+    @users = @users & category_search if params[:category].present?
   end
 
   def speaker_new
