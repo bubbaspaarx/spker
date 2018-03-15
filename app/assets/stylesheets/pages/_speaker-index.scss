@@ -19,6 +19,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
+  text-decoration: none !important;
+  position: relative;
   .description {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -31,7 +33,14 @@
 
   }
 }
-
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
 
 .index-filter {
   display: flex;
@@ -47,8 +56,13 @@
     -webkit-transition: .15s;
     border-radius: 3px;
     background-color: #fff;
-    border: 1px solid $brand-primary;
-    margin-top: 5px;
+    border: 1px solid #ec8c3b;
+    margin-top: 2px;
+    margin-right: 10px;
+  }
+
+  input[type="checkbox"]:focus {
+    outline: none;
   }
 
   input[type="checkbox"]:checked {
@@ -118,7 +132,12 @@ font-size: 12px;
 
 .speaker-cost {
   float: right;
-  font-size: 16px;
-  color: rgba(20, 230, 255, 1);
+  font-size: 12px;
+  color: white;
+  span {
+    color: #1dd1a1;
+    font-size: 30px;
+    font-weight: bold;
+  }
 
 }
