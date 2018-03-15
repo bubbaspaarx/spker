@@ -16,6 +16,7 @@ class SpeakersController < ApplicationController
       @users = @users.near(params[:location], 100000) if params[:location].present?
       @users = @users.reject { |user| user.travel_distance < user.distance || user.latitude.nil? || user.longitude.nil? }
     end
+    @users.cost(params[:cost]) if params[:cost].present?
     @users = @users & category_search
     @markers = @users.map do |user|
       {
@@ -88,7 +89,7 @@ class SpeakersController < ApplicationController
   end
 
   def filtering_params(params)
-    params.slice(:cost, :name, :category)
+    params.slice(:cost)
   end
 
 end
