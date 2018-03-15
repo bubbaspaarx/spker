@@ -132,16 +132,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 html,body{
   width:100%;
   height:100%;
@@ -181,11 +171,11 @@ html,body{
 
   .imageHolder{
     float:left;
-    width:40%;
     position:relative;
 
-    .profilePic{
-      width:100%;
+    .profilePic img{
+      width:390px;
+      height: 500px;
       float:left;
       position:relative;
       filter: grayscale(100%);
