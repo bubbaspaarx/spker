@@ -149,7 +149,7 @@ html,body{
 .profile{
   width:80vw;
   height: calc(100vh - 70px);
-  left:40%;
+  left:35%;
   float:left;
   position:relative;
   margin:50px 0px 50px 0px;
@@ -181,7 +181,8 @@ html,body{
       filter: grayscale(100%);
       transition:all 0.7s ease;
       box-shadow: 0px 0px 10px -1px rgba(71,71,71,1);
-      margin-right: 50px;
+      margin-right: 10px;
+      margin-left: 80px;
 
     }
 }
