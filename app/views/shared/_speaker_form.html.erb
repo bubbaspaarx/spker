@@ -61,7 +61,7 @@
   </div>
 
   <%= f.fields_for :photos do |p| %>
-    <%= p.file_field :photo, multiple: true, name:"photos[photo][]" %>
+    <%= p.file_field :photo, multiple: true, name:"user[user_photos_attributes][][photo]" %>
   <% end %>
 
 
