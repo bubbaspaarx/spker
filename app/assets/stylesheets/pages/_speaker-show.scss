@@ -1,18 +1,18 @@
 .speaker-banner-wrapper {
   position: relative;
   background-color: $brand-primary;
-  height: calc(100vh - 70px);
+  height: calc(10vh);
   padding-left: 0px;
   padding-right: 0px;
+    // clip-path: polygon(0 0, 100% 0, 100% 20%, 0 180%);
 }
 
 .speaker-banner {
-  width: 100%;
-  height: calc(100vh - 70px);
-  // -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
+  width: 10%;
+  height: calc(10vh);
   clip-path: polygon(0 0, 100% 0, 100% 20%, 0 180%);
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 100%;
   .bannerPic {
   transform: scale(0.95);
   opacity: 0.7;
@@ -26,7 +26,7 @@
 .invite-button {
   position: absolute;
   right: 36px;
-  bottom: 44px;
+  bottom: 20px;
   & :hover {
     color: rgba(255, 255, 255, 0.3) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
@@ -42,9 +42,35 @@
   }
 }
 
+.message-button {
+  position: absolute;
+  left: 36px;
+  bottom: 20px;
+  & :hover {
+    color: rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+#message-btn a {
+  color: #fff;
+  background-color: rgba(1,1,1,0);
+  font-size: 28px;
+  border: 1px solid white;
+  padding-left: 5px;
+  padding-right: 5px;
+  & :hover {
+    color: rgb(60, 126, 232) !important;
+  }
+}
+
+
 .row.speaker-show-image {
   margin: 0 0;
   display:flex;
+  width: 100vw;
+  // position: absolute;
+  bottom: 0px;
 }
 
 

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :categories, through: :user_tags
   has_many :user_photos, dependent: :delete_all
   has_many :invites, dependent: :destroy
-    accepts_nested_attributes_for :user_photos
+  accepts_nested_attributes_for :user_photos
 
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
