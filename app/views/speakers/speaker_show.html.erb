@@ -22,17 +22,15 @@
     </ul>
   </div>
 </div>
-
-<!-- <div class="speaker-wrapper">
+<div class="speaker-wrapper">
   <div class="row speaker-show-image">
-      <div class="speaker-personal-info col-xs-12 col-lg-4">
-        <h3><%= @user.first_name %></h3>
-        <h3><%= @user.last_name %></h3>
-        <p><%= @user.job_title %> FullStack Developper</p>
-        <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi laudantium quas laborum odit atque deleniti. Vero excepturi accusamus, aspernatur in, provident, accusantium inventore dolores assumenda architecto tenetur culpa nostrum libero.</p>
+    <div class="speaker-banner-wrapper col-xs-12 col-xs-12-offset-8">
+      <div class="speaker-banner col-xs-12 col-xs-12-offset-8">
       </div>
-    <div class="speaker-banner-wrapper col-xs-12 col-lg-8">
-      <div class="speaker-banner" style="background-image: url('https://avatars1.githubusercontent.com/u/30607026?v=4')">
+      <div class="message-button">
+        <div id="message-btn">
+          <%= link_to 'Send message', new_user_message_path(@user)%>
+        </div>
       </div>
       <div class="invite-button">
         <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
@@ -40,7 +38,6 @@
     </div>
   </div>
 </div>
-<hr> -->
 
 
 
