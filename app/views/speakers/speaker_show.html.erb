@@ -14,6 +14,8 @@
       <div class="infoHolder col-xs-10-offset-2">
       <h2><%= @user.job_title %></h2>
       <p><%= @user.speaker_blurb %></p>
+      <hr>
+      <p>Categories</p>
       <ul>
         <% @user.user_tags.each do |tag| %>
         <li><%= tag.category.name %></li>
