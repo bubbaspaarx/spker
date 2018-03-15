@@ -30,9 +30,7 @@
   max-width: 750px;
   margin: 40px auto;
   height: auto;
-  border: 1px solid rgba(236, 140, 59,0.3);
   border-radius: 3px;
-  box-shadow: 0 4px 8px 0 rgba(236, 140, 59,0.2), 0 6px 20px 0 rgba(236, 140, 59, 0.19);
 }
 
 .profile-edit-button {
@@ -122,4 +120,8 @@
   color: rgba(0,0,0,0.7);
   }
 
+}
+
+.nav-tabs {
+  border-bottom-color: rgb(236, 140, 59);
 }

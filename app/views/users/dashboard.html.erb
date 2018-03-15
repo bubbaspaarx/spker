@@ -31,9 +31,6 @@
             <%= render 'shared/inbox-container' %>
           </div>
           <div role="tabpanel" class="tab-pane" id="events">
-            <%= link_to new_event_path do %>
-            <button type="button" action="/events/new" class="event-create-button" ><i class="fas fa-plus"></i> Create Event</button>
-            <% end %>
             <%= render 'shared/user-events-list' %>
           </div>
           <div role="tabpanel" class="tab-pane" id="security">
