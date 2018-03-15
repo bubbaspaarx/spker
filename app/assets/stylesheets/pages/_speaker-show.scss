@@ -1,74 +1,74 @@
 .speaker-banner-wrapper {
   position: relative;
   background-color: $brand-primary;
-  height: 40vh;
+  height: 10vh;
   padding-left: 0px;
   padding-right: 0px;
     // clip-path: polygon(0 0, 100% 0, 100% 20%, 0 180%);
-}
-
-.speaker-banner {
-  width: 10%;
-  height: 40vh;
-  clip-path: polygon(0 0, 100% 0, 100% 20%, 0 180%);
-  background-size: cover;
-  background-position: 100%;
-  .bannerPic {
-  transform: scale(0.95);
-  opacity: 0.7;
-  height:100%;
-  width: auto;
   }
-}
 
-
-
-.invite-button {
-  position: absolute;
-  right: 36px;
-  bottom: 20px;
-  & :hover {
-    color: rgba(255, 255, 255, 0.3) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  .speaker-banner {
+    width: 10%;
+    height: 10vh;
+    clip-path: polygon(0 0, 100% 0, 100% 20%, 0 180%);
+    background-size: cover;
+    background-position: 100%;
+    .bannerPic {
+      transform: scale(0.95);
+      opacity: 0.7;
+      height:100%;
+      width: auto;
+    }
   }
-}
 
-#invite-btn {
-  color: #fff;
-  background-color: rgba(1,1,1,0);
-  font-size: 28px;
-  & :hover {
-    color: rgb(60, 126, 232) !important;
+
+
+  .invite-button {
+    position: absolute;
+    right: 36px;
+    bottom: 20px;
+    & :hover {
+      color: rgba(255, 255, 255, 0.3) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
   }
-}
 
-.message-button {
-  position: absolute;
-  left: 36px;
-  bottom: 20px;
-  & :hover {
-    color: rgba(255, 255, 255, 0.3) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  #invite-btn {
+    color: #fff;
+    background-color: rgba(1,1,1,0);
+    font-size: 28px;
+    & :hover {
+      color: rgb(60, 126, 232) !important;
+    }
   }
-}
 
-#message-btn a {
-  color: #fff;
-  background-color: rgba(1,1,1,0);
-  font-size: 28px;
-  border: 1px solid white;
-  padding-left: 5px;
-  padding-right: 5px;
-  & :hover {
-    color: rgb(60, 126, 232) !important;
+  .message-button {
+    position: absolute;
+    left: 36px;
+    bottom: 20px;
+    & :hover {
+      color: rgba(255, 255, 255, 0.3) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
   }
-}
+
+  #message-btn a {
+    color: #fff;
+    background-color: rgba(1,1,1,0);
+    font-size: 28px;
+    border: 1px solid white;
+    padding-left: 5px;
+    padding-right: 5px;
+    & :hover {
+      color: rgb(60, 126, 232) !important;
+    }
+  }
 
 
-.row.speaker-show-image {
-  margin: 0 0;
-  display:flex;
-  width: 100vw;
+  .row.speaker-show-image {
+    margin: 0 0;
+    display:flex;
+    width: 100vw;
   // position: absolute;
   bottom: 0px;
 }
@@ -135,33 +135,20 @@ html,body{
   padding:0;
 }
 
-.profile-container {
+.profile-container{
+  width:100%;
+  margin:40px 0px 0px 0px;
   height: calc(80vh);
-  border: 1px solid #F2F2F2;
-
-}
-
-
-.profile{
-  width:80vw;
-  height: calc(30vh);
-  left:35%;
-  float:left;
-  position:relative;
-  margin:20px 0px 50px 0px;
-  margin-left:-440px;
-  cursor:pointer;
-  margin-top: 50px;
-  background-color: white;
-  padding: 15px;
 
   .imageHolder{
     float:left;
     position:relative;
 
-    .profilePic img{
-      width:390px;
-      height: 500px;
+    .profilePic {
+      background-position: 50% 50%;
+      background-size: cover;
+      width: 36vw;
+      height: 36vw;
       float:left;
       position:relative;
       filter: grayscale(100%);
@@ -171,7 +158,7 @@ html,body{
       margin-left: 80px;
 
     }
-}
+  }
 
 
   h1{
@@ -191,12 +178,12 @@ html,body{
   }
 
   &:hover h1{
-    transform: translateY(20vw);
+    transform: translateY(40vw);
   }
 
   &:hover .profilePic{
-      filter: grayscale(0%);
-      transform:scale(1.1);
+    filter: grayscale(0%);
+    transform:scale(1.1);
   }
 
 
@@ -213,7 +200,7 @@ html,body{
       float:left;
       width:100%;
       transform: translateX(102%);
-       transition:all .5s ease;
+      transition:all .5s ease;
     }
     p{
       float:left;
@@ -221,6 +208,8 @@ html,body{
       width:100%;
       transform: translateX(102%);
       transition:all .62s ease;
+      font-size: 15px;
+      padding-left: 20px
     }
     ul{
       float:left;
@@ -228,7 +217,18 @@ html,body{
       width:100%;
       transform: translateX(102%);
       transition:all .62s ease;
-      padding-left: 20px
+      padding-left: 40px;
+      font-size: 15px;
+    }
+    a{
+      float:left;
+      margin-top:0px;
+      width:100%;
+      transform: translateX(102%);
+      transition:all .62s ease;
+      padding-left: 60px;
+      font-size: 15px;
+      line-height: 7px;
     }
     #invite-btn-2{
       float:left;
@@ -239,9 +239,9 @@ html,body{
     }
   }
 
-    &:hover .infoHolder h2, &:hover .infoHolder p, &:hover .infoHolder ul{
-      transform: translateX(0%);
-    }
+  &:hover .infoHolder h2, &:hover .infoHolder p, &:hover .infoHolder ul, &:hover .infoHolder a{
+    transform: translateX(0%);
+  }
 }
 
 
