@@ -42,7 +42,7 @@ class SpeakersController < ApplicationController
         generate_tags(params[:user])
         redirect_to dashboard_path(@user)
       end
-      redirect_to dashboard_path(@user)
+      redirect_to user_speaker_path(@user)
     else
       @user.is_speaker = false
       render :speaker_new
