@@ -7,36 +7,42 @@
 #accolades?
 #videos -->
 <%= render 'shared/invite-message-modal' %>
-<div class="profile-container col-xs-10-offset-2">
-  <div class="profile col-xs-10-offset-2">
-    <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
-    <div class="infoHolder col-xs-10-offset-2">
-    <h2><%= @user.job_title %> FullStack Dev</h2>
-    <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente commodi ut cum, maiores quis saepe illum soluta quaerat incidunt ducimus minus, eligendi voluptatum consequuntur aliquam! Ab modi, perspiciatis molestias culpa.</p>
-    </div>
-    <div class="imageHolder col-xs-10-offset-2"><img class="profilePic" src="https://avatars1.githubusercontent.com/u/30607026?v=4"></div>
-    <ul class="reviews list-inline col-xs-10-offset-2">
-      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor architecto quibusdam, dicta voluptates aperiam in debitis fuga repudiandae modi nam dolores eaque at itaque molestias, quos sunt, soluta hic.</li>
-      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus numquam quia, quaerat accusantium maxime amet assumenda iusto alias totam. Inventore exercitationem pariatur eius saepe voluptatum, aperiam omnis optio delectus nam!</li>
-      <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam culpa ipsam suscipit vel, perspiciatis ullam debitis assumenda nobis, alias atque deleniti repellat nam non vero, consequuntur qui reiciendis voluptate labore?</li>
-    </ul>
-  </div>
-</div>
-<div class="speaker-wrapper">
-  <div class="row speaker-show-image">
-    <div class="speaker-banner-wrapper col-xs-12 col-xs-12-offset-8">
-      <div class="speaker-banner col-xs-12 col-xs-12-offset-8">
+<div class="big-container">
+  <div class="profile-container col-xs-10-offset-2">
+    <div class="profile col-xs-10-offset-2">
+      <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
+      <div class="infoHolder col-xs-10-offset-2">
+      <h2><%= @user.job_title %> FullStack Dev</h2>
+      <p><%= @user.speaker_blurb %> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente commodi ut cum, maiores quis saepe illum soluta quaerat incidunt ducimus minus, eligendi voluptatum consequuntur aliquam! Ab modi, perspiciatis molestias culpa.</p>
       </div>
-      <div class="message-button">
-        <div id="message-btn">
-          <%= link_to 'Send message', new_user_message_path(@user)%>
+      <div class="imageHolder col-xs-10-offset-2"><img class="profilePic" src="https://avatars1.githubusercontent.com/u/30607026?v=4"></div>
+      <ul class="reviews list-inline col-xs-10-offset-2">
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dolor architecto quibusdam, dicta voluptates aperiam in debitis fuga repudiandae modi nam dolores eaque at itaque molestias, quos sunt, soluta hic.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus numquam quia, quaerat accusantium maxime amet assumenda iusto alias totam. Inventore exercitationem pariatur eius saepe voluptatum, aperiam omnis optio delectus nam!</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam culpa ipsam suscipit vel, perspiciatis ullam debitis assumenda nobis, alias atque deleniti repellat nam non vero, consequuntur qui reiciendis voluptate labore?</li>
+      </ul>
+    </div>
+  </div>
+  <div class="speaker-wrapper">
+    <div class="row speaker-show-image">
+      <div class="speaker-banner-wrapper col-xs-12 col-xs-12-offset-8">
+        <div class="speaker-banner col-xs-12 col-xs-12-offset-8">
+        </div>
+        <div class="message-button">
+          <div id="message-btn">
+            <%= link_to 'Send message', new_user_message_path(@user)%>
+          </div>
+        </div>
+        <div class=" speaker-profile-carousel">
+          <%= render 'shared/speaker-carousel' %>
+        </div>
+        <div class="invite-button">
+          <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
         </div>
       </div>
-      <div class="invite-button">
-        <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
-      </div>
     </div>
   </div>
+
 </div>
 
 
