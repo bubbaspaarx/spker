@@ -24,7 +24,7 @@
             <%= render "shared/user_profile" %>
           </div>
           <div role="tabpanel" class="tab-pane" id="messages">
-            <% if current_user.received_messages.length == 0 %>
+            <% if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
             <p>You have no messages</p>
             <p>Messages you send and receive will appear here</p>
             <% end %>

@@ -11,7 +11,8 @@ class InvitesController < ApplicationController
       message = Message.new(content: "You have received an invite to #{@invite.event.name} from #{ @invite.event.user.first_name } #{@invite.event.user.last_name}")
       message.sender = current_user
       message.receiver = @user
-      redirect_to dashboard_path(current_user)
+      message.save
+      redirect_to inbox_users_path(current_user, @user)
     end
   end
 
