@@ -1,14 +1,8 @@
-<%= simple_form_for([@user, @message], html: { id: 'invite_message' }, url: messages_invite_path(params[:user_id])) do |f| %>
+<%= simple_form_for(@user, html: { id: 'invite_message' }, url: user_invites_path(params[:user_id]), method: 'post') do |f| %>
   <%= f.error_notification %>
-  <% user = User.find(params[:user_id]) %>
   <div class="form-inputs">
-    <%= f.input :content, collection: current_user.events, required: false, prompt: "Select event", autofocus: true, class: 'event_content' %>
-    <%= f.input :start_time, as: :time, minute_step: 15 %>
-    <%= f.input :end_time, as: :time, minute_step: 15 %>
-    <script>const price = <%= user.cost %></script>
-    <div class="form-actions">
-    <p id="id-price">Price: £<%=user.cost %></p>
-    <%= f.button :submit, "Request Booking", id: 'invite_message_button' %>
+    <%= f.input :events, collection: current_user.events, required: false, prompt: "Select event", autofocus: true, class: 'event_content', inputHTML: { name: 'event' } %>
+    <%= f.button :submit, "Request Booking", id: 'invite_message_button', class: 'btn-primary' %>
     <% end %>
   </div>
 </div>

@@ -12,6 +12,7 @@ class PhotosController < ApplicationController
       else
         # errors later
       end
+    end
   end
 
   def photo_params

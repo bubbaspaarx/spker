@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20180315103859) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "invites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.index ["event_id"], name: "index_invites_on_event_id"
+    t.index ["user_id"], name: "index_invites_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.bigint "sender_id"
@@ -163,6 +173,8 @@ ActiveRecord::Schema.define(version: 20180315103859) do
   add_foreign_key "event_tags", "categories"
   add_foreign_key "event_tags", "events"
   add_foreign_key "events", "users"
+  add_foreign_key "invites", "events"
+  add_foreign_key "invites", "users"
   add_foreign_key "speaker_bookings", "events"
   add_foreign_key "speaker_bookings", "users"
   add_foreign_key "user_bookings", "events"

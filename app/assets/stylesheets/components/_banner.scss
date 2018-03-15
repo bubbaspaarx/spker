@@ -82,7 +82,13 @@
   width: 100%;
   background-color: #418adf;
   border: 1px solid #418adf;
+  border-radius: 5px;
   color: #fff !important;
+}
+
+.the-submit-button:hover {
+  background-color: rgb(136, 187, 247);
+  border-color: rgb(136, 187, 247);
 }
 
 .arrow-container {
@@ -98,7 +104,6 @@
   top: 20vh;
   background-color: rgba(white, 0.2);
   border-radius: 50%;
-  transition: ease 0.2s;
   animation: bounce 1s linear infinite;
 }
 
@@ -109,4 +114,9 @@
   75% { transform: translateY(-5px) }
   100% { transform: translateY(0px) }
 
+}
+
+
+.filter-searchbar2 {
+    border-radius: 5px;
 }
