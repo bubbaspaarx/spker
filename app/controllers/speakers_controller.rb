@@ -38,6 +38,7 @@ class SpeakersController < ApplicationController
 
   def speaker_update
     if @user.update(speaker_params)
+      destroy_tags
       generate_tags
       redirect_to user_speaker_path(@user)
     else
