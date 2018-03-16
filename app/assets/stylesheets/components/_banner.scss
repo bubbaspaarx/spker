@@ -126,5 +126,16 @@
 
 
 .filter-searchbar2 {
-    border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+.up-arrow {
+  text-align: center;
+  font-size: 40px;
+  width: 57px;
+  color: #fff;
+  background-color: $brand-primary;
+  border-radius: 50%;
+  animation: bounce 1s linear infinite;
 }
