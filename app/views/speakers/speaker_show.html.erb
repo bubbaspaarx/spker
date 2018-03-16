@@ -8,10 +8,10 @@
 #videos -->
 <%= render 'shared/invite-message-modal' %>
 <div class="big-container">
-  <div class="profile-container col-xs-10-offset-2">
-    <div class="profile col-xs-10-offset-2">
+  <div class="profile-container">
+    <div class="profile">
       <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
-      <div class="infoHolder col-xs-10-offset-2">
+      <div class="infoHolder">
         <h2><%= @user.job_title %></h2>
         <p><%= @user.city %></p>
         <p><%= @user.speaker_blurb %></p>
@@ -27,7 +27,7 @@
         </ul>
       </div>
 
-      <div class="imageHolder col-xs-10-offset-2">
+      <div class="imageHolder">
         <% image = @user.photo.url ? @user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
         <div class="profilePic" style="background-image: url('<%= cl_image_path image %>')">
         </div>
@@ -36,19 +36,15 @@
   </div>
   <div class="speaker-wrapper">
     <div class="row speaker-show-image">
-      <div class="speaker-banner-wrapper col-xs-12 col-xs-12-offset-8">
-        <div class="speaker-banner col-xs-12 col-xs-12-offset-8">
-        </div>
-        <div class="message-button">
-          <div id="message-btn">
+      <div class="speaker-banner-wrapper">
+        <div class="speaker-button">
             <%= link_to 'Send message', new_user_message_path(@user)%>
-          </div>
         </div>
         <div class="speaker-cost">
-          <h4>£ <%= @user.cost.to_i %></h4>
+          <h4>Fee from £ <%= @user.cost.to_i %></h4>
         </div>
-        <div class="invite-button">
-          <button id='invite-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request Booking</button>
+        <div class="speaker-button">
+          <a data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request booking</a>
         </div>
       </div>
     </div>
