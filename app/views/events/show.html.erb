@@ -19,11 +19,11 @@
             </div>
             <div class="date">
               <h5>Event Date</h5>
-               <% if @event.start_date == @event.end_date %>
-                <p>This event takes place on <%= @event.start_date.strftime('%d/%m/%Y') %></p>
-               <% else %>
-                <p>This event takes place between <%= @event.start_date.strftime('%d/%m/%Y') %> and <%= @event.end_date.strftime('%d/%m/%Y') %></p></p>
-               <% end %>
+              <% if @event.start_date == @event.end_date %>
+              <p>This event takes place on <%= @event.start_date.strftime('%d/%m/%Y') %></p>
+              <% else %>
+              <p>This event takes place between <%= @event.start_date.strftime('%d/%m/%Y') %> and <%= @event.end_date.strftime('%d/%m/%Y') %></p></p>
+              <% end %>
             </div>
           </div>
           <p class='event-description'><%= @event.description %></p>
@@ -33,7 +33,7 @@
             <h5>This event is looking for speakers tagged with:</h5>
             <ul>
               <% @event.categories.each do |category| %>
-                <li><%= category.name %></li>
+              <li><%= category.name %></li>
               <% end %>
             </ul>
           </div>
@@ -49,6 +49,13 @@
           <div class="event-item">
             <p><i class="fas fa-plane fa-fw"></i>This event's organiser <%= @event.expenses_flights ? 'will' : 'won\'t' %> pay for transport</p>
             <p><i class="fas fa-utensils fa-fw"></i>This event's organiser <%= @event.expenses_per_diems ? 'will' : 'won\'t' %> pay for per diems</p>
+          </div>
+        </div>
+        <div class="filter-form-index">
+          <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
+          <div class="filter-speaker-wrap">
+            <%= f.button :submit, "Find Speakers", id: 'the-submit-button', class: 'the-submit-button event-show-page-btn'%>
+            <% end %>
           </div>
         </div>
       </div>
