@@ -106,6 +106,8 @@
 .speaker-wrapper {
   width: 100%;
   height: 10vh;
+  position: sticky;
+  bottom: 0;
 }
 
 .row.speaker-about {
@@ -199,12 +201,14 @@ html,body{
     overflow-x:hidden;
 
     h2{
+      margin-left: 15px;
       letter-spacing:3px;
       margin-top:0px;
       float:left;
       width:100%;
-      transform: translateX(102%);
+      transform: translateX(100%);
       transition:all .5s ease;
+      color: $brand-primary;
     }
     p{
       float:left;
