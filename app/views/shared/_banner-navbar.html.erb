@@ -86,11 +86,6 @@
           <i class="fas fa-plus"></i> <%= t(".create", default: "Create an event") %>
           <% end %>
         </li>
-        <% if current_user.is_speaker == true %>
-        <li>
-          <%= link_to "Dashboard", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" %>
-        </li>
-        <% end %>
         <li>
           <%= link_to dashboard_path(current_user, active_tab: 'profile')  do %>
           <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
