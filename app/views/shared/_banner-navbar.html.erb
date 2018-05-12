@@ -102,19 +102,21 @@
   <% else %>
   <div class="navbar-wagon-item1 hidden-md hidden-lg">
     <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown" id="dropdown1"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdown1">
-        <li>
-          <%= link_to new_user_registration_path(active_tab: 'signup') do %>
-          <%= t(".sign_up", default: "Sign Up") %>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_session_path(active_tab: 'login') do %>
-          <%= t(".sign_in", default: "Log In") %>
-          <% end %>
-        </li>
-      </ul>
+      <i class="fa fa-bars dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
+      <div class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="dropdown1">
+        <ul>
+          <li>
+            <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+            <%= t(".sign_up", default: "Sign Up") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path(active_tab: 'login') do %>
+            <%= t(".sign_in", default: "Log In") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
   <% end %>
