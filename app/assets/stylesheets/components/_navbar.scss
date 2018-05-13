@@ -55,6 +55,7 @@
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
+  cursor: pointer;
   & ul {
     list-style: none;
   }
@@ -121,4 +122,8 @@
 
 .navbar-wagon-item.hidden-md.hidden-lg {
   color: $brand-primary;
+}
+
+.dropdown {
+  cursor: pointer;
 }
