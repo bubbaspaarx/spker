@@ -1,0 +1,24 @@
+<div class="inbox-container">
+  <% @correspondents.each do |correspondent| %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="sender">
+        <% image = correspondent[0].photo.url ? correspondent[0].photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="sender-image inbox-avatar" style="background-image: url('<%= cl_image_path image %>')">
+        </div>
+        <div class="sender-info">
+          <p><%= link_to "#{correspondent[0].first_name} #{correspondent[0].last_name}", inbox_users_path(@user, correspondent[0]) %></p>
+          <% if correspondent[1].sender == @user %>
+          <p><%= "Last message sent at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
+          <% else %>
+          <p><%= "Last message received at #{correspondent[1].created_at.strftime(' %H:%M on %d/%m/%Y')}" %></p>
+          <% end %>
+        </div>
+        <div class="last-message">
+          <p><%= correspondent[1].content[0..150] %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

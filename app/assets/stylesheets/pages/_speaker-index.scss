@@ -1,0 +1,143 @@
+
+.container-index {
+  height: 100vh;
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: relative;
+  left: 2vw
+}
+
+.card-index {
+  height: 320px;
+  width: 320px;
+  margin: 27px 20px;
+  border-radius: 4px;
+  background-size: cover !important;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  text-decoration: none !important;
+  position: relative;
+  .description {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px;
+    padding-top: 10px;
+    width: 80%;
+  }
+  .description p {
+    line-height: 7px;
+
+  }
+}
+.card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.index-filter {
+  display: flex;
+}
+
+.filter-speaker-wrap {
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+    position: relative;
+    -webkit-transition: .15s;
+    border-radius: 3px;
+    background-color: #fff;
+    border: 1px solid #ec8c3b;
+    margin-top: 2px;
+    margin-right: 10px;
+  }
+
+  input[type="checkbox"]:focus {
+    outline: none;
+  }
+
+  input[type="checkbox"]:checked {
+   background-color: #ec8c3b;
+   margin-right: 51px;
+   margin-top: 0px;
+ }
+
+ input[type="checkbox"]:before, input[type="checkbox"]:checked:before {
+   position:absolute;
+   top:0;
+   left:0;
+   width:100%;
+   height:100%;
+   line-height:2px;
+   text-align:center;
+   color:#fff;
+ }
+
+ .the-submit-button {
+  background-color: $brand-primary;
+  border: 1px solid $brand-primary;
+ }
+
+}
+
+.filter-speaker-input {
+  border: 1px solid $brand-primary;
+  color: $brand-primary;
+  -webkit-input-placeholder-color: $brand-primary;
+}
+
+.filter-speaker-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $brand-primary;
+}
+
+.filter-speaker-wrap .control-label.check_boxes.optional {
+  color: $brand-primary;
+  & .check_boxes_cat {
+    color: #111;
+  }
+}
+
+.control-label.string.optional {
+  color: $brand-primary;
+}
+
+.filter-form-index {
+  margin-left: 30px;
+  width: 243px;
+}
+
+
+.speaker-title {
+    font-weight: bold;
+    color: #ec8c3b;
+}
+
+.speaker-job {
+
+}
+
+
+.speaker-city {
+font-size: 12px;
+}
+
+.speaker-cost {
+  float: right;
+  font-size: 12px;
+  color: white;
+  span {
+    color: #1dd1a1;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+}

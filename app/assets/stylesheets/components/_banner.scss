@@ -1,13 +1,31 @@
+.second-banner {
+  position: relative;
+}
+
+.navbar-wagon1 {
+  position: absolute;
+  transition: all 0.3s ease;
+  height: 70px;
+  padding: 0px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0; /* required */
+  width: 100vw;
+  z-index: 100;
+}
+
 .banner {
   color: white;
   text-align: center;
-  height: calc(100vh - 70px);
+  height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
-    input{
+  input{
     color: black;
   }
 }
@@ -20,6 +38,110 @@
   font-size: 25px;
   font-weight: lighter;
   color: rgb(255, 255, 255);
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: 30px;
+}
+
+
+#login-btn1 {
+  padding: 2px;
+  width: 81px;
+  border-radius: 3px;
+  border: 1px solid;
+  background-color: rgba(0,0,0,0);
+  color: $brand-primary;
+  margin-right: 10px;
+}
+
+#signup-btn1 {
+  padding: 2px;
+  width: 81px;
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: rgba(0,0,0,0);
+  color: $brand-primary;
+  margin-right: 10px;
+}
+
+.navbar-wagon-item1 {
+  color: $brand-primary;
+}
+
+.navbar-wagon1 .avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.navbar-wagon-link {
+  color: $brand-primary !important;
+}
+
+
+.the-submit-button {
+  width: 100%;
+  background-color: #418adf;
+  border: 1px solid #418adf;
+  border-radius: 5px;
+  color: #fff !important;
+}
+
+.the-submit-button:hover {
+  background-color: rgb(136, 187, 247);
+  border-color: rgb(136, 187, 247);
+}
+
+.the-submit-button.event-show-page-btn{
+  margin-top: 20px;
+  margin-left: -20px;
+  width: 141px;
+}
+
+.arrow-container {
+  a {
+    margin: 0;
+    padding: 0;
+    width: 50px;
+  }
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.down-arrow {
+  font-size: 40px;
+  width: 57px;
+  top: 20vh;
+  position: absolute;
+  background-color: rgba(white, 0.2);
+  border-radius: 50%;
+  animation: bounce 1s linear infinite;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0px) }
+  25% { transform: translateY(5px) }
+  50% { transform: translateY(0px) }
+  75% { transform: translateY(-5px) }
+  100% { transform: translateY(0px) }
+
+}
+
+
+.filter-searchbar2 {
+  border-radius: 5px;
+}
+
+
+.up-arrow {
+  text-align: center;
+  font-size: 40px;
+  width: 57px;
+  color: #fff;
+  background-color: $brand-primary;
+  border-radius: 50%;
+  animation: bounce 1s linear infinite;
 }

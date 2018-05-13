@@ -1,0 +1,121 @@
+<% unless user_signed_in? %>
+<% end %>
+<div class="navbar-wagon1">
+  <!-- Logo -->
+  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+
+  <%= image_tag "speaker.svg", height: 50 %>
+
+  <% end %>
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <% if user_signed_in? %>
+
+    <!-- Links when logged in -->
+    <% unless current_user.is_speaker %>
+    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" %>
+    <% end %>
+    <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link linky" %>
+
+    <% if current_user == true %>
+    <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+
+    <!-- Avatar with dropdown menu -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
+        <% image = current_user.photo.url ? current_user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="avatar dropdown-toggle", id="navbar-wagon-menu", data-toggle="dropdown", style="background-image: url('<%= cl_image_path image %>')">
+        </div>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'profile') do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'messages'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="far fa-envelope"></i> <%= t(".inbox", default: "Inbox") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'events'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="far fa-calendar"></i> <%= t(".events", default: "Events") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'account'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-wrench"></i> <%= t(".account", default: "Account") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'speaker-profile'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-microphone"></i> <%= t(".speaker-profile", default: "Speaker Profile") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-wagon-item navbar-wagon-link' do %>
+            <i class="fa fa-sign-out-alt "></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <% else %>
+    <!-- Login link (when logged out) -->
+    <%= link_to new_user_session_path(active_tab: 'login') do %>
+    <button id='login-btn1' type="button" action="/users/sign_in">Log in</button>
+    <% end %>
+    <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+    <button id='signup-btn1' type="button" action="/users/sign_up">Sign up</button>
+    <% end %>
+    <% end %>
+  </div>
+
+  <!-- Dropdown list appearing on mobile only -->
+  <% if user_signed_in? %>
+  <div class="navbar-wagon-item1 hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li>
+          <%= link_to new_event_path, class: "navbar-wagon-item navbar-wagon-link linky" do %>
+          <i class="fas fa-plus"></i> <%= t(".create", default: "Create an event") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to dashboard_path(current_user, active_tab: 'profile')  do %>
+          <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <% else %>
+  <div class="navbar-wagon-item1 hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" data-close-on-click-inside="false">
+        <li>
+          <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+          <%= t(".sign_up", default: "Sign Up") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path(active_tab: 'login') do %>
+          <%= t(".sign_in", default: "Log In") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+</div>

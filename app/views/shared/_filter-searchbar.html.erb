@@ -1,9 +1,13 @@
-
-<form class="filter-searchform">
+<form class="filter-searchform" action="/speakers">
   <div class="filters input-group">
-    <input type="search" class="filter-searchbar" name="price" placeholder="Price" value="<%= params[:price] %>">
-    <input type="search" class="filter-searchbar" name="capacity" placeholder="Capacity" value="<%= params[:capacity] %>">
-    <input type="search" class="filter-searchbar" name="floor_space" placeholder="Floor space" value="<%= params[:floor_space] %>">
+    <input type="search" class="filter-searchbar" name="cost" placeholder="Fee from" value="<%= params[:cost] %>">
+    <select name="category" class ="filter-searchbar" placeholder="Category">
+      <option selected disabled>Category</option>
+      <% Category.all.each do |category| %>
+        <option value="<%= category.name %>" <%= "#{'selected' if category.name == params[:category]}" %> ><%= category.name %></option>
+      <% end %>
+    </select>
+    <input type="search" class="filter-searchbar" name="name" placeholder="Name" value="<%= params[:name] %>">
     <input type="search" id="filter-location" class="filter-searchbar" name="location" placeholder="Location" value="<%= params[:location] %>">
     <button type="submit" class="btn btn-filter" placeholder="Search">Search</button>
   </div>

@@ -1,7 +1,7 @@
 
 .message-container{
   width: 70vw;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 105px);
   position: absolute;
   top: 100px;
   left: 15vw;
@@ -12,23 +12,62 @@
 }
 
 .message-avatar {
+  margin-top: 5px;
   width: 70px;
   height: 70px;
   border-radius: 50%;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 
 .message {
   display: flex;
   align-items: center;
-  padding: 20px 50px;
   border: 1px solid #F2F2F2;
-  width: 100%
+  width: 100%;
+  h3 {
+    margin-top: 5px;
+  }
+  .sent {
+    background-color: rgba(65, 211, 80, 0.1);
+    border-right: 3px solid $green;
+  }
+  .received {
+   background-color: rgba(56, 157, 216, 0.1);
+   border-left: 3px solid $blue;
+ }
 }
+
+.message-info {
+  width: 25%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#message-list {
+  overflow: auto;
+  height: 80vh;
+}
+
 .message:last-child {
   border-bottom: none;
 }
 .message-body {
-  flex-grow: 1;
+  width: 75%;
+  margin: 0 10px;
+  font-size: 18px;
+  p {
+    margin: 0;
+    padding: 10px 10px;
+    border-radius: 3px;
+    &.sent {
+      border: none;
+    }
+    &.received {
+      border: none;
+    }
+  }
 }
 .message-name {
   padding-left: 10px;
@@ -44,36 +83,8 @@
   opacity: 0.6;
   margin-top: 5px;
 }
-.message-body {
-  padding-left: 10px;
-  font-size: 13px;
-  color: rgba(0,0,0,0.7);
-}
-.message-body {
-  padding-left: 20px;
-  color: rgba(0,0,0,0.4);
-}
-.message-body strong{
-  color: rgba(0,0,0,0.9);
-  color: rgba(0,0,0,0.9);
-}
-.message-body p {
-  margin: 6px 0;
-}
-.message-status {
-  font-size: 14px;
-  font-weight: bold;
-}
-.status.accepted {
-  color: #04A366;
-}
-.status.declined {
-  color: red;
-}
-.status.pending {
-  color: lightgrey;
-}
 
 #new-message {
-  margin: 20px 40px;
+  padding: 20px 40px;
+  border-bottom: 1px solid #000;
 }

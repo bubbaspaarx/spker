@@ -5,7 +5,6 @@
   background-color: #fff;
   height: calc(100vh - 70px);
   width: 100vw;
-  border: 1px solid #CFDBDC;
   // background-color: #717C96
 }
 
@@ -13,9 +12,6 @@
 
 .user-profile-container {
   height: calc(100vh - 70px);
-  margin: 0 auto;
-  width: 870px;
-  justify-content: center;
   overflow: auto;
   padding-top: 40px;
   // background-color: #81D4F1
@@ -42,9 +38,8 @@
   border: 1px solid #F2F2F2;
   background-color: #F2F2F2;
   .message-avatar {
-    height: 200px;
-    width: 200px;
-    margin-left: 310px;
+    background-size: cover;
+    background-position: 50% 50%;
   }
   .add-photo {
     margin-right: 270px;

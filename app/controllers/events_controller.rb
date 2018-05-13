@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:new, :create]
   before_action :authorize_event, except: [:index, :new, :create, :update]
 
   def index
@@ -22,6 +21,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    @markers = [ { lat: @event.latitude, lng: @event.longitude } ]
   end
 
   def new
@@ -32,8 +32,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     authorize_event
-    @event.user = @user
-    if @event.save!
+    @event.user = current_user
+    if @event.save
+      generate_tags(params[:event][:category_ids], @event)
       redirect_to event_path(@event)
     else
       render :new
@@ -45,6 +46,8 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
+      @event.event_tags.each { |tag| tag.destroy }
+      generate_tags(params[:event][:category_ids], @event)
       redirect_to event_path(@event)
     else
       render :edit
@@ -58,12 +61,19 @@ class EventsController < ApplicationController
 
   private
 
-  def set_event
-    @event = Event.find(params[:id])
+  def generate_tags(ids, event)
+    ids.each do |id|
+      unless id.blank?
+        tag = EventTag.new
+        tag.category = Category.find(id)
+        tag.event = event
+        tag.save
+      end
+    end
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
+  def set_event
+    @event = Event.find(params[:id])
   end
 
   def authorize_event
@@ -71,11 +81,11 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :address, :postcode, :date, :cost, :start_time, :end_time, :photo)
+    params.require(:event).permit(:name, :address, :postcode, :start_date, :end_date, :expenses_hotels, :expenses_flights, :expenses_per_diems, :is_paid, :talk_type, :photo, :categories, :description)
   end
 
   def filtering_params(params)
-    params.slice(:address, :postcode, :date)
+    params.slice(:address, :postcode)
   end
 
 end

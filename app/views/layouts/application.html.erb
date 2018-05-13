@@ -2,9 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Spker</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+  <title>Spker - Find speakers or become one today</title>
   <%= csrf_meta_tags %>
+  <meta property="og:title" content="<%= meta_title %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= request.original_url %>" />
+  <meta property="og:image" content="<%= meta_image %>" />
+  <meta property="og:description" content="<%= meta_description %>" />
+  <meta property="og:site_name" content="<%= meta_title %>" />
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= stylesheet_pack_tag 'application', media: 'all' %>
@@ -12,13 +18,16 @@
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+  <% unless controller_name == "pages" %>
   <%= render 'shared/navbar' %>
+  <% end %>
   <%= render 'shared/flashes' %>
   <%= yield %>
-  <%= javascript_include_tag 'application' %>
   <%= javascript_pack_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_BROWSER_KEY']}" %>
   <%= javascript_pack_tag "map" %>
+  <%= yield :after_js %>
 </body>
 
 

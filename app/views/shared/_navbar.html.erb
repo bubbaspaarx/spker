@@ -1,8 +1,10 @@
+<% unless user_signed_in? %>
+<% end %>
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
 
-  <%= image_tag "spkr orange.png", height: 50 %>
+  <%= image_tag "speaker.svg", height: 50 %>
 
   <% end %>
 
@@ -15,9 +17,9 @@
     <% unless current_user.is_speaker %>
     <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-    <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
-    <% if current_user.is_speaker == true %>
+    <% if current_user == true %>
     <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
@@ -29,13 +31,28 @@
         <%= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to dashboard_path(current_user, active_tab: 'profile') do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
           <li>
-            <%= link_to inbox_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <%= link_to dashboard_path(current_user, active_tab: 'messages'), class: "navbar-wagon-item navbar-wagon-link" do %>
             <i class="far fa-envelope"></i> <%= t(".inbox", default: "Inbox") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'events'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="far fa-calendar"></i> <%= t(".events", default: "Events") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'account'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-wrench"></i> <%= t(".account", default: "Account") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'speaker-profile'), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-microphone"></i> <%= t(".speaker-profile", default: "Speaker Profile") %>
             <% end %>
           </li>
           <li>
@@ -48,10 +65,12 @@
     </div>
     <% else %>
     <!-- Login link (when logged out) -->
-    <%= render 'shared/login_modal' %>
-    <%= render 'shared/signup_modal' %>
-    <button id='login-btn' type="button" data-button="login-form" data-toggle="modal" data-target="#login_modal">Log in</button>
-    <button id='signup-btn' type="button" data-button="signup-form" data-toggle="modal" data-target="#signup_modal">Sign up</button>
+    <%= link_to new_user_session_path(active_tab: 'login') do %>
+    <button id='login-btn1' type="button" action="/users/sign_in">Log in</button>
+    <% end %>
+    <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+    <button id='signup-btn1' type="button" action="/users/sign_up">Sign up</button>
+    <% end %>
     <% end %>
   </div>
 
@@ -62,7 +81,7 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to "Create an event", new_user_event_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to "Create an event", new_event_path, class: "navbar-wagon-item navbar-wagon-link" %>
         </li>
         <% if current_user.is_speaker == true %>
         <li>
@@ -70,7 +89,7 @@
         </li>
         <% end %>
         <li>
-          <%= link_to user_path(current_user) do %>
+          <%= link_to dashboard_path(current_user, active_tab: 'profile')  do %>
           <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %>
         </li>
@@ -88,12 +107,12 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to new_user_registration_path do %>
+          <%= link_to new_user_registration_path(active_tab: 'signup') do %>
           <%= t(".sign_up", default: "Sign Up") %>
           <% end %>
         </li>
         <li>
-          <%= link_to new_user_session_path do %>
+          <%= link_to new_user_session_path(active_tab: 'login') do %>
           <%= t(".sign_in", default: "Log In") %>
           <% end %>
         </li>

@@ -1,0 +1,24 @@
+<div class="speaker-det-container">
+  <div class="row">
+    <div class="speaker-requests col-xs-12 col-md-6">
+      <h2>Invites Received</h2>
+      <% user.invites.where(status: 'pending').each do |invite| %>
+        <div class="new-invite">
+          <%= link_to invite.event.name, event_path(invite.event) %>
+          <div>
+            <%= link_to 'Accept', invites_accept_path(invite), class: 'btn btn-success', method: 'patch' %>
+            <%= link_to 'Reject', invites_reject_path(invite), class: 'btn btn-danger', method: 'patch' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="upcoming-events col-xs-12 col-md-6">
+      <h2>Upcoming Events</h2>
+      <% user.invites.where(status: 'accepted').each do |invite| %>
+      <div class="event">
+        <%= link_to invite.event.name, event_path(invite.event) %> - <%= invite.event.start_date %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

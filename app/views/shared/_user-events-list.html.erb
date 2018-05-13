@@ -1,0 +1,30 @@
+<% if current_user.events.length == 0 %>
+  <p>You have no events</p>
+<% else %>
+  <div class="row event-lists">
+    <% current_user.events.each do |event| %>
+      <div class="events-list">
+        <div class="event-name col-xs-4">
+          <h4><%= link_to event.name, event_path(event)  %> </h4>
+          <p><%= event.start_date %></p>
+        </div>
+        <div class="event-description1 col-xs-4">
+          <h4>Description</h4>
+          <p><%= event.description[0..50] %><%= "...." if event.description.length > 51 %></p>
+        </div>
+        <div class="event-speakers col-xs-4">
+          <h4>Speakers</h4>
+            <% if event.invites.where(status: 'accepted').length > 0 %>
+              <ul>
+                <% event.invites.where(status: 'accepted').each do |invite| %>
+                  <li><%= link_to "#{invite.user.first_name} #{invite.user.last_name}", user_speaker_path(invite.user) %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>You currently have no speakers attending</p>
+            <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

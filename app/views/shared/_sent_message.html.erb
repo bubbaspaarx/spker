@@ -1,0 +1,16 @@
+<div class="message-row">
+  <div class="message">
+    <div class="message-info sent">
+      <% image = current_user.photo.url ? message.sender.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+      <div class="message-avatar", style="background-image: url('<%= cl_image_path image %>')">
+      </div>
+      <div class="message-name">
+        <h3><%= message.sender.first_name %> <%= message.sender.last_name %></h3>
+        <p><%= message.created_at.strftime('%d/%m/%Y at %H:%M') %></p>
+      </div>
+    </div>
+    <div class="message-body">
+      <p class="sent"><strong><%= message.content %></strong></p>
+    </div>
+  </div>
+</div>

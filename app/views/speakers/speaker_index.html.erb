@@ -1,20 +1,40 @@
+<h4 id="index-header" class="text-center">Choose the perfect speaker for your event <%= params[:location] %></h4>
+<div class="index-filter">
+  <div class="filter-form-index">
+    <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
+    <div class="filter-speaker-wrap">
+      <%= f.input :location, input_html: { id: 'filter-location', class: "filter-speaker-input", name: "location", value: params[:location] }, placeholder: "Location", label: false %>
+    </div>
+    <div class="filter-speaker-wrap">
+      <%= f.input :category, collection: Category.all, as: :check_boxes, label: "Area of Expertise", required: false, value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "check_boxes_cat", placeholder: "Category" } %>
+    </div>
+    <div class="filter-speaker-wrap">
+      <%= f.input :cost, placeholder: 'Budget', label: false, required: false, input_html: { class: "filter-speaker-input", name: "cost", value: params[:cost] } %>
+    </div>
+    <div class="filter-speaker-wrap">
+      <%= f.input :name, placeholder: 'Speaker Name', label: false, required: false, input_html: { class: "filter-speaker-input", name: 'name', value: params[:name] } %>
+    </div>
+    <div class="filter-speaker-wrap">
+      <%= f.button :submit, "Search", id: 'the-submit-button', class: 'the-submit-button'%>
+    </div>
+    <% end %>
+  </div>
+  <div class="container-index">
+    <% @users.each do |user| %>
 
-<div class="main-container">
-  <div class="body-container">
-    <div class="card-container">
-      <div class="events-title">
-        <h4 id="index-header">Choose the perfect speaker for your event in <%= params[:location] %></h4>
-      </div>
-      <div class="row">
-        <% @users.each do |user| %>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-          <%= render 'shared/speaker_card', user: user%>
-        </div>
-        <% end %>
+    <% image = user.photo.url ? user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+    <div class="card-index" style="background-image: url(<%= cl_image_path(image) %>)">
+      <%= link_to "", user_speaker_path(user), class: "card-link" %>
+      <div class="description">
+        <p class="speaker-title"><%= user.first_name %> <%= user.last_name %></p>
+        <p class="speaker-job"><%= user.job_title%></p>
+        <p class="speaker-city"><%= user.city %></p>
+        <p class="speaker-cost">from <span>£<%= user.cost.to_i %></span></p>
       </div>
     </div>
-  </div>
-  <div class="map-container">
-    <%= render 'shared/map-vertical' %>
+    <% end %>
+
   </div>
 </div>
+
+

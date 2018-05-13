@@ -1,0 +1,83 @@
+<div id="signup-login-form" class="form">
+  <ul class="tab-group">
+    <li class="tab <%= params[:active_tab] == 'signup' ? 'active' : '' %>"><a href="#signup">Sign Up</a></li>
+    <li class="tab <%= params[:active_tab] == 'login' ? 'active' : '' %>"><a href="#login">Log In</a></li>
+  </ul>
+
+  <div class="main-login tab-content">
+    <div id="signup" style="<%= params[:active_tab] == 'login' ? 'display: none' : '' %>">
+      <h1>Sign Up for Free</h1>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <div class="top-row">
+        <div class="field-wrap">
+          <label>
+            First Name<span class="req">*</span>
+          </label>
+          <input aria-invalid="true" type="text" name="user[first_name]" id="user_first_name">
+        </div>
+
+        <div class="field-wrap">
+          <label>
+            Last Name<span class="req">*</span>
+          </label>
+          <input aria-invalid="true" type="text" name="user[last_name]" id="user_last_name">
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Email Address<span class="req">*</span>
+        </label>
+        <input autofocus="autofocus" aria-invalid="true" type="email" value="" name="user[email]" id="user_email">
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Set A Password<span class="req">*</span>
+        </label>
+        <input required="required" aria-required="true" aria-invalid="true" type="password" name="user[password]" id="user_password">
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Confirm Password<span class="req">*</span>
+        </label>
+        <input required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+      </div>
+      <input type="submit" name="commit" value="Sign up" class="button button-block" data-disable-with="Sign up"/>Get Started</input>
+      <% end %>
+
+    </div>
+
+    <div id="login" style="<%= params[:active_tab] == 'login' ? 'display: block' : '' %>">
+      <h1>Welcome Back!</h1>
+
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="field-wrap">
+        <label>
+          Email Address<span class="req">*</span>
+        </label>
+        <input type="email" value="" name="user[email]" id="user_email">
+      </div>
+
+      <div class="field-wrap">
+        <label>
+          Password<span class="req">*</span>
+        </label>
+        <input type="password" name="user[password]" id="user_password">
+      </div>
+
+      <p class="forgot"><a href="#">Forgot Password?</a></p>
+
+      <input type="submit" name="commit" value="Log in" data-disable-with="Log in" class="button button-block" />Log In</button>
+
+      <% end %>
+
+    </div>
+
+  </div><!-- tab-content -->
+
+</div> <!-- /form -->

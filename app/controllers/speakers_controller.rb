@@ -7,36 +7,25 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_index
-
-    if params[:location].nil? || params[:location] == ""
-      @users = policy_scope(User)
-
-      redirect_to root_path
-    else
-      @users = policy_scope(User).near(params[:location], 100000)
+    @tags = Category.all
+    @users = policy_scope(User)
+    @users = @users.search_by_full_name(params[:name]) if params[:name].present?
+    @users = @users.cost(params[:cost]) if params[:cost].present?
+    if params[:location].present?
+      @users = @users.near(params[:location], 100000) if params[:location].present?
       @users = @users.reject { |user| user.travel_distance < user.distance || user.latitude.nil? || user.longitude.nil? }
-      filtering_params(params).each do |key, value|
-        @users = @users.public_send(key, value) if value.present?
-
-      end
-
-      @markers = @users.map do |user|
-        {
-          lat: user.latitude,
-          lng: user.longitude,
-          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-
-        }
-      end
     end
+    @users = @users & category_search if params[:category].present?
   end
 
   def speaker_new
+    @photo = @user.user_photos.build
   end
 
   def speaker_create
     @user.is_speaker = true
     if @user.update(speaker_params)
+      generate_tags
       redirect_to dashboard_path(@user)
     else
       @user.is_speaker = false
@@ -45,11 +34,12 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_edit
-    @tag = UserTag.new
   end
 
   def speaker_update
     if @user.update(speaker_params)
+      destroy_tags
+      generate_tags
       redirect_to user_speaker_path(@user)
     else
       render :speaker_edit
@@ -58,17 +48,38 @@ class SpeakersController < ApplicationController
 
   private
 
+  def generate_tags
+    params[:user][:category_ids].each do |id|
+      tag = UserTag.new
+      tag.category = Category.find(id) unless id.blank?
+      tag.user = current_user
+      tag.save
+    end
+  end
+
+
+
+
+  def destroy_tags
+    @user.user_tags.each { |tag| tag.destroy }
+  end
+
+  def category_search
+    tags = UserTag.tag_search(params[:category])
+    tags.map { |tag| tag.user  }
+  end
+
   def set_user
     @user = User.find(params[:user_id])
     authorize @user
   end
 
   def speaker_params
-    params.require(:user).permit(:postcode, :travel_distance, :address, :cost)
+    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id, { user_photos_attributes: [ :photo ] })
   end
 
   def filtering_params(params)
-    params.slice(:first_name, :last_name, :email)
+    params.slice(:cost)
   end
 
 end
