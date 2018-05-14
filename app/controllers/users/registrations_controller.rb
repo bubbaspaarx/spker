@@ -18,6 +18,11 @@ class Users::RegistrationsController < Devise::SessionsController
       clean_up_passwords resource
       set_minimum_password_length
       redirect_to new_user_registration_path(active_tab: 'signup')
+      if resource.email == User.find_by_email(resource.email).email
+        set_flash_message :notice, :already
+      else
+        set_flash_message :notice, :error
+      end
     end
   end
 
