@@ -46,6 +46,7 @@ en:
       updated: "Your account has been updated successfully."
     sessions:
       signed_in: "Signed in successfully."
+      error: "Your email address or password are incorrect"
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
     unlocks:
