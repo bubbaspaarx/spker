@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   include PgSearch
-
+  module ActiveModel::Validations::HelperMethods
+    def validates_email(*attr_names)
+      validates_with EmailValidator, _merge_attributes(attr_names)
+    end
+  end
   mount_uploader :photo, PhotoUploader
   has_many :events, dependent: :destroy
   has_many :user_bookings, dependent: :destroy
@@ -24,20 +28,23 @@ class User < ApplicationRecord
   validates :travel_distance, presence: true, if: :is_speaker?
   validates :cost, presence: true, if: :is_speaker?
 
+  validates_email :email
+
+
   after_validation :geocode, if: :will_save_change_to_postcode?
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
 
   scope :cost, -> (cost) { where("cost_cents <= ?", cost.to_i * 100) }
 
   pg_search_scope :search_by_full_name,
-    against: [ :first_name, :last_name ],
-    using: {
-      tsearch: { prefix: true }
-    }
+  against: [ :first_name, :last_name ],
+  using: {
+    tsearch: { prefix: true }
+  }
 
 
   def is_speaker?
