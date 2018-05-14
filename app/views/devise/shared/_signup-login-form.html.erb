@@ -8,45 +8,30 @@
     <div id="signup" style="<%= params[:active_tab] == 'login' ? 'display: none' : '' %>">
       <h1>Sign Up for Free</h1>
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
 
       <div class="top-row">
         <div class="field-wrap">
-          <label>
-            First Name<span class="req">*</span>
-          </label>
-          <input aria-invalid="true" type="text" name="user[first_name]" id="user_first_name">
+          <%= f.input :first_name, validate: { presence: true, uniqueness: false } %>
         </div>
 
         <div class="field-wrap">
-          <label>
-            Last Name<span class="req">*</span>
-          </label>
-          <input aria-invalid="true" type="text" name="user[last_name]" id="user_last_name">
+          <%= f.input :last_name, validate: { presence: true, uniqueness: false } %>
         </div>
       </div>
 
       <div class="field-wrap">
-        <label>
-          Email Address<span class="req">*</span>
-        </label>
-        <input autofocus="autofocus" aria-invalid="true" type="email" value="" name="user[email]" id="user_email">
+        <%= f.input :email, validate: true %>
       </div>
 
       <div class="field-wrap">
-        <label>
-          Set A Password<span class="req">*</span>
-        </label>
-        <input required="required" aria-required="true" aria-invalid="true" type="password" name="user[password]" id="user_password">
+        <%= f.input :password, validate: true %>
       </div>
 
       <div class="field-wrap">
-        <label>
-          Confirm Password<span class="req">*</span>
-        </label>
-        <input required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+        <%= f.input :password_confirmation, validate: true  %>
       </div>
-      <input type="submit" name="commit" value="Sign up" class="button button-block" data-disable-with="Sign up"/>Get Started</input>
+      <%= f.button :submit, "Sign Up", class: "button button-block" %>
       <% end %>
 
     </div>
@@ -54,25 +39,19 @@
     <div id="login" style="<%= params[:active_tab] == 'login' ? 'display: block' : '' %>">
       <h1>Welcome Back!</h1>
 
-      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), validate: true, html: { id: :login_user }) do |f| %>
 
       <div class="field-wrap">
-        <label>
-          Email Address<span class="req">*</span>
-        </label>
-        <input type="email" value="" name="user[email]" id="user_email">
+        <%= f.input :email, input_html: { id: :user_email, data_validate: :true },  validate: true %>
       </div>
 
       <div class="field-wrap">
-        <label>
-          Password<span class="req">*</span>
-        </label>
-        <input type="password" name="user[password]" id="user_password">
+        <%= f.input :password, input_html: { id: :user_password2 }, validate: true %>
       </div>
 
       <p class="forgot"><a href="#">Forgot Password?</a></p>
 
-      <input type="submit" name="commit" value="Log in" data-disable-with="Log in" class="button button-block" />Log In</button>
+      <%= f.button :submit, "Log In", class: "button button-block" %>
 
       <% end %>
 

@@ -17,11 +17,14 @@ gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 4.7'
 gem 'sass-rails'
 gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'faker'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
