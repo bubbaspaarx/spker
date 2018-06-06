@@ -42,7 +42,7 @@
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), validate: true, html: { id: :login_user }) do |f| %>
 
       <div class="field-wrap">
-        <%= f.input :email, input_html: { id: :user_email, data_validate: :true },  validate: true %>
+        <%= f.input :email, input_html: { id: :user_email1, data_validate: :true },  validate: true %>
       </div>
 
       <div class="field-wrap">
@@ -60,3 +60,4 @@
   </div><!-- tab-content -->
 
 </div> <!-- /form -->
+

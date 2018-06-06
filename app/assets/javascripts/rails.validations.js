@@ -5,9 +5,9 @@
  * Licensed under MIT (http://opensource.org/licenses/mit-license.php)
  */
 
-(function() {
+ (function() {
   var $, ClientSideValidations, initializeOnEvent, validateElement, validateForm, validatorsFor,
-    indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+  indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   $ = jQuery;
 
@@ -336,14 +336,14 @@
           var ref;
           switch (element.attr('type')) {
             case 'checkbox':
-              if (!element.prop('checked')) {
-                return options.message;
-              }
-              break;
+            if (!element.prop('checked')) {
+              return options.message;
+            }
+            break;
             case 'text':
-              if (element.val() !== (((ref = options.accept) != null ? ref.toString() : void 0) || '1')) {
-                return options.message;
-              }
+            if (element.val() !== (((ref = options.accept) != null ? ref.toString() : void 0) || '1')) {
+              return options.message;
+            }
           }
         },
         format: function(element, options) {
@@ -580,6 +580,5 @@
   }
 
   window.ClientSideValidations = ClientSideValidations;
-
 
 }).call(this);
