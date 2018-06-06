@@ -23,7 +23,7 @@
     <% @users.each do |user| %>
 
     <% image = user.photo.url ? user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-    <div class="card-index" style="background-image: url(<%= cl_image_path(image, quality: "auto") %>)">
+    <div class="card-index" style="background-image: url(<%= cl_image_path(image, quality: "auto:low") %>)">
       <%= link_to "", user_speaker_path(user), class: "card-link" %>
       <div class="description">
         <p class="speaker-title"><%= user.first_name %> <%= user.last_name %></p>
