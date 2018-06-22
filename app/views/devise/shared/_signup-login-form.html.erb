@@ -1,18 +1,16 @@
 <div id="signup-login-form" class="form">
-  <ul class="tab-group">
-    <li class="tab <%= params[:active_tab] == 'signup' ? 'active' : '' %>"><a href="#signup">Sign Up</a></li>
-    <li class="tab <%= params[:active_tab] == 'login' ? 'active' : '' %>"><a href="#login">Log In</a></li>
-  </ul>
 
   <div class="main-login tab-content">
     <div id="signup" style="<%= params[:active_tab] == 'login' ? 'display: none' : '' %>">
       <h1>Sign Up for Free</h1>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
+      <%= devise_error_messages! %>
 
       <div class="top-row">
         <div class="field-wrap">
           <%= f.input :first_name, validate: { presence: true, uniqueness: false } %>
+
         </div>
 
         <div class="field-wrap">
@@ -40,6 +38,7 @@
       <h1>Welcome Back!</h1>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), validate: true, html: { id: :login_user }) do |f| %>
+      <%= devise_error_messages! %>
 
       <div class="field-wrap">
         <%= f.input :email, input_html: { id: :user_email1, data_validate: :true },  validate: true %>

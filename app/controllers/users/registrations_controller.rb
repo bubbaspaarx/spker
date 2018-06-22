@@ -51,8 +51,8 @@ class Users::RegistrationsController < Devise::SessionsController
 
   def update_needs_confirmation?(resource, previous)
     resource.respond_to?(:pending_reconfirmation?) &&
-      resource.pending_reconfirmation? &&
-      previous != resource.unconfirmed_email
+    resource.pending_reconfirmation? &&
+    previous != resource.unconfirmed_email
   end
 
   # By default we want to require a password checks on update.
@@ -111,7 +111,6 @@ class Users::RegistrationsController < Devise::SessionsController
   def translation_scope
     'devise.registrations'
   end
-
 
 end
 
