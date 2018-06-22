@@ -22,12 +22,13 @@ gem 'rails', '5.1.5'
 gem 'redis'
 gem 'sass-rails'
 gem 'simple_form'
+gem 'sparkpost_rails'
 gem 'uglifier'
 gem 'webpacker'
 
 
 group :development do
-  gem 'letter_opener'
+  gem "letter_opener"
   gem 'web-console', '>= 3.3.0'
 end
 
