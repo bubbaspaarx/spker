@@ -5,6 +5,8 @@ class User < ApplicationRecord
       validates_with EmailValidator, _merge_attributes(attr_names)
     end
   end
+  after_create :send_welcome_email, :send_notification_email
+
   mount_uploader :photo, PhotoUploader
   has_many :events, dependent: :destroy
   has_many :user_bookings, dependent: :destroy
@@ -36,7 +38,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   scope :cost, -> (cost) { where("cost_cents <= ?", cost.to_i * 100) }
 
@@ -46,8 +48,17 @@ class User < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-
   def is_speaker?
     self.is_speaker
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
+
+  def send_notification_email
+    UserMailer.new_user(self).deliver_now
   end
 end

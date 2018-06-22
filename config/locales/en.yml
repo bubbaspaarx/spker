@@ -49,4 +49,8 @@ en:
             password:
               blank: "🧐 it appears you need a password"
               confirmation: "😵 - password doesn't match"
-
+  user_mailer:
+    welcome:
+      subject: "Welcome to Spker!"
+    new_user:
+      subject: "New user registration"
