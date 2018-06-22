@@ -2,6 +2,9 @@ Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
 
+  #Mailer settings
+  config.action_mailer.delivery_method = :sparkpost
+  config.action_mailer.default_url_options = { host: 'www.spker.co.uk' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

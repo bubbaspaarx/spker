@@ -55,10 +55,10 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    UserMailer.welcome(self).deliver_now!
   end
 
   def send_notification_email
-    UserMailer.new_user(self).deliver_now
+    UserMailer.new_user(self).deliver_now!
   end
 end
