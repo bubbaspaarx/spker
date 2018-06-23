@@ -54,7 +54,7 @@ html {
 }
 
 .form {
-  background:rgba($form-bg,.9);
+  background: $brand-primary2;
   padding: 40px;
   max-width:600px;
   margin:40px auto;
@@ -110,11 +110,12 @@ html {
   position:absolute;
   transform:translateY(6px);
   left:13px;
-  color:rgba($white,.5);
+  color: #fff;
   transition:all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
   font-size:22px;
+  font-weight: 300;
   .req {
     margin:2px;
     color:$main;
