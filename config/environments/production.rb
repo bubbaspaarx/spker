@@ -3,7 +3,8 @@ Rails.application.configure do
   config.webpacker.check_yarn_integrity = false
 
   #Mailer settings
-  config.action_mailer.delivery_method = :sparkpost
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
   config.action_mailer.default_url_options = { host: 'www.spker.co.uk' }
   # Settings specified here will take precedence over those in config/application.rb.
 
