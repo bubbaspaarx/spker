@@ -69,10 +69,10 @@
     </div>
     <% else %>
     <!-- Login link (when logged out) -->
-    <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+    <%= link_to new_user_registration_path do %>
     <button id='signup-btn1' type="button" action="/users/sign_up">Sign up</button>
     <% end %>
-    <%= link_to new_user_session_path(active_tab: 'login') do %>
+    <%= link_to new_user_session_path do %>
     <button id='login-btn1' type="button" action="/users/sign_in">Log in</button>
     <% end %>
     <% end %>
@@ -111,12 +111,12 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li>
-          <%= link_to new_user_registration_path(active_tab: 'signup') do %>
+          <%= link_to new_user_registration_path do %>
           <%= t(".sign_up", default: "Sign Up") %>
           <% end %>
         </li>
         <li>
-          <%= link_to new_user_session_path(active_tab: 'login') do %>
+          <%= link_to new_user_session_path do %>
           <%= t(".sign_in", default: "Log In") %>
           <% end %>
         </li>

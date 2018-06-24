@@ -94,11 +94,6 @@ html {
   }
 }
 
-.main-login.tab-content > div:last-child {
-  display:none;
-}
-
-
 .main-login.tab-content h1 {
   text-align:center;
   color:$white;
@@ -206,4 +201,22 @@ html {
 .forgot {
   margin-top:-20px;
   text-align:right;
+}
+
+.devise-links {
+  position: relative;
+  width: 100%;
+}
+
+.devise-link {
+  font-size: 14px;
+}
+
+.devise-signup {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 3px 10px;
+  border: 1px solid $brand-primary;
+  border-radius: 3px;
 }

@@ -15,12 +15,13 @@
         <%= f.input :password, input_html: { id: :user_password2 }%>
       </div>
 
-      <p class="forgot"><a href="#">Forgot Password?</a></p>
 
       <%= f.button :submit, "Log In", class: "button button-block" %>
 
       <% end %>
-
+      <div class="devise-links">
+        <%= render 'devise/shared/links' %>
+      </div>
     </div>
 
   </div><!-- tab-content -->
