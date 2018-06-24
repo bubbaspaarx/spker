@@ -1,0 +1,41 @@
+<div id="signup-form" class="form">
+
+  <div class="main-login tab-content">
+    <div id="signup">
+      <h1>Sign Up for Free</h1>
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.error_notification %>
+
+      <div class="top-row">
+        <div class="field-wrap">
+          <%= f.input :first_name, validate: { presence: true, uniqueness: false } %>
+
+        </div>
+
+        <div class="field-wrap">
+          <%= f.input :last_name, validate: { presence: true, uniqueness: false } %>
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <%= f.input :email, validate: true %>
+      </div>
+
+      <div class="field-wrap">
+        <%= f.input :password, validate: true %>
+      </div>
+
+      <div class="field-wrap">
+        <%= f.input :password_confirmation, validate: true  %>
+      </div>
+      <%= f.button :submit, "Sign Up", class: "button button-block" %>
+      <% end %>
+
+    </div>
+
+  </div><!-- tab-content -->
+
+</div> <!-- /form -->
+
