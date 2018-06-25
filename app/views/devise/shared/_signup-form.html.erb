@@ -3,7 +3,13 @@
   <div class="main-login tab-content">
     <div id="signup">
       <h1>Sign Up for Free</h1>
-
+<!--       <div class="form-content">
+        <ul>
+          <li>Speaker looking for more bookings?</li>
+          <li>Event organiser looking for the best talent?</li>
+          <p>Joining speaker is absolutely free</p>
+        </ul>
+      </div> -->
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f| %>
       <%= devise_error_messages! %>
       <%= f.error_notification %>

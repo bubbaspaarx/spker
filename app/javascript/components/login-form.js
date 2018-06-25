@@ -27,20 +27,7 @@ $('.form').find('input, textarea').on('change input keyup blur focus', function 
 
 });
 
-$('.tab a').on('click', function (e) {
+var input = $('.form').find('input:-webkit-autofill').delay(1500)
+console.log(input)
+label = input.prev('label')
 
-  e.preventDefault();
-
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-
-  target = $(this).attr('href');
-
-
-
-  $('.tab-content > div').not(target).hide();
-
-  $(target).fadeIn(600);
-
-
-});
