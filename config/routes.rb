@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'users/:user_id/inbox/:id', to: 'users#conversation', as: 'inbox_users'
   get 'speakers', to: 'speakers#speaker_index'
 
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations' }
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :edit, :update] do
@@ -38,4 +38,4 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => "/cable"
 end
-    
+

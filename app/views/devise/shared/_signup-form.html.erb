@@ -38,6 +38,14 @@
       </div>
       <%= f.button :submit, "Sign Up", class: "button button-block" %>
       <% end %>
+      <hr/>
+      <div class="fb-sign">
+        <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "Sign up with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class: "fb-signup-btn" %><br />
+        <% end -%>
+      </div>
+      <% end -%>
       <div class="devise-links">
         <%= render 'devise/shared/links' %>
       </div>
