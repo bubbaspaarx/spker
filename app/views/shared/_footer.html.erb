@@ -1,23 +1,19 @@
-<div class="footer-container">
-  <div class="row">
-    <div class="col-xs-6">
-      <div class="show-footer">
-        <p id="space-name"> <%= space.name %></p>
-        <% unless policy(space).edit? %>
-        <% end %>
-      </div>
-    </div>
-    <div class="col-xs-6">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="pricing-button">
-            <%= link_to new_space_booking_path(space) do%>
-            <button type="submit" class="btn btn-default-footer">Book</button>
-            <% end %>
-            <p id="space-price"> £<%= space.price %> / hour </p>
-          </div>
-        </div>
-      </div>
+<footer class="footer-wrapper">
+  <div class="footer">
+    <%= image_tag "speaker.svg", height: 80, class: "footer-logo" %>
+    <div class="footer-links">
+      <!-- <a href="#" target="_blank"><i class="fa fa-facebook"></i></a> -->
+      <a href="https://twitter.com/philsparksgolf" target="_blank"><i class="fab fa-twitter"></i></a>
+      <!-- <a href="#" target="_blank"><i class="fa fa-medium"></i></a> -->
     </div>
   </div>
-</div>
+  <%= link_to "Privacy Policy", privacy_policy_path, class: "privacy-link" %>
+  <div class="second-part">
+    <div>
+    <p>Made with <i class="red-heart fa fa-heart"></i> by Ed Sparks</p>
+    </div>
+    <div>
+    <p>© 2018 P Sparks Ltd - All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
