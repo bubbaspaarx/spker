@@ -7,7 +7,7 @@
             <h2><%= @event.name %></h2>
             <div class="organiser">
               <p>Organised by <%= @event.user.first_name %>  <%= @event.user.last_name %></p>
-              <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+              <% image = current_user.photo.url ? current_user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
               <%= cl_image_tag image, class: 'organiser-avatar' %>
             </div>
           </div>
