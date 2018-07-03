@@ -32,7 +32,6 @@
       <div class="dropdown">
         <% image = current_user.photo.url ? current_user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
         <div class="avatar dropdown-toggle", id="navbar-wagon-menu", data-toggle="dropdown", style="background-image: url('<%= cl_image_path image %>')">
-          <span class="caret"></span>
         </div>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>

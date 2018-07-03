@@ -220,3 +220,21 @@ html {
   border: 1px solid $brand-primary;
   border-radius: 3px;
 }
+
+.fb-sign {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.fb-signup-btn {
+  background-color: #4266B2;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  color: #fff !important;
+}
