@@ -19,9 +19,10 @@
 .banner {
   color: white;
   text-align: center;
-  height: 100vh;
+  height: 91vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
+  background-position: 50% 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,3 +150,25 @@
   border-radius: 50%;
   animation: bounce 1s linear infinite;
 }
+
+.speaker-cta {
+  height: 9vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to bottom, #3ba5ff, #018aff);
+  color: #fff;
+  & h4 {
+    font-size: 20px;
+  }
+  & .reg-button {
+    margin-left: 40px;
+    background-color: transparent;
+    padding: 6px 15px;
+    background-image: linear-gradient(to bottom, #4ae040, #38a559);
+    border: none;
+    border-radius: 17px;
+    color: #fff;
+  }
+}
+

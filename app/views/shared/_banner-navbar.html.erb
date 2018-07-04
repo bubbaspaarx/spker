@@ -1,19 +1,26 @@
-<% unless user_signed_in? %>
-<% end %>
 <div class="navbar-wagon1">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
+  <div class="left-links">
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
 
-  <%= image_tag "speaker.svg", height: 50 %>
+    <%= image_tag "speaker.svg", height: 50 %>
 
-  <% end %>
+    <% end %>
 
+    <!-- Left Navigation -->
+    <div class="navbar-spker-left hidden-xs hidden-sm">
+      <!-- Links -->
+      <%= link_to "How it works", "#how", class: "navbar-spker-item"%>
+      <%= link_to "Become a speaker", "#speaker", class: "navbar-spker-item"%>
+    </div>
+  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
     <!-- Links when logged in -->
+    <%= render 'shared/search-button' %>
     <% unless current_user.is_speaker %>
     <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-wagon-item navbar-wagon-link linky" %>
     <% end %>
@@ -69,6 +76,7 @@
     </div>
     <% else %>
     <!-- Login link (when logged out) -->
+    <%= render 'shared/search-button' %>
     <%= link_to new_user_registration_path do %>
     <button id='signup-btn1' type="button" action="/users/sign_up">Sign up</button>
     <% end %>

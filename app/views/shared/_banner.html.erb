@@ -4,14 +4,14 @@
     <div class="banner-content">
       <h1>the new way to book talented speakers</h1>
       <p>find speakers or become one today</p>
-      <%= render 'shared/filter-searchbar2' %>
-      <div class="arrow-container">
-        <a href="#gallery">
-          <div class="down-arrow">
-            <i class="fas fa-angle-down"></i>
-          </div>
-        </a>
-      </div>
+      <%= render 'shared/search-button' %>
+      <%#= render 'shared/arrow' %>
     </div>
+  </div>
+  <div class="speaker-cta">
+    <h4>Register as a speaker today to get priority listing</h4>
+    <%= link_to new_user_registration_path do  %>
+    <button class="reg-button">Register Today</button>
+    <% end %>
   </div>
 </div>
