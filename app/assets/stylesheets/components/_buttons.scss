@@ -1,13 +1,14 @@
 .search-button {
-  background-color: transparent;
+  background-color: #ffffff;
   padding: 3px 7px;
-  background-image: linear-gradient(to bottom, #e040d5, #b72eae);
-  border: 1px solid #b13da9;
+  border: 1px solid #ffffff;
   border-radius: 3px;
-  color: #fff;
+  color: #717171;
   margin-right: 35px;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2), inset 1px 1px 0 0 rgba(255, 255, 255, 0.4);
+  transition: background-color, border .5s ease;
   &:hover {
-    background-image: linear-gradient(to bottom, #d822cb, #b317a9);
+    background-color: #f15b57;
+    color: #d8d8d8;
+    border: 1px solid #f15b57;
   }
 }

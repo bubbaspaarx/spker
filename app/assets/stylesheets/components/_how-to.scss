@@ -1,0 +1,21 @@
+.how-to-wrapper {
+  background-image: linear-gradient(to right, #00a4bd, #00bda5);
+  height: 100vh;
+  text-align: center;
+  color: #fff;
+  & h2 {
+    padding-top: 50px;
+  }
+}
+
+.talk-types {
+  display: flex;
+  & img {
+    width: 160px;
+    left: 30%;
+    top: 30%;
+  }
+}
+
+
+// background-image: linear-gradient(to right, rgb(224, 49, 98), rgb(237, 139, 58));

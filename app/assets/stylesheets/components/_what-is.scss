@@ -1,0 +1,48 @@
+.what-is-wrapper {
+  background-color: #F7FBFA;
+  padding: 30px 0px;
+  text-align: center;
+  color: #333D47;
+}
+
+.what-is-title {
+  font-weight: lighter;
+  & h2 {
+    margin-bottom: 32px;
+  }
+}
+
+.what-is-icons {
+  margin: 50px 0px;
+  text-align: center;
+      padding: 0px 50px;
+}
+
+.what-is-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.what-is-card-detail {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & p {
+    margin-top: 20px;
+    font-weight: lighter;
+    width: 80%;
+  }
+}
+
+.what-is-image {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: 50%
+}
+
