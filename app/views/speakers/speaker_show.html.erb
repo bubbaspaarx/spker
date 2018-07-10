@@ -28,7 +28,7 @@
       </div>
 
       <div class="imageHolder">
-        <% image = @user.photo.url ? @user.photo.url : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <% image = @user.photo.url ? @user.photo.url : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
         <div class="profilePic" style="background-image: url('<%= cl_image_path image %>')">
         </div>
       </div>

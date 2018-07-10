@@ -20,7 +20,7 @@
     <% if user_signed_in? %>
 
     <!-- Links when logged in -->
-    <%= render 'shared/search-button' %>
+    <%#= render 'shared/search-button' %>
     <% unless current_user.is_speaker %>
     <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-sparks-item navbar-sparks-link linky" %>
     <% end %>
@@ -76,7 +76,7 @@
     </div>
     <% else %>
     <!-- Login link (when logged out) -->
-    <%= render 'shared/search-button' %>
+    <%#= render 'shared/search-button' %>
     <%= link_to new_user_registration_path do %>
     <button id='signup-btn1' type="button" action="/users/sign_up">Sign up</button>
     <% end %>

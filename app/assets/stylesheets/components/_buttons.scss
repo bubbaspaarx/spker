@@ -3,12 +3,18 @@
   padding: 3px 7px;
   border: 1px solid #ffffff;
   border-radius: 3px;
-  color: #717171;
-  margin-right: 35px;
+  color: #c15555;
+  font-size: 14px;
   transition: background-color, border .5s ease;
   &:hover {
     background-color: #f15b57;
     color: #d8d8d8;
     border: 1px solid #f15b57;
   }
+}
+
+.banner-search-btn {
+  padding: 18px 43px;
+  border-radius: 2px;
+  color: #c15555;
 }
