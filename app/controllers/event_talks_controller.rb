@@ -1,0 +1,2 @@
+class EventTalksController < ApplicationController
+end

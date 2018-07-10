@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180703094912) do
+ActiveRecord::Schema.define(version: 20180710192614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,15 @@ ActiveRecord::Schema.define(version: 20180703094912) do
     t.index ["event_id"], name: "index_event_tags_on_event_id"
   end
 
+  create_table "event_talks", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "talk_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_talks_on_event_id"
+    t.index ["talk_id"], name: "index_event_talks_on_talk_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.float "latitude"
@@ -49,7 +58,6 @@ ActiveRecord::Schema.define(version: 20180703094912) do
     t.datetime "updated_at", null: false
     t.string "photo"
     t.string "location"
-    t.string "talk_type"
     t.integer "attendance", default: 0
     t.text "description"
     t.boolean "expenses_flights"
@@ -108,6 +116,12 @@ ActiveRecord::Schema.define(version: 20180703094912) do
     t.index ["user_id"], name: "index_speaker_bookings_on_user_id"
   end
 
+  create_table "talks", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_bookings", force: :cascade do |t|
     t.bigint "event_id"
     t.bigint "user_id"
@@ -132,6 +146,15 @@ ActiveRecord::Schema.define(version: 20180703094912) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_user_tags_on_category_id"
     t.index ["user_id"], name: "index_user_tags_on_user_id"
+  end
+
+  create_table "user_talks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "talk_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["talk_id"], name: "index_user_talks_on_talk_id"
+    t.index ["user_id"], name: "index_user_talks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -180,6 +203,8 @@ ActiveRecord::Schema.define(version: 20180703094912) do
   add_foreign_key "event_photos", "events"
   add_foreign_key "event_tags", "categories"
   add_foreign_key "event_tags", "events"
+  add_foreign_key "event_talks", "events"
+  add_foreign_key "event_talks", "talks"
   add_foreign_key "events", "users"
   add_foreign_key "invites", "events"
   add_foreign_key "invites", "users"
@@ -190,4 +215,6 @@ ActiveRecord::Schema.define(version: 20180703094912) do
   add_foreign_key "user_photos", "users"
   add_foreign_key "user_tags", "categories"
   add_foreign_key "user_tags", "users"
+  add_foreign_key "user_talks", "talks"
+  add_foreign_key "user_talks", "users"
 end

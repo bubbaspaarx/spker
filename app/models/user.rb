@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :user_bookings, dependent: :destroy
   has_many :speaker_bookings, dependent: :destroy
   has_many :user_tags, dependent: :destroy
+  has_many :user_talks, dependent: :destroy
   has_many :categories, through: :user_tags
+  has_many :talks, through: :user_talks
   has_many :user_photos, dependent: :delete_all
   has_many :invites, dependent: :destroy
   accepts_nested_attributes_for :user_photos
