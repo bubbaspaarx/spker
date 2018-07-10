@@ -1,18 +1,18 @@
 .footer-wrapper {
-  width: 100%;
-  background: $brand-primary2;
-  height: 400px;
-  position: relative;
+  background-color: #535f69;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  min-height: 400px;
+}
+.footer-container {
+  width: 1000px;
 }
 
 .footer {
-  position: absolute;
-  left: 50%;
-  z-index: 15;
-  width: 60%;
-  margin-left: -30%;
-  top: 54px;
-  text-align: center;
+
 }
 
 .footer-links {
@@ -53,7 +53,6 @@
 
 .second-part {
   font-size: 12px;
-  position: absolute;
   bottom: 0px;
   right: 0px;
   color: #f4f4f4
@@ -61,7 +60,6 @@
 
 .second-part {
   font-size: 12px;
-  position: absolute;
   bottom: 0px;
   left: 0px;
   color: #f4f4f4;

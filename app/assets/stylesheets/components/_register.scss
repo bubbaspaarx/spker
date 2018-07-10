@@ -1,0 +1,60 @@
+.speaker-register-wrapper {
+  background-image: linear-gradient(to right, #def0f9, #c0e2ff);
+  padding: 30px 150px;
+  height: 70vh;
+  min-height: 620px;
+  color: #333D47;
+  & h2 {
+    text-align: center;
+  }
+}
+
+.speaker-reg-content {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.reg-text {
+  width: 400px;
+  & p {
+    font-weight: lighter;
+  }
+}
+
+.speaker-register {
+}
+
+.speaker-reg-image {
+  // border-radius: 50%;
+  width: 450px;
+  height: 450px;
+  background-size: cover;
+  position: relative;
+}
+
+.spker-reg-image-text {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background-color: #7bdfe4;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  & p {
+    position: absolute;
+    top: 38%;
+    font-size: 16px;
+  }
+}
+
+.reg-button {
+  padding: 12px 40px;
+  border: none;
+  border-radius: 1px;
+  color: #fff;
+  background-color: #3baeff;
+  font-size: 14px;
+}

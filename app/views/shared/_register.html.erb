@@ -1,0 +1,23 @@
+<div class="speaker-register-wrapper">
+  <h2>Speakers</h2>
+  <div class="speaker-register-container">
+    <div class="speaker-register">
+      <div class="speaker-reg-content">
+        <div class="reg-text">
+          <h4>Getting started is easy</h4>
+          <p>Spker will get you in front of the right people to boost your earnings.</p>
+          <p>Registration is <strong>FREE</strong>, & you only get charged when you get paid.</p>
+          <p>Click below to start your journey with Spker</p>
+          <%= link_to new_user_registration_path do  %>
+          <button class="reg-button">Get Started</button>
+          <% end %>
+        </div>
+        <div class="speaker-reg-image" style="background-image: url(<%= cl_image_path("spker/geoff.png", quality: "auto:low")%>)">
+          <div class="spker-reg-image-text">
+            <p><strong>Geoff Cheah</strong> - <i>Former Olympic Swimmer & Public Speaker</i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
