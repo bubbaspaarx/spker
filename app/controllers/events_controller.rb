@@ -47,6 +47,7 @@ end
 
 def update
   if @event.update(event_params)
+    authorize_event
     @event.event_tags.each { |tag| tag.destroy }
     @event.event_talks.each { |talk| talk.destroy }
     generate_tags(params[:event][:category_ids], @event)

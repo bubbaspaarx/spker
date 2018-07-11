@@ -37,9 +37,9 @@
               <% end %>
             </ul>
           </div>
-          <div class="event-type">
-            <h5>This event is <%= ['A', 'E', 'I', 'O', 'U' ].include?(@event.talk_type[0]) ? 'an' : 'a'  %> <%= @event.talk_type.downcase %></h5>
-          </div>
+<!--           <div class="event-type">
+            <h5>This event is <%#= ['A', 'E', 'I', 'O', 'U' ].include?(@event.talk_type[0]) ? 'an' : 'a'  %> <%#= @event.talk_type.downcase %></h5>
+          </div> -->
         </div>
         <div class="event-list">
           <div class="event-item">
@@ -56,6 +56,7 @@
           <div class="filter-speaker-wrap">
             <%= f.button :submit, "Find Speakers", id: 'the-submit-button', class: 'the-submit-button event-show-page-btn'%>
             <% end %>
+            <%= link_to "Edit Event", edit_event_path, class: 'the-submit-button event-show-page-btn' %>
           </div>
         </div>
       </div>
