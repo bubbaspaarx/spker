@@ -1,0 +1,47 @@
+@media (max-width: 1300px) {
+  .what-is-image {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .what-is-icons {
+    padding: 0px 50px;
+  }
+  .navbar-sparks1 {
+    padding: 0px 50px;
+  }
+  .banner {
+    & h1 {
+      font-size: 35px;
+    }
+    & p {
+      font-size: 21px;
+    }
+  }
+  .banner-search-btn {
+    padding: 11px 36px;
+  }
+  .talk-types {
+    padding: 0px 50px;
+  }
+  .speaker-reg-image {
+    width: 350px;
+    height: 350px;
+  }
+  .speaker-register-wrapper {
+    padding: 30px 50px;
+  }
+  .speaker-register-container {
+    margin-top: 40px;
+  }
+  .spker-reg-image-text {
+    width: 160px;
+    height: 160px;
+    & p {
+      top: 37%;
+      font-size: 14px;
+    }
+  }
+}
