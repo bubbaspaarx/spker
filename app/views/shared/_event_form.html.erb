@@ -42,7 +42,7 @@
       <%= f.association :categories, as: :check_boxes, required: false , label: false%>
     </div>
     <div class="col-xs-4">
-      <%= f.input :talk_type, collection: ['Seminar', 'Workshop', 'Keynote Address', 'Training Session', 'Industry Talk', 'Entertainment Event', 'Motivational Talk', 'Educational Talk', 'Panel'], label: false %>
+      <%= f.association :talks, as: :check_boxes, required: false , label: false%>
     </div>
   </div>
   <h5>What expenses are you willing to pay?</h5>

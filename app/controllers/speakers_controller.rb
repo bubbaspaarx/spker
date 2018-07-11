@@ -26,7 +26,8 @@ class SpeakersController < ApplicationController
     @user.is_speaker = true
     if @user.update(speaker_params)
       generate_tags
-      redirect_to dashboard_path(@user)
+      generate_talks
+      redirect_to user_speaker_path(@user)
     else
       @user.is_speaker = false
       render :speaker_new
@@ -40,6 +41,7 @@ class SpeakersController < ApplicationController
     if @user.update(speaker_params)
       destroy_tags
       generate_tags
+      generate_talks
       redirect_to user_speaker_path(@user)
     else
       render :speaker_edit
@@ -57,16 +59,31 @@ class SpeakersController < ApplicationController
     end
   end
 
-
-
+  def generate_talks
+    params[:user][:talk_ids].each do |id|
+      talk = UserTalk.new
+      talk.talk = Talk.find(id) unless id.blank?
+      talk.user = current_user
+      talk.save
+    end
+  end
 
   def destroy_tags
     @user.user_tags.each { |tag| tag.destroy }
   end
 
+  def destroy_talks
+    @user.user_talks.each { |talk| talk.destroy }
+  end
+
   def category_search
     tags = UserTag.tag_search(params[:category])
     tags.map { |tag| tag.user  }
+  end
+
+  def talk_search
+    talks = UserTalk.talk_search(params[:talk])
+    talks.map { |talk| talk.user  }
   end
 
   def set_user
@@ -75,7 +92,7 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_params
-    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id, { user_photos_attributes: [ :photo ] })
+    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id, :talk_id, { user_photos_attributes: [ :photo ] })
   end
 
   def filtering_params(params)

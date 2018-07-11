@@ -15,21 +15,21 @@
     </div>
   </div>
   <!-- Right Navigation -->
-  <div class="navbar-sparks-right hidden-xs hidden-sm">
+  <div class="navbar-spker-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
     <!-- Links when logged in -->
     <%#= render 'shared/search-button' %>
     <% unless current_user.is_speaker %>
-    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-sparks-item navbar-sparks-link linky" %>
+    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-sparks-item navbar-spker-link linky" %>
     <% end %>
 
-    <%= link_to "Create an event", new_event_path, class: "navbar-sparks-item navbar-sparks-link linky" %>
+    <%= link_to "Create an event", new_event_path, class: "navbar-sparks-item navbar-spker-link linky" %>
 
     <% unless action_name == "dashboard" %>
     <% if current_user %>
-    <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-sparks-item navbar-sparks-link" %>
+    <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-sparks-item navbar-spker-link" %>
     <% end %>
     <% end %>
 

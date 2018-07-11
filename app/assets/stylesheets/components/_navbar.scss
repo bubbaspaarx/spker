@@ -25,6 +25,17 @@
   margin-left: 20px;
 }
 
+.navbar-spker-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-spker-link {
+  color: #fff;
+  font-size: 14px;
+}
+
 .navbar-spker-item {
   color: #fff;
   margin-left: 10px;
@@ -99,6 +110,18 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+.linky {
+  text-decoration: none;
+  &:hover {
+    color: #383838;
+    text-decoration: none;
+  }
+  &:focus {
+    color: #383838;
+    text-decoration: none;
+  }
 }
 
 .navbar-sparks-item.navbar-sparks-link.btn.btn-warning {

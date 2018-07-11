@@ -34,7 +34,7 @@
           <%= image_tag(image) %>
       </div>
       <% else %>
-        <% image = current_user.photo.url ? current_user.photo : "http://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <% image = current_user.photo.url ? current_user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
         <%= image_tag(image)%>
       <% end %>
   <% end %>
