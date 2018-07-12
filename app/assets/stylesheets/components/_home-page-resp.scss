@@ -3,6 +3,9 @@
     height: 250px;
     width: 250px;
   }
+  .footer-container {
+    width: auto;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -42,6 +45,28 @@
     & p {
       top: 37%;
       font-size: 14px;
+    }
+  }
+}
+
+@media (min-width: 630px) and (max-width: 870px) {
+  .banner {
+    background-position: 80% 80%;
+    min-height: 480px;
+  }
+  .what-is-image {
+    height: 170px;
+    width: 170px;
+  }
+  .what-is-card {
+
+  }
+  .what-is-card-detail {
+    & h4 {
+  font-size: 18px;
+    }
+    & p {
+
     }
   }
 }
