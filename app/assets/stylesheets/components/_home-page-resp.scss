@@ -49,7 +49,7 @@
   }
 }
 
-@media (min-width: 630px) and (max-width: 870px) {
+@media (min-width: 730px) and (max-width: 870px) {
   .banner {
     background-position: 80% 80%;
     min-height: 480px;
@@ -63,10 +63,66 @@
   }
   .what-is-card-detail {
     & h4 {
-  font-size: 18px;
+      font-size: 18px;
     }
     & p {
 
     }
+  }
+}
+
+@media (max-width: 729px) {
+  .what-is-icons {
+    flex-direction: column;
+  }
+  .banner {
+    background-position: 80% 80%;
+    min-height: 480px;
+  }
+  .what-is-image {
+    // height: 250px;
+    // width: 250px;
+  }
+  .what-is-card {
+
+  }
+  .what-is-wrapper {
+    padding: 1px 0px;
+  }
+  .what-is-card-detail {
+    margin-bottom: 30px;
+    & p {
+      width: 80%;
+      font-size: 24px;
+    }
+    & h4 {
+      font-size: 25px;
+    }
+  }
+  .what-is-title {
+    & p {
+      font-size: 24px;
+    }
+  }
+  .how-to-wrapper {
+    height: auto;
+  }
+  .how-to-title {
+    & p {
+      font-size: 24px;
+    }
+  }
+  .talk-types {
+    flex-direction: column;
+  }
+  .how-text {
+    width: auto;
+  }
+  .speaker-reg-image {
+    display: none;
+  }
+  .speaker-register-wrapper {
+    height: auto;
+    min-height: auto;
   }
 }
