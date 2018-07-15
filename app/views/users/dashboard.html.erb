@@ -1,57 +1,57 @@
-<div class="row">
+<!-- <div class="row">
   <div class="dashboard-title col-xs-8 col-xs-offset-2">
-    <h1>Welcome <%= current_user.first_name %></h1>
+    <h1>Welcome <%#= current_user.first_name %></h1>
     <h4>This is your Spker dashboard. Create events, speaker profile, add images and receive messages</h4>
   </div>
 </div>
 <div class="dashboard container">
   <div class="row">
     <div>
-      <!-- Nav tabs -->
+
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="dash-tab <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-user"></i> Profile</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
-        <!-- <li role="presentation" class="dash-tab <%= params[:active_tab] == 'account' ? 'active' : '' %>"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Account</a></li> -->
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Profile</a></li>
+        <li role="presentation" class="dash-tab <%#= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
+        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
+        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'account' ? 'active' : '' %>"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Account</a></li>
+        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Profile</a></li>
       </ul>
 
 
-      <!-- Tab panes -->
+
       <div class="tab-content-container">
         <div class="tab-content">
-          <div name="profile" role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
-            <%= render "shared/user_profile" %>
+          <div name="profile" role="tabpanel" class="tab-pane <%#= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
+            <%#= render "shared/user_profile" %>
           </div>
-          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'messages' ? 'active' : '' %>" id="messages">
-            <% if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
+          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'messages' ? 'active' : '' %>" id="messages">
+            <%# if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
             <p>You have no messages</p>
             <p>Messages you send and receive will appear here</p>
-            <% end %>
-            <%= render 'shared/inbox-container' %>
+            <%# end %>
+            <%#= render 'shared/inbox-container' %>
           </div>
-          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'events' ? 'active' : '' %>" id="events">
+          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'events' ? 'active' : '' %>" id="events">
             Here you can create events to invite speakers to and see events you have been invited to
-            <%= render 'shared/user-events-list' %>
-            <%= link_to "Create an event", new_event_path, class: "create-event-btn" %>
+            <%#= render 'shared/user-events-list' %>
+            <%#= link_to "Create an event", new_event_path, class: "create-event-btn" %>
           </div>
-          <!-- <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'account' ? 'active' : '' %>" id="account">
+          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'account' ? 'active' : '' %>" id="account">
             <p>Change your password or email address</p>
-            <%#= link_to "Change Password", new_user_password_path, class: "navbar-sparks-item navbar-sparks-link" %>
-          </div> -->
-          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
-            <%= render 'shared/speaker-details', user: @user %>
-            <% if current_user.is_speaker.nil? || current_user.is_speaker == false %>
-            <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
-            <% else %>
-            <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
-            <%= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
-            <% end %>
+            <%##= link_to "Change Password", new_user_password_path, class: "navbar-sparks-item navbar-sparks-link" %>
+          </div>
+          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
+            <%#= render 'shared/speaker-details', user: @user %>
+            <%# if current_user.is_speaker.nil? || current_user.is_speaker == false %>
+            <%#= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
+            <%# else %>
+            <%#= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
+            <%#= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
+            <%# end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
+ -->
 

@@ -1,0 +1,47 @@
+<div class="user-show-wrapper">
+  <div class="user-show-container">
+    <div class="user-show-col-1">
+      <% image = @user.photo.url ? @user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+      <div class="user-show-photo" style="background-image: url('<%= cl_image_path image %>')">
+      </div>
+      <div class="user-show-verified-info">
+        <div class="verified-heading">
+          <p>Verified Info</p>
+        </div>
+        <div class="verified-info">
+          <p>Email Address</p>
+          <p>Phone Number</p>
+          <p><%= @user.is_speaker ? "Speaker" : "Not a speaker" %></p>
+        </div>
+      </div>
+      <div class="user-show-verified-info">
+        <div class="verified-heading">
+          <p>About</p>
+        </div>
+        <div class="verified-info">
+          <div class="user-show-job">
+            <h5>Job Title</h5>
+            <p><%= @user.job_title ? @user.job_title : "None" %></p>
+          </div>
+          <div class="user-show-city">
+            <h5>City</h5>
+            <p><%= @user.city ? @user.city : "None" %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="user-show-col-2">
+      <div class="user-show-name">
+        <h2><%= @user.full_name %></h2>
+      </div>
+      <div class="user-show-description">
+        <p><%= @user.about %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
