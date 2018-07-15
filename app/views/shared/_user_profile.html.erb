@@ -68,14 +68,11 @@
   <% if @user == current_user %>
   const userDetails = document.querySelectorAll(".user-details")
   const inputFields = document.querySelectorAll("#formTarget")
-  console.log(inputFields)
   const editButton = document.getElementById("edit-button-profile")
   const photoButton = document.getElementById("photo_upload")
 
   editButton.addEventListener("click", (event) => {
-    console.log(event);
     userDetails.forEach(function(e) {
-      console.log(e)
       e.classList.toggle('hidden');
     });
     inputFields.forEach(function(e) {

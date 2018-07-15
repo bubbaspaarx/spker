@@ -1,57 +1,117 @@
-<!-- <div class="row">
-  <div class="dashboard-title col-xs-8 col-xs-offset-2">
-    <h1>Welcome <%#= current_user.first_name %></h1>
-    <h4>This is your Spker dashboard. Create events, speaker profile, add images and receive messages</h4>
+<div class="dashboard-wrapper">
+  <div class="dashboard-title">
+    <h1>Welcome <%= current_user.first_name %></h1>
   </div>
-</div>
-<div class="dashboard container">
-  <div class="row">
-    <div>
+  <div class="dashboard-container">
+    <div class="dashboard-col-1">
+      <% image = @user.photo.url ? @user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+      <div id="img_prev" class="user-show-photo" style="background-image: url('<%= cl_image_path image %>')">
+      </div>
+      <%= simple_form_for(@user, html: { method: :put }) do |f| %>
+      <div class="change-photo-button">
+        <%= f.input :photo, label: "Change Photo", class: 'upload-button', input_html: { onchange: "readURL(this);" } %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <div class="form-actions">
+          <%= f.button :submit, "Save", class: "photo-save-btn" %>
+        </div>
+      </div>
 
-      <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="dash-tab <%#= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-user"></i> Profile</a></li>
-        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
-        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
-        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'account' ? 'active' : '' %>"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Account</a></li>
-        <li role="presentation" class="dash-tab <%#= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Profile</a></li>
+
+
+      <% end %>
+      <ul class="navigation-area nav nav-tabs nav-stacked" role="tablist">
+        <li role="presentation" class="dash-tab <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Bio</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'account' ? 'active' : '' %>"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Account</a></li>
       </ul>
-
-
-
+    </div>
+    <div class="dashboard-col-2">
       <div class="tab-content-container">
         <div class="tab-content">
-          <div name="profile" role="tabpanel" class="tab-pane <%#= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
-            <%#= render "shared/user_profile" %>
+          <div name="profile" role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
+            <div class="edit-user-wrapper">
+              <div class="edit-user-container">
+                <div class="dash-prof-title">
+                  <p>Required Information</p>
+                </div>
+                <div class="dash-prof-form">
+                  <%= link_to "View Profile", user_path, class: "view-profile-btn" %>
+                  <%= simple_form_for(@user, html: { method: :put }) do |f| %>
+                  <%= f.error_notification %>
+                  <div class="form-inputs">
+                    <div class="dash-prof-input">
+                      <p>First Name</p>
+                      <%= f.input :first_name, label: false, required: true %>
+                    </div>
+                    <div class="dash-prof-input">
+                      <p>Last Name</p>
+                      <%= f.input :last_name, label: false, required: true %>
+                    </div>
+                    <div class="dash-prof-input">
+                      <p>City</p>
+                      <%= f.input :city, input_html: { value: @user.city }, label: false, placeholder: 'City' %>
+                    </div>
+                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                    <% end %>
+                  </div>
+                  <div class="form-actions">
+                    <%= f.button :submit, "Update", class: "update-button" %>
+                  </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
-          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'messages' ? 'active' : '' %>" id="messages">
-            <%# if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'messages' ? 'active' : '' %>" id="messages">
+            <% if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
             <p>You have no messages</p>
             <p>Messages you send and receive will appear here</p>
-            <%# end %>
-            <%#= render 'shared/inbox-container' %>
+            <% end %>
+            <%= render 'shared/inbox-container' %>
           </div>
-          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'events' ? 'active' : '' %>" id="events">
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'events' ? 'active' : '' %>" id="events">
             Here you can create events to invite speakers to and see events you have been invited to
-            <%#= render 'shared/user-events-list' %>
-            <%#= link_to "Create an event", new_event_path, class: "create-event-btn" %>
+            <%= render 'shared/user-events-list' %>
+            <%= link_to "Create an event", new_event_path, class: "create-event-btn" %>
           </div>
-          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'account' ? 'active' : '' %>" id="account">
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'account' ? 'active' : '' %>" id="account">
             <p>Change your password or email address</p>
-            <%##= link_to "Change Password", new_user_password_path, class: "navbar-sparks-item navbar-sparks-link" %>
+            <%= link_to "Change Password", edit_user_registration_path, class: "navbar-sparks-item navbar-sparks-link" %>
+            <h3>Cancel my account</h3>
+
+            <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
           </div>
-          <div role="tabpanel" class="tab-pane <%#= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
-            <%#= render 'shared/speaker-details', user: @user %>
-            <%# if current_user.is_speaker.nil? || current_user.is_speaker == false %>
-            <%#= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
-            <%# else %>
-            <%#= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
-            <%#= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
-            <%# end %>
+          <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
+            <%= render 'shared/speaker-details', user: @user %>
+            <% if current_user.is_speaker.nil? || current_user.is_speaker == false %>
+            <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
+            <% else %>
+            <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
+            <%= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
+            <% end %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
- -->
 
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#img_prev')
+        .css("background-image", `url(${e.target.result})`);
+        $('.photo-save-btn')
+        .css("display", 'block');
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>

@@ -1,6 +1,58 @@
-.dashboard.container {
-  margin-top:  50px;
-  overflow: hidden;
+.dashboard-container {
+  width: 1080px;
+  margin: 50px auto;
+  display: flex;
+}
+
+.dashboard-title {
+  text-align: center;
+}
+
+.dashboard-col-1 {
+  width: 25%;
+}
+
+.navigation-area {
+  margin-top: 20px;
+}
+
+.dashboard-col-2 {
+ width: 72%;
+ border: 1px solid #bdbcbc;
+ margin-left: 3%;
+}
+
+.dash-prof-title {
+  color: #484848;
+  padding-top: 8px;
+  padding-left: 8px;
+  margin: 0;
+  border-bottom: 1px solid #dce0e0;
+  background-color: #EDEFED;
+}
+
+.dash-prof-form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.dash-prof-input {
+  display: flex;
+  align-items: center;
+  & p {
+    width: 25%;
+    text-align: right;
+    margin-right: 10px;
+  }
+  & .form-group {
+    width: 75%;
+    & .form-control {
+      color: #4e4e4e;
+      font-size: 14px;
+    }
+  }
+
 }
 
 .tab-content-container {
@@ -125,7 +177,6 @@
   background-color: transparent;
   opacity: .6;
   border-bottom: 4px solid transparent;
-  margin: 0 2vw;
   a {
     color: #333;
   }
@@ -136,16 +187,9 @@
   border-bottom: 4px solid $brand-primary;
 }
 
-.dashboard-title {
-  h1, h4 {
-    color: rgba(0,0,0,0.7);
-  }
-
-}
 
 .nav-tabs {
   border: none;
-  padding-left: 2vw;
 }
 
 .speaker-requests {

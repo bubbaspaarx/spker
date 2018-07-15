@@ -37,4 +37,18 @@
 .verified-info {
   color: #333D47;
   font-weight: lighter;
+  & span {
+    color: green;
+    float: right;
+    margin-right: 20px;
+    margin-top: 2px;
+  }
+}
+
+.edit-user-link {
+  color: #008489;
+  font-size: 14px;
+  &:hover {
+    text-decoration: none;
+  }
 }
