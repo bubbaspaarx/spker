@@ -1,6 +1,6 @@
 class SpeakersController < ApplicationController
   before_action :set_user, only: [:speaker_show, :speaker_create, :speaker_edit, :speaker_new, :speaker_update]
-  skip_before_action :authenticate_user!, only: :speaker_index
+  skip_before_action :authenticate_user!, only: [:speaker_index, :become]
 
   def speaker_show
     @message = Message.new
@@ -35,6 +35,10 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_edit
+  end
+
+  def become
+    authorize current_user
   end
 
   def speaker_update
