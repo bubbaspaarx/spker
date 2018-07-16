@@ -45,6 +45,10 @@ class UserPolicy < ApplicationPolicy
     true
   end
 
+  def become?
+    true
+  end
+
   def speaker_new?
     true
   end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'speakers', to: 'speakers#speaker_index'
   get 'privacy_policy', to: 'pages#privacy_policy'
   get 'terms', to: 'pages#terms'
+  get 'become', to: 'speakers#become'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations' }
   root to: 'pages#home'
