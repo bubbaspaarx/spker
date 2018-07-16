@@ -37,10 +37,6 @@ class SpeakersController < ApplicationController
   def speaker_edit
   end
 
-  def become
-    authorize current_user
-  end
-
   def speaker_update
     if @user.update(speaker_params)
       destroy_tags

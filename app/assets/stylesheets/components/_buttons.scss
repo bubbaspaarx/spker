@@ -89,3 +89,17 @@
   font-size: 14px;
   padding: 12px 47px;
 }
+
+.register-now-btn {
+  background-color: #e2678f;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 32px;
+  border-radius: 30px;
+  transition: background-color .5s ease;
+  &:hover {
+    text-decoration: none;
+    background-color: #ef437b;
+    color: #fff;
+  }
+}
