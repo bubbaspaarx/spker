@@ -18,3 +18,88 @@
   border-radius: 2px;
   color: #c15555;
 }
+
+
+.view-profile-btn {
+  padding: 18px 43px;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #65bcd0;
+  font-size: 14px;
+  margin-bottom: 35px;
+  width: 200px;
+  text-align: center;
+}
+
+
+.form-group.file.optional.user_photo{
+  /*your custom styles*/
+  background-color: #e2678f;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 1px 1px 0px 0px;
+  color: #fff;
+  & label {
+    margin-bottom: 0;
+  }
+}
+
+.user_photo{
+  pointer-events: none;
+  position: relative;
+  overflow: hidden;
+}
+.user_photo > * {
+  pointer-events: none;
+}
+.user_photo > input[type="file"]{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: all;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+.change-photo-button {
+  display: flex;
+}
+
+.photo-save-btn {
+  display: none;
+  background-color: #67e281;
+  width: auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 0px 0px 1px 1px;
+  color: #fff;
+  border: none;
+}
+
+.update-button {
+  float: right;
+  background-color: #64d17b;
+  color: #fff;
+  font-size: 14px;
+  padding: 12px 47px;
+}
+
+.register-now-btn {
+  background-color: #e2678f;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 32px;
+  border-radius: 30px;
+  transition: background-color .5s ease;
+  &:hover {
+    text-decoration: none;
+    background-color: #ef437b;
+    color: #fff;
+  }
+}

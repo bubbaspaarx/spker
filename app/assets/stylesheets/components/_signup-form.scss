@@ -54,7 +54,7 @@ html {
 }
 
 .form {
-  background: $brand-primary2;
+  background: #fff;
   padding: 40px;
   max-width:600px;
   margin:40px auto;
@@ -96,7 +96,7 @@ html {
 
 .main-login.tab-content h1 {
   text-align:center;
-  color: $brand-primary;
+  color: #00BDA5;
   font-weight:$thin;
   margin:0 0 40px;
 }
@@ -105,7 +105,7 @@ html {
   position:absolute;
   transform:translateY(6px);
   left:13px;
-  color: #fff;
+  color: #4b6267;
   transition:all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
@@ -184,7 +184,7 @@ html {
   font-weight:$bold;
   text-transform:uppercase;
   letter-spacing:.1em;
-  background:$main;
+  background:#00BDA5;
   color:$white;
   transition:all.5s ease;
   -webkit-appearance: none;
