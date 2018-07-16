@@ -28,6 +28,5 @@ $('.form').find('input, textarea').on('change input keyup blur focus', function 
 });
 
 var input = $('.form').find('input:-webkit-autofill').delay(1500)
-console.log(input)
 label = input.prev('label')
 

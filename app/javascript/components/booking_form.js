@@ -33,7 +33,6 @@ const dynamicPrice = (price) => {
     input.addEventListener('change', (event) => {
       const timeArray = getTimeFromInputs(form)
       let hours = Math.round((timeArray[1] - timeArray[0]) / 3600000)
-      console.log(hours)
       if (hours < 1) { hours = 1 }
       cost.innerText =`Price: £${Math.round(price) * hours}.00`
     })
