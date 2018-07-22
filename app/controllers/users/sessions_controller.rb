@@ -8,6 +8,6 @@ class Users::SessionsController < Devise::SessionsController
 
   def redirect_after_failure
     redirect_to new_user_session_path(active_tab: 'login')
-    set_flash_message :notice, :error
+    set_flash_message :alert, :error
   end
 end
