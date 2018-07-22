@@ -5,7 +5,7 @@ Rails.application.configure do
   #Mailer settings
   config.action_mailer.delivery_method     = :postmark
   config.action_mailer.postmark_settings   = { api_key: ENV['POSTMARK_API_KEY'] }
-  config.action_mailer.default_url_options = { host: 'www.spker.co.uk' }
+  config.action_mailer.default_url_options = { host: 'https://www.spker.co.uk' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -49,7 +49,7 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
   config.action_cable.url = "wss://spker.herokuapp.com/cable"
   config.web_socket_server_url = "wss://spker.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ["http://spker.herokuapp.com", "https://spker.herokuapp.com", 'http://www.spker.pro', 'https://www.spker.pro']
+  config.action_cable.allowed_request_origins = ["https://spker.herokuapp.com", "https://spker.herokuapp.com", 'https://www.spker.pro', 'https://www.spker.pro']
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
