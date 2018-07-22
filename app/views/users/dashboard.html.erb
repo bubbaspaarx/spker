@@ -31,51 +31,13 @@
       <div class="tab-content-container">
         <div class="tab-content">
           <div name="profile" role="tabpanel" class="tab-pane <%= (params[:active_tab] == nil) || (params[:active_tab] == 'profile') ? 'active' : '' %>" id="profile">
-            <div class="edit-user-wrapper">
-              <div class="edit-user-container">
-                <div class="dash-prof-title">
-                  <p>Required Information</p>
-                </div>
-                <div class="dash-prof-form">
-                  <%= link_to "View Profile", user_path, class: "view-profile-btn" %>
-                  <%= simple_form_for(@user, html: { method: :put }) do |f| %>
-                  <%= f.error_notification %>
-                  <div class="form-inputs">
-                    <div class="dash-prof-input">
-                      <p>First Name</p>
-                      <%= f.input :first_name, label: false, required: true %>
-                    </div>
-                    <div class="dash-prof-input">
-                      <p>Last Name</p>
-                      <%= f.input :last_name, label: false, required: true %>
-                    </div>
-                    <div class="dash-prof-input">
-                      <p>City</p>
-                      <%= f.input :city, input_html: { value: @user.city }, label: false, placeholder: 'City' %>
-                    </div>
-                    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-                    <% end %>
-                  </div>
-                  <div class="form-actions">
-                    <%= f.button :submit, "Update", class: "update-button" %>
-                  </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
+          <%= render 'users/shared/profile-edit' %>
           </div>
           <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'messages' ? 'active' : '' %>" id="messages">
-            <% if current_user.received_messages.length == 0 && current_user.sent_messages.length == 0 %>
-            <p>You have no messages</p>
-            <p>Messages you send and receive will appear here</p>
-            <% end %>
             <%= render 'shared/inbox-container' %>
           </div>
           <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'events' ? 'active' : '' %>" id="events">
-            Here you can create events to invite speakers to and see events you have been invited to
             <%= render 'shared/user-events-list' %>
-            <%= link_to "Create an event", new_event_path, class: "create-event-btn" %>
           </div>
           <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'account' ? 'active' : '' %>" id="account">
             <p>Change your password or email address</p>
@@ -86,12 +48,6 @@
           </div>
           <div role="tabpanel" class="tab-pane <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>" id="speaker-profile">
             <%= render 'shared/speaker-details', user: @user %>
-            <% if current_user.is_speaker.nil? || current_user.is_speaker == false %>
-            <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
-            <% else %>
-            <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
-            <%= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
-            <% end %>
           </div>
         </div>
       </div>
@@ -115,3 +71,4 @@
     }
   }
 </script>
+

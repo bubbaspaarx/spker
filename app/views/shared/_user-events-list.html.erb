@@ -1,8 +1,17 @@
-<% if current_user.events.length == 0 %>
-  <p>You have no events</p>
-<% else %>
-  <div class="row event-lists">
-    <% current_user.events.each do |event| %>
+<div class="user-events-wrapper">
+  <div class="user-events-container">
+    <div class="dash-prof-title">
+      <p>Events</p>
+    </div>
+    <div class="user-events-heading">
+      <p>Here you can create events to invite speakers to and see events you have been invited to</p>
+    </div>
+    <%= link_to "Create a new event", new_event_path, class: "create-event-btn" %>
+    <% if current_user.events.length == 0 %>
+    <p>You have no events</p>
+    <% else %>
+    <div class="row event-lists">
+      <% current_user.events.each do |event| %>
       <div class="events-list">
         <div class="event-name col-xs-4">
           <h4><%= link_to event.name, event_path(event)  %> </h4>
@@ -14,17 +23,19 @@
         </div>
         <div class="event-speakers col-xs-4">
           <h4>Speakers</h4>
-            <% if event.invites.where(status: 'accepted').length > 0 %>
-              <ul>
-                <% event.invites.where(status: 'accepted').each do |invite| %>
-                  <li><%= link_to "#{invite.user.first_name} #{invite.user.last_name}", user_speaker_path(invite.user) %></li>
-                <% end %>
-              </ul>
-            <% else %>
-              <p>You currently have no speakers attending</p>
+          <% if event.invites.where(status: 'accepted').length > 0 %>
+          <ul>
+            <% event.invites.where(status: 'accepted').each do |invite| %>
+            <li><%= link_to "#{invite.user.first_name} #{invite.user.last_name}", user_speaker_path(invite.user) %></li>
             <% end %>
+          </ul>
+          <% else %>
+          <p>You currently have no speakers attending</p>
+          <% end %>
         </div>
       </div>
+      <% end %>
+    </div>
     <% end %>
   </div>
-<% end %>
+</div>
