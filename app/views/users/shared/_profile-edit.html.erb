@@ -1,0 +1,45 @@
+<div class="edit-user-wrapper">
+  <div class="edit-user-container">
+    <div class="dash-prof-title">
+      <p>Required Information</p>
+    </div>
+    <div class="dash-prof-form">
+      <%= link_to "View Profile", user_path, class: "view-profile-btn" %>
+      <%= simple_form_for(@user, html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <div class="dash-prof-input">
+          <p>First Name</p>
+          <%= f.input :first_name, label: false, required: true %>
+        </div>
+        <div class="dash-prof-input">
+          <p>Last Name</p>
+          <%= f.input :last_name, label: false, required: true %>
+        </div>
+        <div class="dash-prof-input">
+          <p>Address</p>
+          <%= f.input :address, input_html: { value: @user.address }, label: false, placeholder: 'Address' %>
+        </div>
+        <div class="dash-prof-input">
+          <p>City</p>
+          <%= f.input :city, input_html: { value: @user.city }, label: false, placeholder: 'City' %>
+        </div>
+        <div class="dash-prof-input">
+          <p>Postcode</p>
+          <%= f.input :postcode, input_html: { value: @user.postcode }, label: false, placeholder: 'Postcode' %>
+        </div>
+        <div class="dash-prof-input">
+          <p>A little bit about you</p>
+          <%= f.input :about, input_html: { value: @user.about }, label: false, placeholder: 'About' %>
+        </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: "update-button" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

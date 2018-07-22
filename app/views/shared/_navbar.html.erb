@@ -15,15 +15,15 @@
 
     <!-- Links when logged in -->
     <% unless current_user.is_speaker %>
-      <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-sparks-item navbar-sparks-link" %>
+    <%= link_to "Become a speaker", user_speaker_new_path(current_user), class: "navbar-sparks-item navbar-sparks-link" %>
     <% end %>
 
     <%= link_to "Create an event", new_event_path, class: "navbar-sparks-item navbar-sparks-link" %>
 
     <% unless action_name == "dashboard" %>
-      <% if current_user %>
-        <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-sparks-item navbar-sparks-link" %>
-      <% end %>
+    <% if current_user %>
+    <%= link_to "Dashboard", dashboard_path(current_user), class: "navbar-sparks-item navbar-sparks-link" %>
+    <% end %>
     <% end %>
 
 
@@ -32,7 +32,8 @@
     <div class="navbar-sparks-item">
       <div class="dropdown">
         <% image = current_user.photo.url ? current_user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-        <%= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-sparks-menu", "data-toggle" => "dropdown", secure: "true" %>
+        <%#= cl_image_tag image, class: "avatar dropdown-toggle", id: "navbar-sparks-menu", "data-toggle" => "dropdown", secure: "true" %>
+        <div class="avatar dropdown-toggle", id="navbar-sparks-menu", data-toggle="dropdown", style="background-image: url('<%= cl_image_path image, secure: "true" %>')"></div>
         <ul class="dropdown-menu dropdown-menu-right navbar-sparks-dropdown-menu">
           <li>
             <%= link_to dashboard_path(current_user, active_tab: 'profile') do %>

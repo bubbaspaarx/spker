@@ -1,19 +1,29 @@
-<div class="speaker-det-container">
-  <div class="row">
-    <div class="speaker-requests col-xs-12 col-md-6">
-      <h2>Invites Received</h2>
+<div class="speaker-det-wrapper">
+  <div class="speaker-det-container">
+   <div class="dash-prof-title">
+    <p>Speaker Area</p>
+  </div>
+  <% if current_user.is_speaker.nil? || current_user.is_speaker == false %>
+  <%= link_to 'Create Speaker Pofile', user_speaker_new_path(current_user), class: 'btn btn-primary' %>
+  <% else %>
+  <%= link_to 'Edit Profile', user_speaker_edit_path(current_user), class: 'btn btn-success' %>
+  <%= link_to 'Preview', user_speaker_path(current_user), class: 'btn btn-primary' %>
+  <% end %>
+  <div class="speaker-stats">
+    <div class="speaker-requests">
+      <p>Invites Received</p>
       <% user.invites.where(status: 'pending').each do |invite| %>
-        <div class="new-invite">
-          <%= link_to invite.event.name, event_path(invite.event) %>
-          <div>
-            <%= link_to 'Accept', invites_accept_path(invite), class: 'btn btn-success', method: 'patch' %>
-            <%= link_to 'Reject', invites_reject_path(invite), class: 'btn btn-danger', method: 'patch' %>
-          </div>
+      <div class="new-invite">
+        <%= link_to invite.event.name, event_path(invite.event) %>
+        <div>
+          <%= link_to 'Accept', invites_accept_path(invite), class: 'btn btn-success', method: 'patch' %>
+          <%= link_to 'Reject', invites_reject_path(invite), class: 'btn btn-danger', method: 'patch' %>
         </div>
+      </div>
       <% end %>
     </div>
-    <div class="upcoming-events col-xs-12 col-md-6">
-      <h2>Upcoming Events</h2>
+    <div class="upcoming-events">
+      <p>Upcoming Events</p>
       <% user.invites.where(status: 'accepted').each do |invite| %>
       <div class="event">
         <%= link_to invite.event.name, event_path(invite.event) %> - <%= invite.event.start_date %>
@@ -21,4 +31,5 @@
       <% end %>
     </div>
   </div>
+</div>
 </div>
