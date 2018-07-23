@@ -34,7 +34,9 @@
       <div class="user-show-name">
         <h2><%= @user.full_name %></h2>
         <h5>Member Since - <%= @user.created_at.strftime("%B %Y") %></h5>
-        <% if current_user == @user %> <%= link_to "Edit Profile", edit_user_path, class: "edit-user-link" %> <% end %>
+        <% if current_user == @user %>
+        <%= link_to "Edit Profile", dashboard_path(current_user, active_tab: 'profile') %>
+        <% end %>
       </div>
       <div class="user-show-description">
         <h3>About</h3>

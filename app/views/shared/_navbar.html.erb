@@ -50,16 +50,18 @@
             <i class="far fa-calendar"></i> <%= t(".events", default: "Events") %>
             <% end %>
           </li>
-<!--           <li>
-            <%#= link_to dashboard_path(current_user, active_tab: 'account'), class: "navbar-sparks-item navbar-sparks-link" do %>
-            <i class="fa fa-wrench"></i> <%#= t(".account", default: "Account") %>
-            <%# end %>
-          </li> -->
+          <li>
+            <%= link_to dashboard_path(current_user, active_tab: 'account'), class: "navbar-sparks-item navbar-sparks-link" do %>
+            <i class="fa fa-wrench"></i> <%= t(".account", default: "Account") %>
+            <% end %>
+          </li>
+          <% if current_user.is_speaker? %>
           <li>
             <%= link_to dashboard_path(current_user, active_tab: 'speaker-profile'), class: "navbar-sparks-item navbar-sparks-link" do %>
             <i class="fa fa-microphone"></i> <%= t(".speaker-profile", default: "Speaker Profile") %>
             <% end %>
           </li>
+          <% end %>
           <li>
             <%= link_to destroy_user_session_path, method: :delete, class: 'navbar-sparks-item navbar-sparks-link' do %>
             <i class="fa fa-sign-out-alt "></i>  <%= t(".sign_out", default: "Log out") %>
