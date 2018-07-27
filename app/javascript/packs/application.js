@@ -1,15 +1,17 @@
-import swal from 'sweetalert';
-import '../plugins/flatpickr'
-import 'bootstrap'
+import swal from "sweetalert";
+import "../plugins/flatpickr";
+import "bootstrap";
 
-import '../components/login-form.js'
-import '../components/form-input.js'
-import '../components/scroll';
+import "../components/login-form.js";
+import "../components/tabs.js";
+import "../components/form-input.js";
+import "../components/scroll";
+import "../components/photo.js";
 
 // import { formAlerts, dynamicPrice } from "../components/booking_form.js";
 // import '../components/modal.js'
-import { autocomplete } from '../components/autocomplete.js';
-import '../components/alert';
+import { autocomplete } from "../components/autocomplete.js";
+import "../components/alert";
 
 autocomplete();
 
@@ -17,4 +19,3 @@ autocomplete();
 // if (price) {
 //   dynamicPrice(price)
 // }
-

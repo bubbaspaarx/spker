@@ -1,12 +1,4 @@
-<!-- #banner-image-static
-#name
-#categories they specialise in
-#description
-#call-to-action
-#about the speaker - avec photo
-#accolades?
-#videos -->
-<%= render 'shared/invite-message-modal' %>
+<%= render 'speakers/shared/invite-message-modal' %>
 <div class="big-container">
   <div class="profile-container">
     <div class="profile">
@@ -21,9 +13,9 @@
           <% end %>
         </ul>
         <ul class="list-inline">
-          <li><a href="<%= @user.facebook %>"><h5>Facebook <i class="fab fa-facebook-square"></i></h5></a></li>
-          <li><a href="<%= @user.twitter %>"><h5>Twitter <i class="fab fa-twitter-square"></i></h5></a></li>
-          <li><a href="<%= @user.linkedin %>"><h5>LinkedIn <i class="fab fa-linkedin"></i></h5></a></li>
+          <li><a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><h5>Facebook <i class="fab fa-facebook-square"></i></h5></a></li>
+          <li><a target="_blank" href="https://twitter.com/<%= @user.twitter %>"><h5>Twitter <i class="fab fa-twitter-square"></i></h5></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><h5>LinkedIn <i class="fab fa-linkedin"></i></h5></a></li>
         </ul>
       </div>
 

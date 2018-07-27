@@ -1,5 +1,8 @@
-<div class="speaker-edit-container">
-  <div class="detail-form">
-    <%= render 'shared/speaker_form', user: @user, url: user_speaker_update_path(@user)  %>
+<div class="dashboard-wrapper">
+  <div class="dashboard-title">
+    <h1>Welcome <%= current_user.first_name %></h1>
+  </div>
+  <div class="dashboard-container">
+      <%= render 'speakers/shared/speaker_form', user: @user, url: user_speaker_update_path(@user)  %>
   </div>
 </div>

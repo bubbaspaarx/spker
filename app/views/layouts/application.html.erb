@@ -17,7 +17,7 @@
   <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
   <% unless controller_name == "pages" %>
   <%= render 'shared/navbar' %>
   <% end %>

@@ -1,0 +1,145 @@
+<div class="dashboard-col-1">
+  <ul class="navigation-area nav nav-tabs nav-stacked" role="tablist">
+    <li role="presentation" class="dash-tab active"><a href="#speaker-bio" aria-controls="speaker-bio" role="tab" data-toggle="tab">Speaker Bio</a></li>
+    <li role="presentation" class="dash-tab"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
+    <li role="presentation" class="dash-tab"><a href="#category" aria-controls="category" role="tab" data-toggle="tab">Category & Fee</a></li>
+    <li role="presentation" class="dash-tab"><a href="#topics" aria-controls="topics" role="tab" data-toggle="tab">Topics</a></li>
+  </ul>
+</div>
+
+<div class="dashboard-col-2">
+  <%= simple_form_for(@user, url: url) do |f| %>
+  <div class="tab-content-container">
+    <div class="tab-content">
+
+      <div role="tabpanel" class="tab-pane active panel-default" id="speaker-bio" name="speaker-bio" >
+        <div class="panel-heading">
+          <h3 class="panel-title">Speaker Bio</h3>
+        </div>
+        <div class="panel-body">
+          <div class="edit-top-row">
+            <div>
+              <% image = @user.photo.url ? @user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+              <div id="img_prev" class="speaker-edit-photo" style="background-image: url('<%= cl_image_path image, quality: "auto:low"; %>')">
+              </div>
+              <div class="change-photo-button">
+                <%= f.input :photo, label: "Change Photo", class: 'upload-button', input_html: { id: "photo-input" }  %>
+                <%= f.input :photo_cache, as: :hidden %>
+                <div class="form-actions">
+                  <%= f.button :submit, "Save", class: "photo-save-btn" %>
+                </div>
+              </div>
+            </div>
+            <div class="speaker-bio">
+              <h5>Tell us about yourself (What the organisers see)</h5>
+              <%= f.input :speaker_blurb, label:false, placeholder: 'Your bio goes here...' %>
+            </div>
+          </div>
+          <div class="social-inputs">
+            <div class="social-input">
+              <h5>Facebook <i class="fab fa-facebook-square"></i></h5>
+              <div class="input-group social-input-box">
+                <span class="input-group-addon prepend" id="basic-addon3">www.facebook.com/</span>
+                <%= f.input :facebook, label: false, placeholder: "Spker", class: "form-control", input_html: { "aria-describedby" => "basic-addon3", id: "basic-url" } %>
+              </div>
+            </div>
+            <div class="social-input">
+              <h5>Twitter <i class="fab fa-twitter-square"></i></h5>
+              <div class="input-group social-input-box">
+                <span class="input-group-addon prepend" id="basic-addon3">@</span>
+                <%= f.input :twitter, label: false, placeholder: "@spker_" %>
+              </div>
+            </div>
+            <div class="social-input">
+              <h5>LinkedIn <i class="fab fa-linkedin"></i></h5>
+              <div class="input-group social-input-box">
+                <span class="input-group-addon prepend" id="basic-addon3">www.linkedin.com/in/</span>
+                <%= f.input :linkedin, label: false, placeholder: "Spker" %>
+              </div>
+            </div>
+          </div>
+          <div class="panel-buttons">
+            <%= f.button :submit, class: 'update-button', value: 'Save' %>
+            <a class="next-btn" href="#location" aria-controls="location" role="tab" data-toggle="tab">Next</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div role="tabpanel" class="tab-pane panel-default" id="location">
+        <div class="panel-heading">
+          <h3 class="panel-title">Location</h3>
+        </div>
+        <div class="panel-body">
+          <div class="speaker-location">
+            <h3>Where are you based?</h3>
+            <div class="row">
+              <div class="col-xs-12 col-sm-6 user_address">
+                <%= f.input :address, label:false, placeholder: 'Address' %>
+              </div>
+              <div class="col-xs-12 col-sm-6">
+                <%= f.input :city, label: false, placeholder: 'City, town, etc...' %>
+                <%= f.input :postcode, label: false, placeholder: 'Poscode' %>
+              </div>
+            </div>
+            <div class="panel-buttons">
+              <%= f.button :submit, class: 'update-button', value: 'Save' %>
+              <a class="next-btn" href="#category" aria-controls="category" role="tab" data-toggle="tab">Next</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane panel-default" id="category">
+        <div class="panel-heading">
+          <h3 class="panel-title">Categories & Fee</h3>
+        </div>
+        <div class="panel-body">
+          <div class="speaker-info">
+            <div>
+              <div>
+                <h5>How far are you willing to travel?</h5>
+                <%= f.input :travel_distance, label: false, placeholder: 'km' %>
+              </div>
+              <div>
+                <h5>What's your minimum price?</h5>
+                <%= f.input :cost, label: false %>
+              </div>
+            </div>
+            <div>
+              <h5>What types of talk can you do?</h5>
+              <%= f.association :talks, as: :check_boxes, label: false %>
+            </div>
+          </div>
+        </div>
+        <div class="panel-buttons">
+          <%= f.button :submit, class: 'update-button', value: 'Save' %>
+          <a class="next-btn" href="#topics" aria-controls="topics" role="tab" data-toggle="tab">Next</a>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane panel-default" id="topics">
+        <div class="panel-heading">
+          <h3 class="panel-title">Topics</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>Choose topics you talk about;</p>
+              <%= f.association :categories, as: :check_boxes, label: false %>
+            </div>
+          </div>
+          <%= f.button :submit, class: 'update-button', value: 'Save' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="add-photos-multi">
+<p>Add multiple photos</p>
+<%#= f.fields_for :photos do |p| %>
+<%#= p.file_field :photo, multiple: true, name:"user[user_photos_attributes][][photo]" %>
+<%# end %>
+</div> -->

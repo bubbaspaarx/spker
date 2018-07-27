@@ -19,14 +19,34 @@
 }
 
 .speaker-info {
-  .user_categories {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 150px;
-    span {
-      margin: 5px 0;
-    }
-  }
+
 }
 
+.speaker-edit-photo {
+  background-position: 50%;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.social-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.social-input-box {
+  width: 80%;
+}
+
+.prepend {
+  font-weight: lighter;
+  width: 192px;
+  text-align: right;
+}
+
+.edit-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
