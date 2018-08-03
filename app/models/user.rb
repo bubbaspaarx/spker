@@ -5,6 +5,7 @@ class User < ApplicationRecord
       validates_with EmailValidator, _merge_attributes(attr_names)
     end
   end
+  before_create :capitalize_names
   after_create :send_welcome_email, :send_notification_email
 
   mount_uploader :photo, PhotoUploader
@@ -59,6 +60,11 @@ class User < ApplicationRecord
   end
 
   private
+
+  def capitalize_names
+    self.first_name = first_name.capitalize
+    self.last_name = last_name.capitalize
+  end
 
   def send_welcome_email
     UserMailer.welcome(self).deliver_now!

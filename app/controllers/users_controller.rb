@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :set_user, only: [:dashboard, :show, :inbox, :edit, :update, :full_name]
   before_action :authorize_user, only: [:dashboard, :show, :inbox, :edit, :update]
 
