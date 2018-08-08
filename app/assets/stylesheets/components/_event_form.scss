@@ -25,16 +25,13 @@
   flex-wrap: wrap;
   height: 180px;
   padding: 0 20px;
-  .checkbox {
-    margin-top: 10px;
-  }
 }
 
 .event_is_paid {
   display: flex;
   justify-content: space-around;
   .radio {
-    margin: 10px 5px;
+    margin: 0px 5px;
   }
 }
 
@@ -44,7 +41,14 @@
 }
 
 .radio+.radio, .checkbox+.checkbox {
-    margin-top: 10px !important;
+  margin-bottom: 0px;
+}
+
+.radio label, .checkbox label {
+    font-weight: lighter;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .modal-backdrop {
