@@ -5,7 +5,7 @@
     <div class="filter-speaker-wrap">
       <%= f.input :location, input_html: { id: 'filter-location', class: "filter-speaker-input", name: "location", value: params[:location] }, placeholder: "Location", label: false %>
     </div>
-    <div class="filter-speaker-wrap filter-speaker-input "><span id="plus-sign"><a href="#categories-list" aria-controls="categories-list" role="tab" data-toggle="collapse" aria-expanded="false">Area of Expertise </a>+</span>
+    <div class="filter-speaker-wrap filter-speaker-input "><span id="plus-sign"><a href="#categories-list" aria-controls="categories-list" role="tab" data-toggle="collapse" aria-expanded="false">Area of Expertise +</a></span>
       <div role="tabpanel" class="collapse" id="categories-list">
       <%= f.input :category, collection: Category.all, as: :check_boxes, label: false, required: false, value_method: :name, input_html: { id: 'category-dropdown', name:"category", class: "check_boxes_cat", placeholder: "Category" } %>
     </div>
