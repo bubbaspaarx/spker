@@ -56,7 +56,7 @@
     -webkit-transition: .15s;
     border-radius: 3px;
     background-color: #fff;
-    border: 1px solid #ec8c3b;
+    border: 1px solid $brand-primary;
     margin-top: 2px;
     margin-right: 10px;
   }
@@ -66,7 +66,7 @@
   }
 
   input[type="checkbox"]:checked {
-   background-color: #ec8c3b;
+   background-color: $brand-primary;
    margin-right: 51px;
    margin-top: 0px;
  }
@@ -85,7 +85,7 @@
  .the-submit-button {
   background-color: $brand-primary;
   border: 1px solid $brand-primary;
- }
+}
 
 }
 
@@ -93,6 +93,21 @@
   border: 1px solid $brand-primary;
   color: $brand-primary;
   -webkit-input-placeholder-color: $brand-primary;
+}
+
+.filter-speaker-wrap.filter-speaker-input {
+  border: 1px solid #00BDA5;
+  color: #00BDA5;
+  margin-bottom: 13px;
+  padding: 6px;
+  border-radius: 3px;
+  & a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: $brand-primary;
+    }
+  }
 }
 
 .filter-speaker-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -117,8 +132,8 @@
 
 
 .speaker-title {
-    font-weight: bold;
-    color: $brand-primary;
+  font-weight: bold;
+  color: $brand-primary;
 }
 
 .speaker-job {
@@ -127,7 +142,7 @@
 
 
 .speaker-city {
-font-size: 12px;
+  font-size: 12px;
 }
 
 .speaker-cost {
@@ -140,4 +155,9 @@ font-size: 12px;
     font-weight: bold;
   }
 
+}
+
+.radio, .checkbox {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
