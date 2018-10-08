@@ -1,6 +1,10 @@
 import swal from "sweetalert";
 import "../plugins/flatpickr";
 import "bootstrap";
+import 'slick-carousel';
+import 'slick-carousel/slick/slick.scss'
+import 'slick-carousel/slick/slick-theme.scss'
+import '../components/slick';
 
 import "../components/login-form.js";
 import "../components/tabs.js";
