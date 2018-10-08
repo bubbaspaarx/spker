@@ -28,6 +28,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 
+gem 'jquery-rails'
+gem 'turbolinks'
+
 
 group :development do
   gem "letter_opener"

@@ -1,0 +1,46 @@
+<%= render 'speakers/shared/invite-message-modal' %>
+<div class="big-container">
+  <div class="profile-container">
+    <div class="profile">
+      <h1> <%= @user.first_name %> <%= @user.last_name %></h1>
+      <div class="infoHolder">
+        <h2><%= @user.job_title %></h2>
+        <p><%= @user.city %></p>
+        <p><%= @user.speaker_blurb %></p>
+        <ul class="list-inline">
+          <% @user.user_tags.each do |tag| %>
+          <li><%= tag.category.name %></li>
+          <% end %>
+        </ul>
+        <ul class="list-inline">
+          <li><a target="_blank" href="https://www.facebook.com/<%= @user.facebook %>"><h5>Facebook <i class="fab fa-facebook-square"></i></h5></a></li>
+          <li><a target="_blank" href="https://twitter.com/<%= @user.twitter %>"><h5>Twitter <i class="fab fa-twitter-square"></i></h5></a></li>
+          <li><a target="_blank" href="https://www.linkedin.com/in/<%= @user.linkedin %>"><h5>LinkedIn <i class="fab fa-linkedin"></i></h5></a></li>
+        </ul>
+      </div>
+
+      <div class="imageHolder">
+        <% image = @user.photo.url ? @user.photo.url : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="profilePic" style="background-image: url('<%= cl_image_path image %>')">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="speaker-wrapper">
+    <div class="row speaker-show-image">
+      <div class="speaker-banner-wrapper">
+
+        <div class="speaker-cost">
+          <h4>Fee from £ <%= @user.cost.to_i %></h4>
+        </div>
+        <div class="speaker-button">
+          <a data-button="login-form" data-toggle="modal" data-target="#invite_modal">Request booking</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
