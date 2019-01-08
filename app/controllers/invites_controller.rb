@@ -1,11 +1,12 @@
 class InvitesController < ApplicationController
   before_action :set_user, only: [:create]
-  before_action :set_invite, only: [:accept, :reject]
+  before_action :set_invite, only: [:accept, :reject, :negotiate]
 
   def create
     @invite = Invite.new(status: 'pending')
     @invite.event = Event.find(invite_params[:events])
     @invite.user = @user
+    @invite.fee = @user.cost
     authorize @invite
     if @invite.save
       message = Message.new(content: "You have received an invite to #{@invite.event.name} from #{ @invite.event.user.first_name } #{@invite.event.user.last_name}")
@@ -24,6 +25,11 @@ class InvitesController < ApplicationController
     message.receiver = @invite.event.user
     message.save
     redirect_to dashboard_path(current_user)
+  end
+
+  def negotiate
+    authorize @invite
+    raise
   end
 
   def reject

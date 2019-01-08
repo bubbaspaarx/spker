@@ -6,7 +6,7 @@
     <div class="user-events-heading">
       <p>Here you can create events to invite speakers to and see events you have been invited to</p>
     </div>
-    <%= link_to "Create a new event", new_event_path, class: "create-event-btn" %>
+    <%= link_to "Create a new event", new_event_path, class: "spker-red-btn" %>
     <% if current_user.events.length == 0 %>
     <p>You have no events</p>
     <% else %>
