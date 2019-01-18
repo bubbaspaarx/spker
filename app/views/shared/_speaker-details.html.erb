@@ -15,10 +15,6 @@
       <% user.invites.where(status: 'pending').each do |invite| %>
       <div class="new-invite">
         <%= link_to invite.event.name, event_path(invite.event) %>
-        <div>
-          <%= link_to 'Accept', invites_accept_path(invite), class: 'btn btn-success', method: 'patch' %>
-          <%= link_to 'Reject', invites_reject_path(invite), class: 'btn btn-danger', method: 'patch' %>
-        </div>
       </div>
       <% end %>
     </div>

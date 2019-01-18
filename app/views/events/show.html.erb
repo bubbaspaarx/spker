@@ -1,3 +1,4 @@
+<%= render 'events/shared/event_quote_modal' %>
 <div class="event-container">
   <div class="row">
     <div class="col-xs-12 col-md-6">
@@ -10,6 +11,18 @@
               <% image = current_user.photo.url ? current_user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
               <%= cl_image_tag image, class: 'organiser-avatar' %>
             </div>
+            <% if current_user == @event.user %>
+            <div>
+              <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
+                <%= f.button :submit, "Find Speakers", class: 'spker-red-btn'%>
+                <%= link_to "Edit Event", edit_event_path, class: 'spker-blue-btn' %>
+                <% end %>
+            </div>
+            <% else %>
+            <div class="booking_button">
+              <button class="spker-red-btn" data-toggle="modal" data-target="#event_quote_modal">Send Quote</button>
+            </div>
+            <% end %>
           </div>
           <div class="location-details">
             <div class="location">
@@ -49,14 +62,6 @@
           <div class="event-item">
             <p><i class="fas fa-plane fa-fw"></i>This event's organiser <%= @event.expenses_flights ? 'will' : 'won\'t' %> pay for transport</p>
             <p><i class="fas fa-utensils fa-fw"></i>This event's organiser <%= @event.expenses_per_diems ? 'will' : 'won\'t' %> pay for per diems</p>
-          </div>
-        </div>
-        <div class="filter-form-index">
-          <%= simple_form_for speakers_path, url: '/speakers', method: 'get' do |f| %>
-          <div class="filter-speaker-wrap">
-            <%= f.button :submit, "Find Speakers", id: 'the-submit-button', class: 'the-submit-button event-show-page-btn'%>
-            <% end %>
-            <%= link_to "Edit Event", edit_event_path, class: 'the-submit-button event-show-page-btn' %>
           </div>
         </div>
       </div>

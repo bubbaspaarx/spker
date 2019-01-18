@@ -21,7 +21,7 @@
         <li role="presentation" class="dash-tab <%= params[:active_tab] == 'messages' ? 'active' : '' %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-fw fa-envelope"></i> Messages</a></li>
         <li role="presentation" class="dash-tab <%= params[:active_tab] == 'events' ? 'active' : '' %>"><a href="#events" aria-controls="events" role="tab" data-toggle="tab"><i class="fa fa-fw fa-calendar"></i> Events</a></li>
         <% if current_user.is_speaker? %>
-        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Bio</a></li>
+        <li role="presentation" class="dash-tab <%= params[:active_tab] == 'speaker-profile' ? 'active' : '' %>"><a href="#speaker-profile" aria-controls="speaker-profile" role="tab" data-toggle="tab"><i class="fa fa-fw fa-microphone"></i> Speaker Area</a></li>
         <% end %>
         <li role="presentation" class="dash-tab <%= params[:active_tab] == 'account' ? 'active' : '' %>"><a href="#account" aria-controls="account" role="tab" data-toggle="tab"><i class="fa fa-fw fa-wrench"></i> Account</a></li>
       </ul>

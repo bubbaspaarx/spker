@@ -115,3 +115,34 @@
   font-size: 14px;
   padding: 12px 47px;
 }
+
+#invite_message_button {
+  padding: 10px 22px;
+  background-color: #02b7c1;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 1px;
+  border: none;
+}
+
+.spker-red-btn {
+  padding: 10px 22px;
+  background-color: #ff708a;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 1px;
+  border: none;
+  line-height: initial;
+}
+
+.spker-blue-btn {
+  padding: 10px 22px;
+  background-color: #02b7c1;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 1px;
+  border: none;
+  & :focus {
+    text-decoration: none
+  }
+}

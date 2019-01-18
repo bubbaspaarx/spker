@@ -26,6 +26,11 @@ class InvitesController < ApplicationController
     redirect_to dashboard_path(current_user)
   end
 
+  def negotiate
+    authorize @invite
+    raise
+  end
+
   def reject
     authorize @invite
     @invite.update(status: 'rejected')

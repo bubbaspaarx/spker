@@ -13,6 +13,10 @@ class InvitePolicy < ApplicationPolicy
     record.user == user
   end
 
+  def negotiate?
+    accept?
+  end
+
   def reject?
     accept?
   end
