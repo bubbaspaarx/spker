@@ -3,7 +3,7 @@ class InvitesController < ApplicationController
   before_action :set_invite, only: [:accept, :reject, :negotiate]
 
   def create
-    @invite = Invite.new(status: 'pending')
+    @invite = Invite.new(status: 'sent')
     @invite.event = Event.find(invite_params[:events])
     @invite.user = @user
     @invite.fee = @user.cost
