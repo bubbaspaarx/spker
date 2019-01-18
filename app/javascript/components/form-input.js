@@ -1,5 +1,3 @@
-const input = document.getElementById('user_email1')
-
 const webKitCheck = () => {
   const webKit = document.querySelectorAll('input:-webkit-autofill')
   webKit.forEach((element) => {

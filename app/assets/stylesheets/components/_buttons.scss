@@ -132,7 +132,18 @@
   font-size: 14px;
   border-radius: 1px;
   border: none;
-  line-height: initial;
+}
+
+.spker-green-btn {
+  padding: 10px 22px;
+  background-color: #64d17b;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 1px;
+  border: none;
+  & :focus {
+    text-decoration: none
+  }
 }
 
 .spker-blue-btn {

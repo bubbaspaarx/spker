@@ -22,6 +22,7 @@ end
 
 def show
   @markers = [ { lat: @event.latitude, lng: @event.longitude } ]
+  @invite = @event.invites.find_by(user_id: current_user.id)
 end
 
 def new

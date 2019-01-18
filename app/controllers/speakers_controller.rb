@@ -92,7 +92,7 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_params
-    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id, :talk_id, { user_photos_attributes: [ :photo ] })
+    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id, :talk_id, { user_photos_attributes: [ :photo ] }, :photo, :photo_cache, :talk_ids, :category_ids)
   end
 
   def filtering_params(params)

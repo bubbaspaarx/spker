@@ -1,0 +1,139 @@
+.page-container {
+  padding: 24px;
+  width: 90vh;
+  margin: auto;
+  height: 100vh;
+  margin-top: 40px;
+  & h4 {
+    color: $brand-primary;
+  }
+}
+
+.page-card-container {
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  min-height: 200px;
+  margin-top: 24px;
+  &.map {
+    padding: 0px;
+    & .event-address {
+      padding: 24px;
+      & p {
+        font-weight: lighter;
+      }
+    }
+  }
+}
+
+.organiser {
+  display: flex;
+  p {
+    font-weight: lighter;
+    margin-right: 10px;
+  }
+}
+
+.date {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #F3F3F3;
+  p {
+    font-weight: lighter;
+    margin-right: 10px;
+  }
+}
+
+.event-list {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin-top: 30px;
+  }
+}
+
+.organiser-avatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+
+.invitees {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+}
+
+.inv-name {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  & .avatar {
+    margin-right: 24px;
+  }
+  & h5 {
+    font-weight: lighter;
+  }
+}
+
+.inv-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 24px;
+  font-weight: lighter;
+  & p {
+    margin: 0px;
+  }
+  & .sent {
+    color: orange;
+  }
+  & .accepted {
+    color: green;
+  }
+  & .rejected {
+    color: red;
+  }
+  & .cancelled {
+    color: red;
+  }
+}
+
+
+// .invite-buttons {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+// .invitees-list {
+
+// }
+
+// .invitees {
+//   display: flex;
+//   justify-content: space-between;
+//   border: 1px solid #f3f3f3;
+//   border-radius: 6px;
+//   padding: 5px 0px;
+//   & .inv-image {
+//     // display: flex;
+//     // justify-content: center;
+//     // align-items: center;
+//     // float: left;
+//     display: inline-block;
+//   }
+//   & .inv-detail {
+//     display: flex;
+//     justify-content: space-around;
+//     align-items: center;
+//     width: 60%
+//   }
+//   & span {
+//       display: flex;
+//   }
+// }

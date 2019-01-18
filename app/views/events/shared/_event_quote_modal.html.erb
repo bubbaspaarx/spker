@@ -6,14 +6,26 @@
         <h4 class="modal-title">Quote for Event</h4>
       </div>
       <div class="modal-body">
-        <div>
-          <%= link_to 'Accept', invites_accept_path(@event.invites.select(user: current_user)), class: 'btn btn-success', method: 'patch' %>
-          <%= link_to 'Reject', invites_reject_path(@event.invites.select(user: current_user)), class: 'btn btn-danger', method: 'patch' %>
-        </div>
+        <% if @invite %>
+          <h3>Event Status: <%= @invite.status %></h3>
+          <div>
+            <%= simple_form_for(@invite, url: invites_negotiate_path, method: 'PATCH') do |f| %>
+              <div class="dash-prof-input">
+                <p>Fee</p>
+                <p>£</p>
+                <%= f.input :fee, label: false %>
+              </div>
+              <div class="invite-buttons">
+                <%= f.button :submit, "Decline Event", class: "spker-red-btn" %>
+                <%= f.button :submit, "Send Quote", class: "spker-green-btn" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+  </div>
+</div>
 
 
 

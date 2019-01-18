@@ -11,29 +11,6 @@
   }
 }
 
-.organiser {
-  display: flex;
-  p {
-    font-weight: lighter;
-    margin-right: 10px;
-  }
-  border-bottom: 1px solid #F3F3F3;
-}
-
-.event-list {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-between;
-  p {
-    margin-top: 30px;
-  }
-}
-
-.organiser-avatar {
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
-}
 
 .event-description {
   padding-bottom: 15px;

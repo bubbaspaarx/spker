@@ -36,8 +36,9 @@ Rails.application.routes.draw do
 
   resources :speaker_bookings, only: [:destroy]
 
-  patch 'invite/accept/:id', to: 'invites#accept', as: 'invites_accept'
-  patch 'invite/reject/:id', to: 'invites#reject', as: 'invites_reject'
+  patch 'invite/:id/accept', to: 'invites#accept', as: 'invites_accept'
+  patch 'invite/:id/reject', to: 'invites#reject', as: 'invites_reject'
+  patch 'invite/:id/negotiate', to: 'invites#negotiate', as: 'invites_negotiate'
 
   mount ActionCable.server => "/cable"
 end
