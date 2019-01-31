@@ -1,3 +1,7 @@
+.events.show {
+  background-color: #f6fcfd;
+}
+
 .page-container {
   padding: 24px;
   width: 90vh;
@@ -16,6 +20,8 @@
   padding: 24px;
   min-height: 200px;
   margin-top: 24px;
+  border-top: 2px solid #89e7eb;
+  background-color: #fff;
   &.map {
     padding: 0px;
     & .event-address {
@@ -27,6 +33,9 @@
   }
   & ul {
     list-style: none;
+  }
+  &:nth-child(2n + 2){
+    border-top: 2px solid #ffc7d6;
   }
 }
 
