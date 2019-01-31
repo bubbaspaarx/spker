@@ -127,11 +127,14 @@
 
 .spker-red-btn {
   padding: 10px 22px;
-  background-color: #ff708a;
+  background-color: $brand-primary-red;
   color: #fff;
   font-size: 14px;
   border-radius: 1px;
   border: none;
+  & a:hover {
+    text-decoration: none;
+  }
 }
 
 .spker-green-btn {
@@ -142,7 +145,7 @@
   border-radius: 1px;
   border: none;
   & :focus {
-    text-decoration: none
+    text-decoration: none;
   }
 }
 

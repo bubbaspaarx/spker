@@ -16,7 +16,6 @@
     </div>
     <% if current_user == @event.user %>
     <div>
-      <%= link_to "Find Speakers", speakers_path, class: 'spker-red-btn'%>
       <%= link_to "Edit Event", edit_event_path, class: 'spker-blue-btn' %>
     </div>
   </div>
@@ -24,29 +23,33 @@
   <div class="page-card-container">
     <h4>Speakers</h4>
     <div class="invitees-list">
-      <% @event.invites.each do |inv| %>
-      <% spker = inv.user %>
-      <% image = spker.photo %>
-      <div class="invitees">
-        <div class="inv-name">
-          <div class="avatar" data-toggle="dropdown" style="background-image: url('<%= cl_image_path image, secure: "true" %>')">
+      <% if @event.invites.length == 0 %>
+        <p>No speakers are currently invited to this event. Click 'find speakers' to search for some</p>
+      <% else %>
+        <% @event.invites.each do |inv| %>
+        <% spker = inv.user %>
+        <% spker_image = inv.user.photo.url ?inv.user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+        <div class="invitees">
+          <div class="inv-name">
+            <div class="avatar" data-toggle="dropdown" style="background-image: url('<%= cl_image_path spker_image, secure: "true" %>')">
+            </div>
+            <h5><%= spker.first_name %> <%= spker.last_name %></h5>
           </div>
-          <h5><%= spker.first_name %> <%= spker.last_name %></h5>
+          <div class="inv-detail">
+            <% case inv.status %>
+            <% when "accepted" %>
+            <p class="accepted"><%= inv.status.capitalize %></p>
+            <% when "sent" %>
+            <p class="sent"><%= inv.status.capitalize %></p>
+            <% when "rejected" %>
+            <p class="rejected"><%= inv.status.capitalize %></p>
+            <% when "counter" %>
+            <p class="counter"><%= inv.status.capitalize %></p>
+            <% end %>
+            <p><%= number_to_currency(inv.fee, unit: "£") %></p>
+          </div>
         </div>
-        <div class="inv-detail">
-          <% case inv.status %>
-          <% when "accepted" %>
-          <p class="accepted"><%= inv.status.capitalize %></p>
-          <% when "sent" %>
-          <p class="sent"><%= inv.status.capitalize %></p>
-          <% when "rejected" %>
-          <p class="rejected"><%= inv.status.capitalize %></p>
-          <% when "counter" %>
-          <p class="counter"><%= inv.status.capitalize %></p>
-          <% end %>
-          <p><%= number_to_currency(inv.fee, unit: "£") %></p>
-        </div>
-      </div>
+        <% end %>
       <% end %>
     </div>
     <% else %>
@@ -54,13 +57,14 @@
       <button class="spker-red-btn" data-toggle="modal" data-target="#event_quote_modal">Send Quote</button>
     </div>
     <% end %>
+    <%= link_to "Find Speakers", speakers_path, class: 'spker-red-btn'%>
   </div>
 
   <div class="page-card-container">
     <h4>Event Topics & Style</h4>
     <ul>
       <% @event.categories.each do |category| %>
-      <li><%= category.name %></li>
+      <li>- <%= category.name %></li>
       <% end %>
     </ul>
   </div>
@@ -69,12 +73,12 @@
     <h4>Event Conditions</h4>
     <div class="event-list">
       <div class="event-item">
-        <p><i class="fas fa-pound-sign fa-fw"></i>    Event is <%= @event.is_paid ? 'for profit' : 'free' %></p>
-        <p><i class="fas fa-bed fa-fw"></i>    Accommodation <%= @event.expenses_hotels ? 'is' : 'is not' %> covered</p>
+        <p class="<%= @event.is_paid ? 'true' : 'false' %>"><i class="fas fa-pound-sign fa-fw"></i>    Event is <%= @event.is_paid ? 'for profit' : 'free' %></p>
+        <p class="<%= @event.expenses_hotels ? 'true' : 'false' %>"><i class="fas fa-bed fa-fw"></i>    Accommodation <%= @event.expenses_hotels ? 'is' : 'is not' %> covered</p>
       </div>
       <div class="event-item">
-        <p><i class="fas fa-plane fa-fw"></i>    Flights <%= @event.expenses_flights ? 'are' : 'aren\'t' %> covered</p>
-        <p><i class="fas fa-utensils fa-fw"></i>    Per diems <%= @event.expenses_per_diems ? 'are' : 'aren\'t' %> covered</p>
+        <p class="<%= @event.expenses_flights ? 'true' : 'false' %>"><i class="fas fa-plane fa-fw"></i>    Flights <%= @event.expenses_flights ? 'are' : 'aren\'t' %> covered</p>
+        <p class="<%= @event.expenses_per_diems ? 'true' : 'false' %>"><i class="fas fa-utensils fa-fw"></i>    Per diems <%= @event.expenses_per_diems ? 'are' : 'aren\'t' %> covered</p>
       </div>
     </div>
   </div>

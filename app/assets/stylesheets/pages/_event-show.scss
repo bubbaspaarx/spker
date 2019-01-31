@@ -25,6 +25,9 @@
       }
     }
   }
+  & ul {
+    list-style: none;
+  }
 }
 
 .organiser {
@@ -104,6 +107,15 @@
   }
 }
 
+
+.event-item {
+  & p.true {
+    color: $brand-primary-red;
+  }
+  & p.false {
+    color: #b6baba;
+  }
+}
 
 // .invite-buttons {
 //   display: flex;

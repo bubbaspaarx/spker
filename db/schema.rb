@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20190108081100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.integer "value"
     t.integer "fee"
     t.index ["event_id"], name: "index_invites_on_event_id"
     t.index ["user_id"], name: "index_invites_on_user_id"
