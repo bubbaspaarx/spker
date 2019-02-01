@@ -1,85 +1,161 @@
-.speaker_info_box {
-  position: absolute;
-  height: 87%;
-  width: 22%;
-  left: 1%;
-  top: 25%;
-  color: #fff;
-  background-image: linear-gradient(to right, #00a4bd, $brand-primary);
+.speaker-profile {
+  position: relative;
+  display: flex;
+  min-height: 700px;
+  padding: 25px;
+  height: 100%;
+}
+
+.review-stars {
+  color: #E0D81A;
+}
+
+.profile-half {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.speaker-title {
   text-align: center;
-  box-shadow: 2px 14px 25px 0 #00a4bdad, 0 1px 0 0 #00bda5ab;
   & h1 {
-    font-size: 36px;
+    font-size: 66px;
+    color: #65D2D9;
+    font-family: rozha-one;
+  }
+  & h4 {
+    font-family: rozha-one;
+    color: #919090;
   }
 }
 
-.speaker_image_carousel {
-  height: 100%;
-  width: 100%;
-}
-
-.speaker_show_banner {
-  position: relative;
-  align-items: center;
-  justify-content: center;
-}
-
-.social_links {
-  color: #fff;
-}
-
-.speaker_show_banner_image {
-  height: 70vh;
-  min-height: 600px;
-  background-size: cover !important;
-  background-position: 50% 50%;
-}
-
-.speaker_show_avatar {
-  background-image: url(https://res.cloudinary.com/montycat/image/upload/v1532351733/ng7iaqpholjuabxosfza.jpg);
-  background-size: cover;
-  background-position: 50% 50%;
-  height: 47%;
-}
-
-.slick_nav_images {
-  height: 100%;
-  padding: 5px;
-  width: auto !important;
-  display: block !important;
-  background-size: cover;
-  background-position: 50% 50%;
-  margin: auto;
-}
-
-.slider-nav {
-  width: 50%;
-  margin: auto;
-}
-
-.slider-nav div {
-  height: 160px;
-  padding: 3px 0;
-  text-align: center; font-size:2em;
-  cursor: pointer;
-}
-
-.speaker_info_container {
-  width: 48%;
-  margin: auto;
-  text-align: left;
-  padding-top: 30px;
-}
-.speaker_info {
-
-}
-
-.speaker-button {
+.speaker-location {
   position: absolute;
-  z-index: 2;
-  right: 5%;
-  bottom: 25%;
+  bottom: 0px;
+  font-size: 16px;
+  color: $brand-primary;
+  & p:nth-child(2n){
+    font-size: 14px;
+    color: #727272;
+  }
 }
+
+.speaker-blurb {
+  font-style: italic;
+  color: #919090;
+  text-align: center;
+  font-size: 21px;
+  letter-spacing: .5px;
+}
+
+.speaker-qualities {
+  display: flex;
+  justify-content: space-between;
+}
+
+.speaker-talk-types {
+  margin-bottom: 40px;
+  font-size: 14px;
+  & p {
+    font-size: 16px;
+    color: $brand-primary;
+  }
+  & li {
+    color: #727272;
+  }
+}
+
+.speaker-profile-image {
+  height: 50%;
+  width: 100%;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+// .speaker_info_box {
+//   position: absolute;
+//   height: 87%;
+//   width: 22%;
+//   left: 1%;
+//   top: 25%;
+//   color: #fff;
+//   background-image: linear-gradient(to right, #00a4bd, $brand-primary);
+//   text-align: center;
+//   box-shadow: 2px 14px 25px 0 #00a4bdad, 0 1px 0 0 #00bda5ab;
+//   & h1 {
+//     font-size: 36px;
+//   }
+// }
+
+// .speaker_image_carousel {
+//   height: 100%;
+//   width: 100%;
+// }
+
+// .speaker_show_banner {
+//   position: relative;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// .social_links {
+//   color: #fff;
+// }
+
+// .speaker_show_banner_image {
+//   height: 70vh;
+//   min-height: 600px;
+//   background-size: cover !important;
+//   background-position: 50% 50%;
+// }
+
+// .speaker_show_avatar {
+//   background-image: url(https://res.cloudinary.com/montycat/image/upload/v1532351733/ng7iaqpholjuabxosfza.jpg);
+//   background-size: cover;
+//   background-position: 50% 50%;
+//   height: 47%;
+// }
+
+// .slick_nav_images {
+//   height: 100%;
+//   padding: 5px;
+//   width: auto !important;
+//   display: block !important;
+//   background-size: cover;
+//   background-position: 50% 50%;
+//   margin: auto;
+// }
+
+// .slider-nav {
+//   width: 50%;
+//   margin: auto;
+// }
+
+// .slider-nav div {
+//   height: 160px;
+//   padding: 3px 0;
+//   text-align: center; font-size:2em;
+//   cursor: pointer;
+// }
+
+// .speaker_info_container {
+//   width: 48%;
+//   margin: auto;
+//   text-align: left;
+//   padding-top: 30px;
+// }
+// .speaker_info {
+
+// }
+
+// .speaker-button {
+//   position: absolute;
+//   z-index: 2;
+//   right: 5%;
+//   bottom: 25%;
+// }
 
 
 // .speaker-banner-wrapper {

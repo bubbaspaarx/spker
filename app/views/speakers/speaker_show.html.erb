@@ -1,21 +1,39 @@
 <div class="page-container">
   <div class="page-card-container speaker-profile">
-    <div class="profile-first-half">
+    <div class="profile-half">
       <div class="review-stars">
-
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
       </div>
       <div class="speaker-title">
         <h1><%= @user.first_name %></h1>
         <h1><%= @user.last_name %></h1>
-        <h4>??? create subtitle for post-nominal names ????</h4>
+        <h4>??? MBA ????</h4>
       </div>
-      <p>???? This is going to be a space to put a short speaker blurb ????</p>
+      <div class="speaker-blurb">
+        <p>???? This is going to be a space to put a short speaker blurb ????</p>
+      </div>
       <div class="speaker-qualities">
         <div class="speaker-talk-types">
-
+          <p>Talk Types</p>
+          <span></span>
+          <ul>
+            <% @user.talks.each do |talk| %>
+            <li><%= talk.name %></li>
+            <% end %>
+          </ul>
         </div>
-        <div class="speaker-expertise">
-
+        <div class="speaker-talk-types">
+          <p>Expertise</p>
+          <span></span>
+          <ul>
+            <% @user.categories.each do |cat| %>
+            <li><%= cat.name %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
       <div class="speaker-location">
@@ -23,8 +41,10 @@
         <p>???? speaker city, county, country</p>
       </div>
     </div>
-    <div class="profile-second-half">
-
+    <div class="profile-half">
+      <% image = @user.photo.url ? @user.photo.url : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+      <div class="speaker-profile-image" style="background-image: url(<%= cl_image_path(image, secure: "true") %>);">
+      </div>
     </div>
   </div>
 </div>

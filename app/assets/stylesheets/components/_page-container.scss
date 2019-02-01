@@ -1,0 +1,36 @@
+.page-container {
+  padding: 24px;
+  max-width: 930px;
+  margin: auto;
+  height: 100vh;
+  margin-top: 40px;
+  & h4 {
+    color: $brand-primary;
+  }
+}
+
+.page-card-container {
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  min-height: 200px;
+  margin-top: 24px;
+  border-top: 2px solid #89e7eb;
+  background-color: #fff;
+  &.map {
+    padding: 0px;
+    & .event-address {
+      padding: 24px;
+      & p {
+        font-weight: lighter;
+      }
+    }
+  }
+  & ul {
+    list-style: none;
+  }
+  &:nth-child(2n + 2){
+    border-top: 2px solid #ffc7d6;
+  }
+}
