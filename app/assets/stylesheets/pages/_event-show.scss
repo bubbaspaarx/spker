@@ -89,6 +89,18 @@
   }
 }
 
+.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.active {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity ease-out 1.5s;
+}
+
+
 // .invite-buttons {
 //   display: flex;
 //   justify-content: space-between;

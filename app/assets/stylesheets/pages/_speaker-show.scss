@@ -5,9 +5,9 @@
 .speaker-profile {
   position: relative;
   display: flex;
-  min-height: 700px;
+  min-height: 800px;
   padding: 25px;
-  height: 100%;
+  height: auto;
 }
 
 .review-stars {
@@ -16,7 +16,7 @@
 
 .profile-half {
   width: 50%;
-  height: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,13 +82,14 @@
 }
 
 .speaker-profile-image {
-  height: 58%;
+  min-height: 444px;
   width: 100%;
   background-position: 50% 50%;
   background-size: cover;
 }
 
 .booking-area {
+  position: relative;
   border: .5px solid #E4E4E4;
   height: 42%;
   margin-top: 10px;
@@ -107,12 +108,13 @@
 
 .plus-create-link {
   position: absolute;
-  right: 40px;
+  right: 10px;
 }
 
 .booking-calc {
   margin-top: 37px;
   & p {
+    font-size: 14px;
     color: $brand-primary;
   }
 }
@@ -125,9 +127,11 @@
   justify-content: space-between;
   border-top: 0.5px solid #E4E4E4;
   & p {
+    font-size: 14px;
     color: #727272;
   }
 }
+
 // .speaker_info_box {
 //   position: absolute;
 //   height: 87%;

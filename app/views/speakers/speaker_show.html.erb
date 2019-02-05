@@ -58,10 +58,13 @@
           <div class="plus-create-link">
             <%= link_to "+ New Event", new_event_path, class: "" %>
           </div>
-
-          <div class="booking-calc">
+          <div class="booking-calc inactive">
             <p>Estimate</p>
             <div class="talk-cost">
+            </div>
+            <div class="cost-line">
+              <p>Total</p>
+              <p id="booking-total"></p>
             </div>
             <%= f.button :submit, "Request Booking", id: 'invite_message_button' %>
           </div>
@@ -76,26 +79,43 @@
 <script>
   const dropDown = document.getElementById('user_events')
   const talkCost = document.querySelector('.talk-cost')
+  const bookingCalc = document.querySelector('.booking-calc')
+
   dropDown.addEventListener('change', e => {
-    dropDown.value ? console.log(dropDown.value) : null
-    const costObj = {
-      talk: <%= @user.cost %>,
-      fee: <%= @user.cost * 0.05 %>
+    bookingCalc.classList.add('inactive')
+    bookingCalc.classList.remove('active')
+    talkCost.innerHTML = ''
+
+    const renderCosts = () => {
+      const costObj = {
+        talk: <%= @user.cost %>,
+        fee: <%= @user.cost * 0.05 %>
+      }
+
+      let total = 0
+      for(item in costObj) {
+        total += costObj[item]
+        const div = document.createElement('div')
+        div.classList.add('cost-line')
+        const pD = document.createElement('p')
+        const pT = document.createElement('p')
+        pD.innerText = `1 x ${item}`
+        pT.innerText = `£${costObj[item].toFixed(2)}`
+        div.appendChild(pD)
+        div.appendChild(pT)
+        talkCost.appendChild(div)
+        if(item === 'fee') {
+          const tT = document.getElementById('booking-total')
+          tT.innerText = `£${total.toFixed(2)}`
+        }
+      }
+
+      bookingCalc.classList.remove('inactive')
+      bookingCalc.classList.add('active')
     }
-    for(item in costObj) {
-      const div = document.createElement('div')
-      div.classList.add('cost-line')
-      const pD = document.createElement('p')
-      const pT = document.createElement('p')
-      pD.innerText = `1 x ${item}`
-      pT.innerText = `£${costObj[item]}`
-      div.appendChild(pD)
-      div.appendChild(pT)
-      talkCost.appendChild(div)
-    }
+
+    dropDown.value ? renderCosts() : null
+
   })
-
-
-
 </script>
 
