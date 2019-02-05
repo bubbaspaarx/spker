@@ -1,3 +1,7 @@
+.speaker_show {
+  background-color: $background-color;
+}
+
 .speaker-profile {
   position: relative;
   display: flex;
@@ -15,7 +19,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  &.first {
+    padding-right: 5px;
+  }
+  &.second {
+    padding-left: 5px;
+  }
 }
 
 .speaker-title {
@@ -33,9 +43,12 @@
 
 .speaker-location {
   position: absolute;
-  bottom: 0px;
+  bottom: 24px;
   font-size: 16px;
   color: $brand-primary;
+  & p {
+    margin: 0px !important;
+  }
   & p:nth-child(2n){
     font-size: 14px;
     color: #727272;
@@ -53,6 +66,7 @@
 .speaker-qualities {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 40px;
 }
 
 .speaker-talk-types {
@@ -68,12 +82,52 @@
 }
 
 .speaker-profile-image {
-  height: 50%;
+  height: 58%;
   width: 100%;
   background-position: 50% 50%;
   background-size: cover;
 }
 
+.booking-area {
+  border: .5px solid #E4E4E4;
+  height: 42%;
+  margin-top: 10px;
+  padding: 12px;
+}
+
+.speaker-fee {
+  display: flex;
+  font-size: 16px;
+  color: #727272;
+  & p:nth-child(2n){
+    color: $brand-primary;
+    margin-left: 5px;
+  }
+}
+
+.plus-create-link {
+  position: absolute;
+  right: 40px;
+}
+
+.booking-calc {
+  margin-top: 37px;
+  & p {
+    color: $brand-primary;
+  }
+}
+
+.talk-cost {
+}
+
+.cost-line {
+  display: flex;
+  justify-content: space-between;
+  border-top: 0.5px solid #E4E4E4;
+  & p {
+    color: #727272;
+  }
+}
 // .speaker_info_box {
 //   position: absolute;
 //   height: 87%;

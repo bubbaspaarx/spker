@@ -1,6 +1,6 @@
 <div class="page-container">
   <div class="page-card-container speaker-profile">
-    <div class="profile-half">
+    <div class="profile-half first">
       <div class="review-stars">
         <i class="fas fa-star"></i>
         <i class="fas fa-star"></i>
@@ -41,10 +41,61 @@
         <p>???? speaker city, county, country</p>
       </div>
     </div>
-    <div class="profile-half">
+    <div class="profile-half second">
       <% image = @user.photo.url ? @user.photo.url : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
       <div class="speaker-profile-image" style="background-image: url(<%= cl_image_path(image, secure: "true") %>);">
+      </div>
+      <div class="booking-area">
+        <div class="speaker-fee">
+          <p>from</p>
+          <p>£<%= @user.cost %></p>
+        </div>
+        <%#= render "shared/invite_form" %>
+        <%= simple_form_for(@user, html: { id: 'invite_message' }, url: user_invites_path(params[:user_id]), method: 'post') do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :events, collection: current_user.events, required: false, prompt: "Select event", label: false, autofocus: true, class: 'event_content', inputHTML: { name: 'event' } %>
+          <div class="plus-create-link">
+            <%= link_to "+ New Event", new_event_path, class: "" %>
+          </div>
+
+          <div class="booking-calc">
+            <p>Estimate</p>
+            <div class="talk-cost">
+            </div>
+            <%= f.button :submit, "Request Booking", id: 'invite_message_button' %>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+
+<script>
+  const dropDown = document.getElementById('user_events')
+  const talkCost = document.querySelector('.talk-cost')
+  dropDown.addEventListener('change', e => {
+    dropDown.value ? console.log(dropDown.value) : null
+    const costObj = {
+      talk: <%= @user.cost %>,
+      fee: <%= @user.cost * 0.05 %>
+    }
+    for(item in costObj) {
+      const div = document.createElement('div')
+      div.classList.add('cost-line')
+      const pD = document.createElement('p')
+      const pT = document.createElement('p')
+      pD.innerText = `1 x ${item}`
+      pT.innerText = `£${costObj[item]}`
+      div.appendChild(pD)
+      div.appendChild(pT)
+      talkCost.appendChild(div)
+    }
+  })
+
+
+
+</script>
+

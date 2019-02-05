@@ -1,11 +1,11 @@
 <%= simple_form_for(@user, html: { id: 'invite_message' }, url: user_invites_path(params[:user_id]), method: 'post') do |f| %>
-<%= f.error_notification %>
-<div class="form-inputs">
-  <%= f.input :events, collection: current_user.events, required: false, prompt: "Select event", autofocus: true, class: 'event_content', inputHTML: { name: 'event' } %>
-  <div class="flex-between">
-    <%= link_to "Create a new event", new_event_path, class: "spker-red-btn" %>
-    <%= f.button :submit, "Request Booking", id: 'invite_message_button' %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :events, collection: current_user.events, required: false, prompt: "Select event", label: false, autofocus: true, class: 'event_content', inputHTML: { name: 'event' } %>
+    <div class="flex-between">
+      <%= link_to "Create a new event", new_event_path, class: "spker-red-btn" %>
+      <%= f.button :submit, "Request Booking", id: 'invite_message_button' %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
 </div>
