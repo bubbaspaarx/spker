@@ -29,6 +29,12 @@
                   <%= f.button :submit, "Save", class: "photo-save-btn" %>
                 </div>
               </div>
+              <div class="add-photos-multi">
+                <p>Add multiple photos</p>
+                <%= f.fields_for :photos do |p| %>
+                <%= p.file_field :photo, multiple: true, name:"user[user_photos_attributes][][photo]",accept: "image/*" %>
+                <% end %>
+              </div>
             </div>
             <div class="speaker-bio">
               <h5>Tell us about yourself (What the organisers see)</h5>
@@ -136,10 +142,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="add-photos-multi">
-<p>Add multiple photos</p>
-<%#= f.fields_for :photos do |p| %>
-<%#= p.file_field :photo, multiple: true, name:"user[user_photos_attributes][][photo]" %>
-<%# end %>
-</div> -->

@@ -74,8 +74,24 @@
       </div>
     </div>
   </div>
+  <div class="page-card-container">
+    <h4>Media</h4>
+    <div class="speaker-nav-images">
+      <% @user.user_photos.each do |photo| %>
+      <div class="nav-images" style="background-image: url('<%= cl_image_path(photo.photo.url, quality: "auto:low", secure: "true") %>')">
+      </div>
+      <% end %>
+    </div>
+    <div class="speaker-image-gallery">
+      <% @user.user_photos.each do |photo| %>
+      <a data-lightbox="gallery" href="<%= photo.photo.url %>" style="background-image: url('<%= cl_image_path(photo.photo.url, quality: "auto:low", secure: "true") %>')">
+      </a>
+      <% end %>
+    </div>
+  </div>
 </div>
-</div>
+
+
 
 <% content_for :after_js do %>
 <script>

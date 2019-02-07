@@ -24,3 +24,4 @@ autocomplete();
 // if (price) {
 //   dynamicPrice(price)
 // }
+
