@@ -76,46 +76,41 @@
 </div>
 </div>
 
-<script>
-  const dropDown = document.getElementById('user_events')
-  const talkCost = document.querySelector('.talk-cost')
-  const bookingCalc = document.querySelector('.booking-calc')
-
-  dropDown.addEventListener('change', e => {
-    bookingCalc.classList.add('inactive')
-    bookingCalc.classList.remove('active')
-    talkCost.innerHTML = ''
-
-    const renderCosts = () => {
-      const costObj = {
-        talk: <%= @user.cost %>,
-        fee: <%= @user.cost * 0.05 %>
-      }
-
-      let total = 0
-      for(item in costObj) {
-        total += costObj[item]
-        const div = document.createElement('div')
-        div.classList.add('cost-line')
-        const pD = document.createElement('p')
-        const pT = document.createElement('p')
-        pD.innerText = `1 x ${item}`
-        pT.innerText = `£${costObj[item].toFixed(2)}`
-        div.appendChild(pD)
-        div.appendChild(pT)
-        talkCost.appendChild(div)
-        if(item === 'fee') {
-          const tT = document.getElementById('booking-total')
-          tT.innerText = `£${total.toFixed(2)}`
+<% content_for :after_js do %>
+  <script>
+    const dropDown = document.getElementById('user_events')
+    const talkCost = document.querySelector('.talk-cost')
+    const bookingCalc = document.querySelector('.booking-calc')
+    dropDown.addEventListener('change', e => {
+      bookingCalc.classList.add('inactive')
+      bookingCalc.classList.remove('active')
+      talkCost.innerHTML = ''
+      const renderCosts = () => {
+        const costObj = {
+          talk: <%= @user.cost %>,
+          fee: <%= @user.cost * 0.05 %>
         }
+        let total = 0
+        for(item in costObj) {
+          total += costObj[item]
+          const div = document.createElement('div')
+          div.classList.add('cost-line')
+          const pD = document.createElement('p')
+          const pT = document.createElement('p')
+          pD.innerText = `1 x ${item}`
+          pT.innerText = `£${costObj[item].toFixed(2)}`
+          div.appendChild(pD)
+          div.appendChild(pT)
+          talkCost.appendChild(div)
+          if(item === 'fee') {
+            const tT = document.getElementById('booking-total')
+            tT.innerText = `£${total.toFixed(2)}`
+          }
+        }
+        bookingCalc.classList.remove('inactive')
+        bookingCalc.classList.add('active')
       }
-
-      bookingCalc.classList.remove('inactive')
-      bookingCalc.classList.add('active')
-    }
-
-    dropDown.value ? renderCosts() : null
-
-  })
-</script>
-
+      dropDown.value ? renderCosts() : null
+    })
+  </script>
+<% end %>

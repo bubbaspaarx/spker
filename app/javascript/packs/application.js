@@ -11,7 +11,7 @@ import "../components/login-form.js";
 import "../components/tabs.js";
 import "../components/form-input.js";
 // import "../components/scroll";
-import "../components/photo.js";
+// import "../components/photo.js";
 
 // import { formAlerts, dynamicPrice } from "../components/booking_form.js";
 // import '../components/modal.js'
