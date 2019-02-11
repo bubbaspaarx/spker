@@ -6,8 +6,9 @@
 //   asNavFor: '.slider-nav',
 // });
 $('.speaker-nav-images').slick({
-  slidesToShow: 3,
-  slidesToScroll: 2,
+  rows: 0,
+  slidesToShow: 6,
+  slidesToScroll: 1,
   asNavFor: '.speaker-image-gallery',
   dots: true,
   centerMode: false,

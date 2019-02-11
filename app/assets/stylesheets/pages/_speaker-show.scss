@@ -144,17 +144,23 @@
 }
 
 .slick-slide {
+  outline: none;
   & div {
     text-align: center;
   }
 }
 
 .speaker-nav-images {
+  margin-left: 0;
   & .nav-images {
-    height: 170px;
-    width: 230px !important;
-    background-size: cover;
-    margin: 10px 30px 30px 30px;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 10px 30px 30px 0px;
+  }
+  & .slick-list .slick-track {
+     margin-left: 0;
   }
 }
 

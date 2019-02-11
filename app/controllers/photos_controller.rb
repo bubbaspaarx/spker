@@ -15,6 +15,10 @@ class PhotosController < ApplicationController
     end
   end
 
+  def destroy
+    raise
+  end
+
   def photo_params
     params.require(:photos).permit(:photo, :photo_cache)
   end

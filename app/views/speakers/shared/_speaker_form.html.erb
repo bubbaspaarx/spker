@@ -2,6 +2,7 @@
   <ul class="navigation-area nav nav-tabs nav-stacked" role="tablist">
     <li role="presentation" class="dash-tab active"><a href="#speaker-bio" aria-controls="speaker-bio" role="tab" data-toggle="tab">Speaker Bio</a></li>
     <li role="presentation" class="dash-tab"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
+    <li role="presentation" class="dash-tab"><a href="#media" aria-controls="media" role="tab" data-toggle="tab">Media</a></li>
     <li role="presentation" class="dash-tab"><a href="#category" aria-controls="category" role="tab" data-toggle="tab">Category & Fee</a></li>
     <li role="presentation" class="dash-tab"><a href="#topics" aria-controls="topics" role="tab" data-toggle="tab">Topics</a></li>
   </ul>
@@ -18,24 +19,6 @@
         </div>
         <div class="panel-body">
           <div class="edit-top-row">
-            <div>
-              <% image = @user.photo.url ? @user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
-              <div id="img_prev" class="speaker-edit-photo" style="background-image: url('<%= cl_image_path image, quality: "auto:low"; %>')">
-              </div>
-              <div class="change-photo-button">
-                <%= f.input :photo, label: "Change Photo", class: 'upload-button', input_html: { id: "photo-input" }  %>
-                <%= f.input :photo_cache, as: :hidden %>
-                <div class="form-actions">
-                  <%= f.button :submit, "Save", class: "photo-save-btn" %>
-                </div>
-              </div>
-              <div class="add-photos-multi">
-                <p>Add multiple photos</p>
-                <%= f.fields_for :photos do |p| %>
-                <%= p.file_field :photo, multiple: true, name:"user[user_photos_attributes][][photo]",accept: "image/*" %>
-                <% end %>
-              </div>
-            </div>
             <div class="speaker-bio">
               <h5>Tell us about yourself (What the organisers see)</h5>
               <%= f.input :speaker_blurb, label:false, placeholder: 'Your bio goes here...' %>
@@ -85,17 +68,61 @@
               </div>
               <div class="col-xs-12 col-sm-6">
                 <%= f.input :city, label: false, placeholder: 'City, town, etc...' %>
-                <%= f.input :postcode, label: false, placeholder: 'Poscode' %>
+                <%= f.input :postcode, label: false, placeholder: 'Postcode' %>
               </div>
             </div>
             <div class="panel-buttons">
               <%= f.button :submit, class: 'update-button', value: 'Save' %>
-              <a class="next-btn" href="#category" aria-controls="category" role="tab" data-toggle="tab">Next</a>
+              <a class="next-btn" href="#media" aria-controls="media" role="tab" data-toggle="tab">Next</a>
             </div>
           </div>
         </div>
       </div>
 
+      <div role="tabpanel" class="tab-pane panel-default" id="media">
+        <div class="panel-heading">
+          <h3 class="panel-title">Media</h3>
+        </div>
+        <div class="panel-body">
+          <div>
+            <% image = @user.photo.url ? @user.photo : "https://res.cloudinary.com/montycat/image/upload/v1520001176/profile-placeholder.png" %>
+            <div id="img_prev" class="speaker-edit-photo" style="background-image: url('<%= cl_image_path image, quality: "auto:low"; %>')">
+            </div>
+            <div class="change-photo-button">
+              <%= simple_form_for(@user, url: url) do |ph| %>
+                <% if @user.photo.url %>
+                  <%= ph.input :remove_photo, input_html: { value: "1" }, as: :hidden %>
+                  <%= ph.button :submit, value: 'Remove Photo', id: "user_remove_photo" %>
+                <% end %>
+                <% unless @user.photo.url %>
+                  <%= f.input :photo, label: "Add Photo", input_html: { id: "photo-input" }  %>
+                  <%= f.input :photo_cache, as: :hidden %>
+                <% end %>
+             <% end %>
+              <div class="form-actions">
+                <%= f.button :submit, "Save", class: "photo-save-btn" %>
+              </div>
+            </div>
+          </div>
+          <div class="add-photos-multi">
+            <p>Add multiple photos</p>
+            <%= f.fields_for :photos do |p| %>
+            <%= p.file_field :photo, multiple: true, name: "user[user_photos_attributes][][photo]",accept: "image/*" %>
+            <% end %>
+          </div>
+          <div class="add-videos-multi">
+            <%= f.simple_fields_for @video do |v| %>
+              <%= v.input :url, multiple: true, label: false, input_html: {name: "user[user_videos_attributes][]" } %>
+              <%= v.input :url, multiple: true, label: false, input_html: {name: "user[user_videos_attributes][]" } %>
+              <%= v.input :url, multiple: true, label: false, input_html: {name: "user[user_videos_attributes][]" } %>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-buttons">
+          <%= f.button :submit, class: 'update-button', value: 'Save' %>
+          <a class="next-btn" href="#category" aria-controls="category" role="tab" data-toggle="tab">Next</a>
+        </div>
+      </div>
       <div role="tabpanel" class="tab-pane panel-default" id="category">
         <div class="panel-heading">
           <h3 class="panel-title">Categories & Fee</h3>

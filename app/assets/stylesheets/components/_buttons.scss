@@ -32,7 +32,7 @@
 
 .form-group.file.optional.user_photo {
   /*your custom styles*/
-  background-color: #e2678f;
+  background-color: $brand-primary;
   width: 200px;
   padding: 10px;
   text-align: center;
@@ -49,6 +49,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .user_photo > * {
   pointer-events: none;
 }
@@ -64,6 +65,22 @@
   height: 100%;
   width: 100%;
 }
+
+#user_remove_photo {
+  /*your custom styles*/
+  background-color: $brand-primary-red;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 1px 1px 0px 0px;
+  color: #fff;
+  & label {
+    margin-bottom: 0;
+  }
+}
+
 .change-photo-button {
   display: flex;
 }

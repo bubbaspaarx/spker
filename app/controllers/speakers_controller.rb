@@ -27,6 +27,7 @@ class SpeakersController < ApplicationController
     if @user.update(speaker_params)
       generate_tags
       generate_talks
+      add_videos
       redirect_to user_speaker_path(@user)
     else
       @user.is_speaker = false
@@ -35,12 +36,14 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_edit
+    @video = @user.user_videos.build
   end
 
   def speaker_update
     if @user.update(speaker_params)
       destroy_tags
       destroy_talks
+      add_videos
       generate_tags
       generate_talks
       redirect_to user_speaker_path(@user)
@@ -69,6 +72,12 @@ class SpeakersController < ApplicationController
     end
   end
 
+  def add_videos
+    params[:user][:user_videos_attributes].each do |v|
+      UserVideo.where(url: v).find_or_create_by(user: @user)
+    end
+  end
+
   def destroy_tags
     @user.user_tags.each { |tag| tag.destroy }
   end
@@ -93,7 +102,24 @@ class SpeakersController < ApplicationController
   end
 
   def speaker_params
-    params.require(:user).permit(:postcode, :travel_distance, :address, :cost, :speaker_blurb, :facebook, :twitter, :linkedin, :city, :category_id, :talk_id, { user_photos_attributes: [ :photo ] }, :photo, :photo_cache, :talk_ids, :category_ids)
+    params.require(:user).permit(
+      :postcode,
+      :travel_distance,
+      :address,
+      :cost,
+      :speaker_blurb,
+      :facebook,
+      :twitter,
+      :linkedin,
+      :city,
+      { user_photos_attributes: [ :photo ] },
+      :photo,
+      :photo_cache,
+      :remove_photo,
+      talk_ids: [],
+      category_ids: [],
+      user_videos_attributes: [:url]
+      )
   end
 
   def filtering_params(params)
